@@ -16,5 +16,12 @@ namespace eShelvesDesktop
         {
             InitializeComponent();
         }
+
+        private void novaKnjigaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AddKnjiga frm = new AddKnjiga();
+            frm.MdiParent = this;
+            frm.Show();
+        }
     }
 }

@@ -15,7 +15,7 @@ namespace eShelvesDesktop
 {
     public partial class LoginForm : Form
     {
-        WebApiHelper serviceCaller = new WebApiHelper("http://hci111.app.fit.ba/", "api/test");
+        WebApiHelper serviceCaller = new WebApiHelper(Config.urlApi, "test");
         public LoginForm()
         {
             InitializeComponent();
