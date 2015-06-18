@@ -61,11 +61,29 @@ namespace eShelvesDesktop {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Greška.
+        /// </summary>
+        internal static string error {
+            get {
+                return ResourceManager.GetString("error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Unijeli ste pogrešnu lozinku..
         /// </summary>
         internal static string login_pass_err {
             get {
                 return ResourceManager.GetString("login_pass_err", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Uspješno ste  sačuvali podate o proizvodu..
+        /// </summary>
+        internal static string product_succ {
+            get {
+                return ResourceManager.GetString("product_succ", resourceCulture);
             }
         }
     }

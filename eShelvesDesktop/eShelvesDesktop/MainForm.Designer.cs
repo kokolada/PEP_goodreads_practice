@@ -28,11 +28,58 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.knjigeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.novaKnjigaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuStrip1.SuspendLayout();
+            this.SuspendLayout();
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.knjigeToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(749, 24);
+            this.menuStrip1.TabIndex = 0;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // knjigeToolStripMenuItem
+            // 
+            this.knjigeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.novaKnjigaToolStripMenuItem});
+            this.knjigeToolStripMenuItem.Name = "knjigeToolStripMenuItem";
+            this.knjigeToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
+            this.knjigeToolStripMenuItem.Text = "Knjige";
+            // 
+            // novaKnjigaToolStripMenuItem
+            // 
+            this.novaKnjigaToolStripMenuItem.Name = "novaKnjigaToolStripMenuItem";
+            this.novaKnjigaToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
+            this.novaKnjigaToolStripMenuItem.Text = "Nova knjiga";
+            this.novaKnjigaToolStripMenuItem.Click += new System.EventHandler(this.novaKnjigaToolStripMenuItem_Click);
+            // 
+            // MainForm
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(749, 560);
+            this.Controls.Add(this.menuStrip1);
+            this.IsMdiContainer = true;
+            this.MainMenuStrip = this.menuStrip1;
+            this.Name = "MainForm";
             this.Text = "MainForm";
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
         }
 
         #endregion
+
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem knjigeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem novaKnjigaToolStripMenuItem;
     }
 }
