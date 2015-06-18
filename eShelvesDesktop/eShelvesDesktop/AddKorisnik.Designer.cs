@@ -211,6 +211,7 @@
             this.ponistiButton.TabIndex = 16;
             this.ponistiButton.Text = "Poništi";
             this.ponistiButton.UseVisualStyleBackColor = true;
+            this.ponistiButton.Click += new System.EventHandler(this.ponistiButton_Click);
             // 
             // spolPanel
             // 

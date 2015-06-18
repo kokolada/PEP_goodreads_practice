@@ -120,6 +120,9 @@
   <data name="error" xml:space="preserve">
     <value>Greška</value>
   </data>
+  <data name="korisnik_succ" xml:space="preserve">
+    <value>Uspješno ste dodali korisnika.</value>
+  </data>
   <data name="login_pass_err" xml:space="preserve">
     <value>Unijeli ste pogrešnu lozinku.</value>
   </data>

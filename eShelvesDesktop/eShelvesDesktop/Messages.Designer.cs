@@ -70,6 +70,15 @@ namespace eShelvesDesktop {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Uspješno ste dodali korisnika..
+        /// </summary>
+        internal static string korisnik_succ {
+            get {
+                return ResourceManager.GetString("korisnik_succ", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Unijeli ste pogrešnu lozinku..
         /// </summary>
         internal static string login_pass_err {
