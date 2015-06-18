@@ -34,7 +34,7 @@ namespace eShelvesDesktop.Util
             return client.GetAsync(route + "/" + parameter).Result;
         }
 
-        /*public HttpResponseMessage PostResponse(Object newObject)
+        public HttpResponseMessage PostResponse(Object newObject)
         {
             return client.PostAsJsonAsync(route, newObject).Result;
         }
@@ -47,6 +47,6 @@ namespace eShelvesDesktop.Util
         public HttpResponseMessage PutResponse(int id, Object existingObject)
         {
             return client.PutAsJsonAsync(route + "/" + id, existingObject).Result;
-        }*/
+        }
     }
 }

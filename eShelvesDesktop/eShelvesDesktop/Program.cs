@@ -16,7 +16,12 @@ namespace eShelvesDesktop
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+
+            LoginForm loginForm = new LoginForm();
+            loginForm.ShowDialog();
+
+            if (loginForm.DialogResult == DialogResult.OK)
+                Application.Run(new MainForm());
         }
     }
 }
