@@ -98,7 +98,7 @@
     </Compile>
     <Compile Include="Models\Knjiga.cs" />
     <Compile Include="Models\Korisnik.cs" />
-    <Compile Include="Models\Polica.cs" />
+    <Compile Include="Models\PolicaWM.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Util\Config.cs" />

@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace eShelvesDesktop.Models
 {
-    public class Polica
+    public class PolicaWM
     {
         public int Id { get; set; }
         public string Naziv { get; set; }
+        public int BookCount { get; set; }
         public int KorisnikID { get; set; }
     }
 }
