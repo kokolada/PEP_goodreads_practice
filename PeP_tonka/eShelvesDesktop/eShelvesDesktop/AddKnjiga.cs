@@ -21,10 +21,29 @@ namespace eShelvesDesktop
         WebApiHelper addKnjigaService = new WebApiHelper(Config.urlApi, "NeznamStaRadim");
 
         private Knjiga knjiga { get; set; }
+        private int Id;
+        private int AutorID;
 
         public AddKnjiga()
         {
             InitializeComponent();
+        }
+
+        public AddKnjiga(Knjiga k)
+        {
+            InitializeComponent();
+            naslovInput.Text = k.Naslov;
+            opisInput.Text = k.Opis;
+            ISBNInput.Text = k.ISBN;
+            objavljenaDatePicker.Value = k.Objavljena;
+            Id = k.Id;
+            AutorID = k.AutorId;
+
+            if (k.Slika != null)
+            {
+                MemoryStream ms = new MemoryStream(k.Slika);
+                pictureBox.Image = Image.FromStream(ms);
+            }
         }
 
         private void AddKnjiga_Load(object sender, EventArgs e)
@@ -43,6 +62,15 @@ namespace eShelvesDesktop
                 autorComboBox.DataSource = autori;
                 autorComboBox.DisplayMember = "Naziv";
                 autorComboBox.ValueMember = "Id";
+
+                if (Id >= 1)
+                {
+                    for (int i = 0; i < autori.Count; i++)
+                    {
+                        if (autori[i].Id == AutorID)
+                            autorComboBox.SelectedIndex = i;
+                    }
+                }
             }
         }
 
@@ -58,6 +86,9 @@ namespace eShelvesDesktop
             knjiga.ISBN = ISBNInput.Text;
             knjiga.Opis = opisInput.Text;
             knjiga.Objavljena = objavljenaDatePicker.Value;
+
+            if (Id >= 1)
+                knjiga.Id = Id;
 
             HttpResponseMessage response = addKnjigaService.PostResponse(knjiga);
 
