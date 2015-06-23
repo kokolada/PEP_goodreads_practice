@@ -91,6 +91,18 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ManageKnjigas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ManageKnjigas.Designer.cs">
+      <DependentUpon>ManageKnjigas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ManageKorisniks.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ManageKorisniks.Designer.cs">
+      <DependentUpon>ManageKorisniks.cs</DependentUpon>
+    </Compile>
     <Compile Include="Messages.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -106,6 +118,7 @@
     <Compile Include="Util\SlikaHelper.cs" />
     <Compile Include="Util\WebApiHelper.cs" />
     <Compile Include="ViewModels\AutorVM.cs" />
+    <Compile Include="ViewModels\KnjigaVM.cs" />
     <Compile Include="ViewModels\LogiraniKorisnik.cs" />
     <EmbeddedResource Include="AddKnjiga.resx">
       <DependentUpon>AddKnjiga.cs</DependentUpon>
@@ -118,6 +131,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ManageKnjigas.resx">
+      <DependentUpon>ManageKnjigas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ManageKorisniks.resx">
+      <DependentUpon>ManageKorisniks.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Messages.resx">
       <Generator>ResXFileCodeGenerator</Generator>

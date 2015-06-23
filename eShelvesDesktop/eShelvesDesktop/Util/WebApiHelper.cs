@@ -34,6 +34,11 @@ namespace eShelvesDesktop.Util
             return client.GetAsync(route + "/" + parameter).Result;
         }
 
+        public HttpResponseMessage GetResponse2(string parameter)
+        {
+            return client.GetAsync(route + parameter).Result;
+        }
+
         public HttpResponseMessage PostResponse(Object newObject)
         {
             return client.PostAsJsonAsync(route, newObject).Result;

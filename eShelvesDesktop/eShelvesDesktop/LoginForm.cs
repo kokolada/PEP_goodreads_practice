@@ -50,5 +50,11 @@ namespace eShelvesDesktop
             if (e.KeyChar == 13)
                 potvrdiButton_Click(sender, EventArgs.Empty);
         }
+
+        private void LoginForm_Load(object sender, EventArgs e)
+        {
+            usernameInput.Text = "dzemo";
+            passwordInput.Text = "gigant";
+        }
     }
 }

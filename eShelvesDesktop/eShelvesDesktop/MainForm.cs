@@ -23,5 +23,26 @@ namespace eShelvesDesktop
             frm.MdiParent = this;
             frm.Show();
         }
+
+        private void manageKnjigeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ManageKnjigas frm = new ManageKnjigas();
+            frm.MdiParent = this;
+            frm.Show();
+        }
+
+        private void addKorisnikToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AddKorisnik frm = new AddKorisnik();
+            frm.MdiParent = this;
+            frm.Show();
+        }
+
+        private void manageKorisniciToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ManageKorisniks frm = new ManageKorisniks();
+            frm.MdiParent = this;
+            frm.Show();
+        }
     }
 }
