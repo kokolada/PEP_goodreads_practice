@@ -73,7 +73,7 @@ namespace eShelvesDesktop
             narudzba.KupacID = (int)kupacCombo.SelectedValue;
             narudzba.ReklamaID = (int)reklamaCombo.SelectedValue;
 
-            HttpResponseMessage response = narudzbaService.PostResponse(narudzbaService);
+            HttpResponseMessage response = narudzbaService.PostResponse(narudzba);
 
             if (response.IsSuccessStatusCode)
             {

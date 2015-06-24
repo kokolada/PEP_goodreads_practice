@@ -66,35 +66,48 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddKnjiga.cs">
+    <Compile Include="Knjige\AddKnjiga.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddKnjiga.Designer.cs">
+    <Compile Include="Knjige\AddKnjiga.Designer.cs">
       <DependentUpon>AddKnjiga.cs</DependentUpon>
     </Compile>
-    <Compile Include="AddKorisnik.cs">
+    <Compile Include="Korisnici\AddKorisnik.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddKorisnik.Designer.cs">
+    <Compile Include="Korisnici\AddKorisnik.Designer.cs">
       <DependentUpon>AddKorisnik.cs</DependentUpon>
     </Compile>
-    <Compile Include="AddKupac.cs">
+    <Compile Include="LocalModels\DetaljiPolice.cs" />
+    <Compile Include="Police\ManagePolica.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddKupac.Designer.cs">
+    <Compile Include="Police\ManagePolica.Designer.cs">
+      <DependentUpon>ManagePolica.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reklame\AddKupac.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reklame\AddKupac.Designer.cs">
       <DependentUpon>AddKupac.cs</DependentUpon>
     </Compile>
-    <Compile Include="AddNarudzba.cs">
+    <Compile Include="Reklame\AddNarudzba.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddNarudzba.Designer.cs">
+    <Compile Include="Reklame\AddNarudzba.Designer.cs">
       <DependentUpon>AddNarudzba.cs</DependentUpon>
     </Compile>
-    <Compile Include="AddReklama.cs">
+    <Compile Include="Reklame\AddReklama.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddReklama.Designer.cs">
+    <Compile Include="Reklame\AddReklama.Designer.cs">
       <DependentUpon>AddReklama.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Police\AdministracijaPolicama.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Police\AdministracijaPolicama.Designer.cs">
+      <DependentUpon>AdministracijaPolicama.cs</DependentUpon>
     </Compile>
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
@@ -109,16 +122,16 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="ManageKnjigas.cs">
+    <Compile Include="Knjige\ManageKnjigas.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ManageKnjigas.Designer.cs">
+    <Compile Include="Knjige\ManageKnjigas.Designer.cs">
       <DependentUpon>ManageKnjigas.cs</DependentUpon>
     </Compile>
-    <Compile Include="ManageKorisniks.cs">
+    <Compile Include="Korisnici\ManageKorisniks.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ManageKorisniks.Designer.cs">
+    <Compile Include="Korisnici\ManageKorisniks.Designer.cs">
       <DependentUpon>ManageKorisniks.cs</DependentUpon>
     </Compile>
     <Compile Include="Messages.Designer.cs">
@@ -141,20 +154,26 @@
     <Compile Include="ViewModels\AutorVM.cs" />
     <Compile Include="ViewModels\KnjigaVM.cs" />
     <Compile Include="ViewModels\LogiraniKorisnik.cs" />
-    <EmbeddedResource Include="AddKnjiga.resx">
+    <EmbeddedResource Include="Knjige\AddKnjiga.resx">
       <DependentUpon>AddKnjiga.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AddKorisnik.resx">
+    <EmbeddedResource Include="Korisnici\AddKorisnik.resx">
       <DependentUpon>AddKorisnik.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AddKupac.resx">
+    <EmbeddedResource Include="Police\ManagePolica.resx">
+      <DependentUpon>ManagePolica.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reklame\AddKupac.resx">
       <DependentUpon>AddKupac.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AddNarudzba.resx">
+    <EmbeddedResource Include="Reklame\AddNarudzba.resx">
       <DependentUpon>AddNarudzba.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AddReklama.resx">
+    <EmbeddedResource Include="Reklame\AddReklama.resx">
       <DependentUpon>AddReklama.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Police\AdministracijaPolicama.resx">
+      <DependentUpon>AdministracijaPolicama.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
@@ -162,10 +181,10 @@
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ManageKnjigas.resx">
+    <EmbeddedResource Include="Knjige\ManageKnjigas.resx">
       <DependentUpon>ManageKnjigas.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ManageKorisniks.resx">
+    <EmbeddedResource Include="Korisnici\ManageKorisniks.resx">
       <DependentUpon>ManageKorisniks.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Messages.resx">

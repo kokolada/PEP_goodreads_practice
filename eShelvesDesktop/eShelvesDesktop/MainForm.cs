@@ -65,5 +65,11 @@ namespace eShelvesDesktop
             frm.MdiParent = this;
             frm.Show();
         }
+
+        private void administracijaPolicaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AdministracijaPolicama frm = new AdministracijaPolicama();
+            frm.Show();
+        }
     }
 }
