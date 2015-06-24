@@ -44,6 +44,7 @@
             this.dodajButton = new System.Windows.Forms.Button();
             this.sacuvajButton = new System.Windows.Forms.Button();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.kategorijeListBox = new System.Windows.Forms.CheckedListBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -192,11 +193,21 @@
             // 
             this.openFileDialog.FileName = "openFileDialog1";
             // 
+            // kategorijeListBox
+            // 
+            this.kategorijeListBox.CheckOnClick = true;
+            this.kategorijeListBox.FormattingEnabled = true;
+            this.kategorijeListBox.Location = new System.Drawing.Point(325, 25);
+            this.kategorijeListBox.Name = "kategorijeListBox";
+            this.kategorijeListBox.Size = new System.Drawing.Size(159, 154);
+            this.kategorijeListBox.TabIndex = 15;
+            // 
             // AddKnjiga
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(665, 487);
+            this.Controls.Add(this.kategorijeListBox);
             this.Controls.Add(this.sacuvajButton);
             this.Controls.Add(this.dodajButton);
             this.Controls.Add(this.slikaInput);
@@ -239,5 +250,6 @@
         private System.Windows.Forms.Button dodajButton;
         private System.Windows.Forms.Button sacuvajButton;
         private System.Windows.Forms.OpenFileDialog openFileDialog;
+        private System.Windows.Forms.CheckedListBox kategorijeListBox;
     }
 }

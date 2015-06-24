@@ -16,5 +16,6 @@ namespace eShelvesDesktop.Models
         public byte[] Slika { get; set; }
 
         public int AutorId { get; set; }
+        public List<Kategorija> Kategorijas { get; set; }
     }
 }

@@ -200,6 +200,7 @@
             this.ukloniButton.TabIndex = 8;
             this.ukloniButton.Text = "ukloni oznacenu knjigu";
             this.ukloniButton.UseVisualStyleBackColor = true;
+            this.ukloniButton.Click += new System.EventHandler(this.ukloniButton_Click);
             // 
             // label5
             // 
@@ -265,6 +266,7 @@
             this.dodajButton.TabIndex = 14;
             this.dodajButton.Text = "dodaj oznacenu knjigu";
             this.dodajButton.UseVisualStyleBackColor = true;
+            this.dodajButton.Click += new System.EventHandler(this.dodajButton_Click);
             // 
             // id
             // 

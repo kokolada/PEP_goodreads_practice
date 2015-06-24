@@ -37,7 +37,15 @@
             this.Naslov = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Autor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ISBN = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.ocjeneGrid = new System.Windows.Forms.DataGridView();
+            this.reviewerid = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.username = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ocjena = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.opis = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ocjeneGrid)).BeginInit();
             this.SuspendLayout();
             // 
             // traziButton
@@ -89,14 +97,15 @@
             this.Naslov,
             this.Autor,
             this.ISBN});
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.dataGridView1.Location = new System.Drawing.Point(0, 92);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(814, 396);
+            this.dataGridView1.Size = new System.Drawing.Size(544, 396);
             this.dataGridView1.TabIndex = 4;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             this.dataGridView1.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentDoubleClick);
+            this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
             // 
             // Id
             // 
@@ -111,6 +120,7 @@
             this.Naslov.HeaderText = "naslov";
             this.Naslov.Name = "Naslov";
             this.Naslov.ReadOnly = true;
+            this.Naslov.Width = 200;
             // 
             // Autor
             // 
@@ -126,11 +136,85 @@
             this.ISBN.Name = "ISBN";
             this.ISBN.ReadOnly = true;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label2.Location = new System.Drawing.Point(12, 69);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(58, 20);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "Knjige";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label3.Location = new System.Drawing.Point(545, 69);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(65, 20);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "Ocjene";
+            // 
+            // ocjeneGrid
+            // 
+            this.ocjeneGrid.AllowUserToAddRows = false;
+            this.ocjeneGrid.AllowUserToDeleteRows = false;
+            this.ocjeneGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.ocjeneGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.reviewerid,
+            this.username,
+            this.ocjena,
+            this.opis});
+            this.ocjeneGrid.Location = new System.Drawing.Point(549, 92);
+            this.ocjeneGrid.Name = "ocjeneGrid";
+            this.ocjeneGrid.ReadOnly = true;
+            this.ocjeneGrid.RowHeadersVisible = false;
+            this.ocjeneGrid.RowTemplate.Height = 60;
+            this.ocjeneGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.ocjeneGrid.Size = new System.Drawing.Size(265, 396);
+            this.ocjeneGrid.TabIndex = 7;
+            // 
+            // reviewerid
+            // 
+            this.reviewerid.DataPropertyName = "KorisnikId";
+            this.reviewerid.HeaderText = "";
+            this.reviewerid.Name = "reviewerid";
+            this.reviewerid.ReadOnly = true;
+            this.reviewerid.Visible = false;
+            // 
+            // username
+            // 
+            this.username.DataPropertyName = "username";
+            this.username.HeaderText = "Korisnik";
+            this.username.Name = "username";
+            this.username.ReadOnly = true;
+            this.username.Width = 60;
+            // 
+            // ocjena
+            // 
+            this.ocjena.DataPropertyName = "Ocjena";
+            this.ocjena.HeaderText = "Ocjena";
+            this.ocjena.Name = "ocjena";
+            this.ocjena.ReadOnly = true;
+            this.ocjena.Width = 60;
+            // 
+            // opis
+            // 
+            this.opis.DataPropertyName = "Opis";
+            this.opis.HeaderText = "Opis";
+            this.opis.Name = "opis";
+            this.opis.ReadOnly = true;
+            this.opis.Width = 140;
+            // 
             // ManageKnjigas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(814, 488);
+            this.Controls.Add(this.ocjeneGrid);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.novaknjigabutton);
             this.Controls.Add(this.searchInput);
@@ -140,6 +224,7 @@
             this.Text = "ManageKnjigas";
             this.Load += new System.EventHandler(this.ManageKnjigas_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ocjeneGrid)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -156,5 +241,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Naslov;
         private System.Windows.Forms.DataGridViewTextBoxColumn Autor;
         private System.Windows.Forms.DataGridViewTextBoxColumn ISBN;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.DataGridView ocjeneGrid;
+        private System.Windows.Forms.DataGridViewTextBoxColumn reviewerid;
+        private System.Windows.Forms.DataGridViewTextBoxColumn username;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ocjena;
+        private System.Windows.Forms.DataGridViewTextBoxColumn opis;
     }
 }

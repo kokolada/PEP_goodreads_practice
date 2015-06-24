@@ -18,11 +18,13 @@ namespace eShelvesDesktop
     {
         WebApiHelper knjigaService = new WebApiHelper(Config.urlApi, "Search");
         WebApiHelper knjigaGetService = new WebApiHelper(Config.urlApi, "Knjigas");
+        WebApiHelper ocjenaService = new WebApiHelper(Config.urlApi, "Ocjenas");
 
         public ManageKnjigas()
         {
             InitializeComponent();
             dataGridView1.AutoGenerateColumns = false;
+            ocjeneGrid.AutoGenerateColumns = false;
         }
 
         private void ManageKnjigas_Load(object sender, EventArgs e)
@@ -58,11 +60,29 @@ namespace eShelvesDesktop
             BindGrid();
         }
 
-        private void dataGridView1_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void dataGridView1_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e){}
+
+        private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             Knjiga k = knjigaGetService.GetResponse2("?id=" + dataGridView1.SelectedRows[0].Cells[0].Value).Content.ReadAsAsync<Knjiga>().Result;
             AddKnjiga frm = new AddKnjiga(k);
             frm.Show();
+        }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            HttpResponseMessage response = ocjenaService.GetResponse(dataGridView1.SelectedRows[0].Cells[0].Value.ToString());
+
+            if (response.IsSuccessStatusCode)
+            {
+                List<OcjenaInfoVM> ocjene = response.Content.ReadAsAsync<List<OcjenaInfoVM>>().Result;
+                ocjeneGrid.DataSource = ocjene;
+            }
+            else
+            {
+                MessageBox.Show("Error Code" +
+                response.StatusCode + " : Message - " + response.ReasonPhrase);
+            }
         }
     }
 }
