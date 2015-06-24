@@ -44,5 +44,26 @@ namespace eShelvesDesktop
             frm.MdiParent = this;
             frm.Show();
         }
+
+        private void addReklamaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AddReklama frm = new AddReklama();
+            frm.MdiParent = this;
+            frm.Show();
+        }
+
+        private void addKupacToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AddKupac frm = new AddKupac();
+            frm.MdiParent = this;
+            frm.Show();
+        }
+
+        private void addNarudzbaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AddNarudzba frm = new AddNarudzba();
+            frm.MdiParent = this;
+            frm.Show();
+        }
     }
 }

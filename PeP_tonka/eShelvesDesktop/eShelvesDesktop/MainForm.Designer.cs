@@ -35,6 +35,10 @@
             this.korisniciToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addKorisnikToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.manageKorisniciToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.reklameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addReklamaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addKupacToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addNarudzbaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -42,7 +46,8 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.knjigeToolStripMenuItem,
-            this.korisniciToolStripMenuItem});
+            this.korisniciToolStripMenuItem,
+            this.reklameToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(916, 24);
@@ -84,7 +89,7 @@
             // addKorisnikToolStripMenuItem
             // 
             this.addKorisnikToolStripMenuItem.Name = "addKorisnikToolStripMenuItem";
-            this.addKorisnikToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.addKorisnikToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
             this.addKorisnikToolStripMenuItem.Text = "Add korisnik";
             this.addKorisnikToolStripMenuItem.Click += new System.EventHandler(this.addKorisnikToolStripMenuItem_Click);
             // 
@@ -94,6 +99,37 @@
             this.manageKorisniciToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
             this.manageKorisniciToolStripMenuItem.Text = "Manage korisnici";
             this.manageKorisniciToolStripMenuItem.Click += new System.EventHandler(this.manageKorisniciToolStripMenuItem_Click);
+            // 
+            // reklameToolStripMenuItem
+            // 
+            this.reklameToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.addReklamaToolStripMenuItem,
+            this.addKupacToolStripMenuItem,
+            this.addNarudzbaToolStripMenuItem});
+            this.reklameToolStripMenuItem.Name = "reklameToolStripMenuItem";
+            this.reklameToolStripMenuItem.Size = new System.Drawing.Size(64, 20);
+            this.reklameToolStripMenuItem.Text = "Reklame";
+            // 
+            // addReklamaToolStripMenuItem
+            // 
+            this.addReklamaToolStripMenuItem.Name = "addReklamaToolStripMenuItem";
+            this.addReklamaToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.addReklamaToolStripMenuItem.Text = "Add reklama";
+            this.addReklamaToolStripMenuItem.Click += new System.EventHandler(this.addReklamaToolStripMenuItem_Click);
+            // 
+            // addKupacToolStripMenuItem
+            // 
+            this.addKupacToolStripMenuItem.Name = "addKupacToolStripMenuItem";
+            this.addKupacToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.addKupacToolStripMenuItem.Text = "Add kupac";
+            this.addKupacToolStripMenuItem.Click += new System.EventHandler(this.addKupacToolStripMenuItem_Click);
+            // 
+            // addNarudzbaToolStripMenuItem
+            // 
+            this.addNarudzbaToolStripMenuItem.Name = "addNarudzbaToolStripMenuItem";
+            this.addNarudzbaToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.addNarudzbaToolStripMenuItem.Text = "Add narudzba";
+            this.addNarudzbaToolStripMenuItem.Click += new System.EventHandler(this.addNarudzbaToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -121,5 +157,9 @@
         private System.Windows.Forms.ToolStripMenuItem korisniciToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem addKorisnikToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem manageKorisniciToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem reklameToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem addReklamaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem addKupacToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem addNarudzbaToolStripMenuItem;
     }
 }
