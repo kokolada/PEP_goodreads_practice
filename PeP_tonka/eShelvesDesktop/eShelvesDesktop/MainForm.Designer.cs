@@ -39,6 +39,8 @@
             this.addReklamaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addKupacToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addNarudzbaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.policeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.administracijaPolicaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -47,7 +49,8 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.knjigeToolStripMenuItem,
             this.korisniciToolStripMenuItem,
-            this.reklameToolStripMenuItem});
+            this.reklameToolStripMenuItem,
+            this.policeToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(916, 24);
@@ -113,23 +116,38 @@
             // addReklamaToolStripMenuItem
             // 
             this.addReklamaToolStripMenuItem.Name = "addReklamaToolStripMenuItem";
-            this.addReklamaToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.addReklamaToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.addReklamaToolStripMenuItem.Text = "Add reklama";
             this.addReklamaToolStripMenuItem.Click += new System.EventHandler(this.addReklamaToolStripMenuItem_Click);
             // 
             // addKupacToolStripMenuItem
             // 
             this.addKupacToolStripMenuItem.Name = "addKupacToolStripMenuItem";
-            this.addKupacToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.addKupacToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.addKupacToolStripMenuItem.Text = "Add kupac";
             this.addKupacToolStripMenuItem.Click += new System.EventHandler(this.addKupacToolStripMenuItem_Click);
             // 
             // addNarudzbaToolStripMenuItem
             // 
             this.addNarudzbaToolStripMenuItem.Name = "addNarudzbaToolStripMenuItem";
-            this.addNarudzbaToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.addNarudzbaToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.addNarudzbaToolStripMenuItem.Text = "Add narudzba";
             this.addNarudzbaToolStripMenuItem.Click += new System.EventHandler(this.addNarudzbaToolStripMenuItem_Click);
+            // 
+            // policeToolStripMenuItem
+            // 
+            this.policeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.administracijaPolicaToolStripMenuItem});
+            this.policeToolStripMenuItem.Name = "policeToolStripMenuItem";
+            this.policeToolStripMenuItem.Size = new System.Drawing.Size(51, 20);
+            this.policeToolStripMenuItem.Text = "Police";
+            // 
+            // administracijaPolicaToolStripMenuItem
+            // 
+            this.administracijaPolicaToolStripMenuItem.Name = "administracijaPolicaToolStripMenuItem";
+            this.administracijaPolicaToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
+            this.administracijaPolicaToolStripMenuItem.Text = "Administracija polica";
+            this.administracijaPolicaToolStripMenuItem.Click += new System.EventHandler(this.administracijaPolicaToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -161,5 +179,7 @@
         private System.Windows.Forms.ToolStripMenuItem addReklamaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem addKupacToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem addNarudzbaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem policeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem administracijaPolicaToolStripMenuItem;
     }
 }
