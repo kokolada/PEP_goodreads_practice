@@ -19,6 +19,7 @@ namespace eShelvesDesktop.Police
     {
         WebApiHelper knjigaService = new WebApiHelper(Config.urlApi, "Knjigas?policaId=");
         WebApiHelper searchService = new WebApiHelper(Config.urlApi, "Search");
+        WebApiHelper desktopService = new WebApiHelper(Config.urlApi, "Desktop");
 
         public ManagePolica(DetaljiPolice a)
         {
@@ -32,10 +33,6 @@ namespace eShelvesDesktop.Police
         private void ManagePolica_Load(object sender, EventArgs e)
         {
             BindGrid();
-            foreach(DataGridViewRow row in knjigeGrid.Rows)
-            {
-                row.Height = 80;
-            }
         }
 
         private void BindGrid()
@@ -46,6 +43,11 @@ namespace eShelvesDesktop.Police
             {
                 List<Knjiga> knjige = response.Content.ReadAsAsync<List<Knjiga>>().Result;
                 knjigeGrid.DataSource = knjige;
+
+                foreach (DataGridViewRow row in knjigeGrid.Rows)
+                {
+                    row.Height = 80;
+                }
             }
             else
             {
@@ -62,6 +64,38 @@ namespace eShelvesDesktop.Police
             {
                 List<KnjigaVM> knjige = response.Content.ReadAsAsync<List<KnjigaVM>>().Result;
                 pretragaGrid.DataSource = knjige;
+            }
+            else
+            {
+                MessageBox.Show("Error Code" +
+                response.StatusCode + " : Message - " + response.ReasonPhrase);
+            }
+        }
+
+        private void ukloniButton_Click(object sender, EventArgs e)
+        {
+            HttpResponseMessage response = desktopService.GetActionResponse("RemoveKnjiga", policaidLabel.Text + "/" + knjigeGrid.SelectedRows[0].Cells[0].Value.ToString());
+
+            if (response.IsSuccessStatusCode)
+            {
+                MessageBox.Show("Knjiga uspjesno uklonjena!");
+                BindGrid();
+            }
+            else
+            {
+                MessageBox.Show("Error Code" +
+                response.StatusCode + " : Message - " + response.ReasonPhrase);
+            }
+        }
+
+        private void dodajButton_Click(object sender, EventArgs e)
+        {
+            HttpResponseMessage response = desktopService.GetActionResponse("AddKnjigaToPolica", policaidLabel.Text + "/" + pretragaGrid.SelectedRows[0].Cells[1].Value.ToString());
+
+            if (response.IsSuccessStatusCode)
+            {
+                MessageBox.Show("Knjiga uspjesno dodana!");
+                BindGrid();
             }
             else
             {

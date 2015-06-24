@@ -19,7 +19,10 @@ namespace eShelvesDesktop
     {
         WebApiHelper autorService = new WebApiHelper(Config.urlApi, "Autor");
         WebApiHelper addKnjigaService = new WebApiHelper(Config.urlApi, "NeznamStaRadim");
+        WebApiHelper kategorijaService = new WebApiHelper(Config.urlApi, "Desktop");
 
+        private List<Kategorija> kategorije { get; set; }
+        private List<Kategorija> k2 { get; set; }
         private Knjiga knjiga { get; set; }
         private int Id;
         private int AutorID;
@@ -39,6 +42,9 @@ namespace eShelvesDesktop
             Id = k.Id;
             AutorID = k.AutorId;
 
+            if (Id >= 1)
+                k2 = new List<Kategorija>(k.Kategorijas);
+
             if (k.Slika != null)
             {
                 MemoryStream ms = new MemoryStream(k.Slika);
@@ -49,6 +55,27 @@ namespace eShelvesDesktop
         private void AddKnjiga_Load(object sender, EventArgs e)
         {
             BindAutors();
+            BindKategorijas();
+            if (Id >= 1)
+                CheckTheBoxes(k2);
+        }
+
+        private void CheckTheBoxes(List<Kategorija> kategorijj)
+        {
+            for(int j = 0; j<kategorijeListBox.Items.Count; j++)
+            {
+                for(int i = 0; i<kategorijj.Count; i++)
+                {
+                    if ((string)kategorijeListBox.Items[j] == kategorijj[i].Naziv)
+                        kategorijeListBox.SetItemCheckState(j, CheckState.Checked);
+                }
+            }
+        }
+
+        private void BindKategorijas()
+        {
+            kategorije = kategorijaService.GetResponse("Kategorijas").Content.ReadAsAsync<List<Kategorija>>().Result;
+            kategorijeListBox.Items.AddRange(kategorije.Select(x => x.Naziv).ToArray());
         }
 
         private void BindAutors()
@@ -86,6 +113,12 @@ namespace eShelvesDesktop
             knjiga.ISBN = ISBNInput.Text;
             knjiga.Opis = opisInput.Text;
             knjiga.Objavljena = objavljenaDatePicker.Value;
+
+            knjiga.Kategorijas = new List<Kategorija>();
+            foreach (int indeks in kategorijeListBox.CheckedIndices)
+            {
+                knjiga.Kategorijas.Add(kategorije[indeks]);
+            }
 
             if (Id >= 1)
                 knjiga.Id = Id;
