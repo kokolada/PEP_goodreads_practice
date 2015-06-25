@@ -32,6 +32,7 @@
             this.knjigeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.novaKnjigaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.manageKnjigeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.manageKategorijeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.korisniciToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addKorisnikToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.manageKorisniciToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -41,7 +42,8 @@
             this.addNarudzbaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.policeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.administracijaPolicaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.manageKategorijeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.autoriToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.evidencijaAutoraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -51,7 +53,8 @@
             this.knjigeToolStripMenuItem,
             this.korisniciToolStripMenuItem,
             this.reklameToolStripMenuItem,
-            this.policeToolStripMenuItem});
+            this.policeToolStripMenuItem,
+            this.autoriToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(916, 24);
@@ -81,6 +84,13 @@
             this.manageKnjigeToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.manageKnjigeToolStripMenuItem.Text = "Manage knjige";
             this.manageKnjigeToolStripMenuItem.Click += new System.EventHandler(this.manageKnjigeToolStripMenuItem_Click);
+            // 
+            // manageKategorijeToolStripMenuItem
+            // 
+            this.manageKategorijeToolStripMenuItem.Name = "manageKategorijeToolStripMenuItem";
+            this.manageKategorijeToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.manageKategorijeToolStripMenuItem.Text = "Manage kategorije";
+            this.manageKategorijeToolStripMenuItem.Click += new System.EventHandler(this.manageKategorijeToolStripMenuItem_Click);
             // 
             // korisniciToolStripMenuItem
             // 
@@ -151,12 +161,20 @@
             this.administracijaPolicaToolStripMenuItem.Text = "Administracija polica";
             this.administracijaPolicaToolStripMenuItem.Click += new System.EventHandler(this.administracijaPolicaToolStripMenuItem_Click);
             // 
-            // manageKategorijeToolStripMenuItem
+            // autoriToolStripMenuItem
             // 
-            this.manageKategorijeToolStripMenuItem.Name = "manageKategorijeToolStripMenuItem";
-            this.manageKategorijeToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
-            this.manageKategorijeToolStripMenuItem.Text = "Manage kategorije";
-            this.manageKategorijeToolStripMenuItem.Click += new System.EventHandler(this.manageKategorijeToolStripMenuItem_Click);
+            this.autoriToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.evidencijaAutoraToolStripMenuItem});
+            this.autoriToolStripMenuItem.Name = "autoriToolStripMenuItem";
+            this.autoriToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
+            this.autoriToolStripMenuItem.Text = "Autori";
+            // 
+            // evidencijaAutoraToolStripMenuItem
+            // 
+            this.evidencijaAutoraToolStripMenuItem.Name = "evidencijaAutoraToolStripMenuItem";
+            this.evidencijaAutoraToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
+            this.evidencijaAutoraToolStripMenuItem.Text = "Evidencija autora";
+            this.evidencijaAutoraToolStripMenuItem.Click += new System.EventHandler(this.evidencijaAutoraToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -191,5 +209,7 @@
         private System.Windows.Forms.ToolStripMenuItem policeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem administracijaPolicaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem manageKategorijeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem autoriToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem evidencijaAutoraToolStripMenuItem;
     }
 }

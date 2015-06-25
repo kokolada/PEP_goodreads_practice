@@ -1,4 +1,5 @@
-﻿using eShelvesDesktop.Kategorije;
+﻿using eShelvesDesktop.Autori;
+using eShelvesDesktop.Kategorije;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -76,6 +77,13 @@ namespace eShelvesDesktop
         private void manageKategorijeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ManageKategorije frm = new ManageKategorije();
+            frm.MdiParent = this;
+            frm.Show();
+        }
+
+        private void evidencijaAutoraToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            EvidencijaAutora frm = new EvidencijaAutora();
             frm.MdiParent = this;
             frm.Show();
         }
