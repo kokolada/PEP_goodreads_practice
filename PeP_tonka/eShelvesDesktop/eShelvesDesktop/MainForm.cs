@@ -1,4 +1,5 @@
-﻿using System;
+﻿using eShelvesDesktop.Kategorije;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -69,6 +70,13 @@ namespace eShelvesDesktop
         private void administracijaPolicaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             AdministracijaPolicama frm = new AdministracijaPolicama();
+            frm.Show();
+        }
+
+        private void manageKategorijeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ManageKategorije frm = new ManageKategorije();
+            frm.MdiParent = this;
             frm.Show();
         }
     }

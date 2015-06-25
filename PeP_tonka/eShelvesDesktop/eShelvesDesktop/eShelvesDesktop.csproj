@@ -66,6 +66,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Kategorije\ManageKategorije.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Kategorije\ManageKategorije.Designer.cs">
+      <DependentUpon>ManageKategorije.cs</DependentUpon>
+    </Compile>
     <Compile Include="Knjige\AddKnjiga.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -162,6 +168,9 @@
     <Compile Include="ViewModels\KnjigaVM.cs" />
     <Compile Include="ViewModels\LogiraniKorisnik.cs" />
     <Compile Include="ViewModels\OcjenaInfoVM.cs" />
+    <EmbeddedResource Include="Kategorije\ManageKategorije.resx">
+      <DependentUpon>ManageKategorije.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Knjige\AddKnjiga.resx">
       <DependentUpon>AddKnjiga.cs</DependentUpon>
     </EmbeddedResource>

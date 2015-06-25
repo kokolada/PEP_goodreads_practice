@@ -84,5 +84,37 @@ namespace eShelvesDesktop
                 response.StatusCode + " : Message - " + response.ReasonPhrase);
             }
         }
+
+        private void dataGridView1_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                ContextMenu m = new ContextMenu();
+                m.MenuItems.Add(new MenuItem("Remove"));
+
+                var r = dataGridView1.HitTest(e.X, e.Y);
+                dataGridView1.ClearSelection();
+                dataGridView1.Rows[r.RowIndex].Selected = true;
+
+                m.Show(dataGridView1, new Point(e.X, e.Y));
+
+                m.MenuItems[0].Click += new EventHandler(ObrisiKnjigu);
+            }
+        }
+
+        private void ObrisiKnjigu(object sender, EventArgs e)
+        {
+            HttpResponseMessage response = knjigaGetService.GetResponse("Remove/" + dataGridView1.SelectedRows[0].Cells[0].Value.ToString());
+
+            if (response.IsSuccessStatusCode)
+            {
+                BindGrid();
+            }
+            else
+            {
+                MessageBox.Show("Error Code" +
+                response.StatusCode + " : Message - " + response.ReasonPhrase);
+            }
+        }
     }
 }
