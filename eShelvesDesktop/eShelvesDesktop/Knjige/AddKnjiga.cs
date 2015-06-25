@@ -75,6 +75,7 @@ namespace eShelvesDesktop
         private void BindKategorijas()
         {
             kategorije = kategorijaService.GetResponse("Kategorijas").Content.ReadAsAsync<List<Kategorija>>().Result;
+            kategorijeListBox.Items.Clear();
             kategorijeListBox.Items.AddRange(kategorije.Select(x => x.Naziv).ToArray());
         }
 

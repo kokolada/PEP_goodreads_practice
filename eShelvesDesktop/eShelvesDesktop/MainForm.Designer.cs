@@ -41,6 +41,7 @@
             this.addNarudzbaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.policeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.administracijaPolicaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.manageKategorijeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -61,7 +62,8 @@
             // 
             this.knjigeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.novaKnjigaToolStripMenuItem,
-            this.manageKnjigeToolStripMenuItem});
+            this.manageKnjigeToolStripMenuItem,
+            this.manageKategorijeToolStripMenuItem});
             this.knjigeToolStripMenuItem.Name = "knjigeToolStripMenuItem";
             this.knjigeToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
             this.knjigeToolStripMenuItem.Text = "Knjige";
@@ -69,14 +71,14 @@
             // novaKnjigaToolStripMenuItem
             // 
             this.novaKnjigaToolStripMenuItem.Name = "novaKnjigaToolStripMenuItem";
-            this.novaKnjigaToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.novaKnjigaToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.novaKnjigaToolStripMenuItem.Text = "Nova knjiga";
             this.novaKnjigaToolStripMenuItem.Click += new System.EventHandler(this.novaKnjigaToolStripMenuItem_Click);
             // 
             // manageKnjigeToolStripMenuItem
             // 
             this.manageKnjigeToolStripMenuItem.Name = "manageKnjigeToolStripMenuItem";
-            this.manageKnjigeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.manageKnjigeToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.manageKnjigeToolStripMenuItem.Text = "Manage knjige";
             this.manageKnjigeToolStripMenuItem.Click += new System.EventHandler(this.manageKnjigeToolStripMenuItem_Click);
             // 
@@ -149,6 +151,13 @@
             this.administracijaPolicaToolStripMenuItem.Text = "Administracija polica";
             this.administracijaPolicaToolStripMenuItem.Click += new System.EventHandler(this.administracijaPolicaToolStripMenuItem_Click);
             // 
+            // manageKategorijeToolStripMenuItem
+            // 
+            this.manageKategorijeToolStripMenuItem.Name = "manageKategorijeToolStripMenuItem";
+            this.manageKategorijeToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.manageKategorijeToolStripMenuItem.Text = "Manage kategorije";
+            this.manageKategorijeToolStripMenuItem.Click += new System.EventHandler(this.manageKategorijeToolStripMenuItem_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -181,5 +190,6 @@
         private System.Windows.Forms.ToolStripMenuItem addNarudzbaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem policeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem administracijaPolicaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem manageKategorijeToolStripMenuItem;
     }
 }
