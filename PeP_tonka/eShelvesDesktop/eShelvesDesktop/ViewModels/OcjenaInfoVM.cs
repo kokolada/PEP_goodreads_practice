@@ -8,7 +8,7 @@ namespace eShelvesDesktop.ViewModels
 {
     public class OcjenaInfoVM
     {
-
+        public int OcjenaID { get; set; }
         public int KorisnikId { get; set; }
         public string username { get; set; }
         public int Ocjena { get; set; }

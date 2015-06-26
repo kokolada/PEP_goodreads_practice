@@ -84,6 +84,12 @@
     <Compile Include="Knjige\AddKnjiga.Designer.cs">
       <DependentUpon>AddKnjiga.cs</DependentUpon>
     </Compile>
+    <Compile Include="Ocjene\OcjenaDetalji.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ocjene\OcjenaDetalji.Designer.cs">
+      <DependentUpon>OcjenaDetalji.cs</DependentUpon>
+    </Compile>
     <Compile Include="Ocjene\UpravljanjeOcjenama.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -183,6 +189,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Knjige\AddKnjiga.resx">
       <DependentUpon>AddKnjiga.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ocjene\OcjenaDetalji.resx">
+      <DependentUpon>OcjenaDetalji.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Ocjene\UpravljanjeOcjenama.resx">
       <DependentUpon>UpravljanjeOcjenama.cs</DependentUpon>
