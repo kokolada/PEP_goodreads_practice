@@ -30,24 +30,38 @@
         {
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.label1 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.button1 = new System.Windows.Forms.Button();
+            this.knjigaInput = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.knjigatraziButton = new System.Windows.Forms.Button();
+            this.knjigeGrid = new System.Windows.Forms.DataGridView();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.korisniktraziButton = new System.Windows.Forms.Button();
+            this.korisnikInput = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.dataGridView3 = new System.Windows.Forms.DataGridView();
+            this.korisniciGrid = new System.Windows.Forms.DataGridView();
+            this.label1 = new System.Windows.Forms.Label();
+            this.ocjeneGrid = new System.Windows.Forms.DataGridView();
             this.label4 = new System.Windows.Forms.Label();
+            this.knjigaid = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.naslov = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.isbn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.autor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ocjenaid = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ocjenio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ocjena = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.opis = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.korisnikid = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.prezime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.username = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.email = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.button3 = new System.Windows.Forms.Button();
             this.tabControl.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.knjigeGrid)).BeginInit();
             this.tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.korisniciGrid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ocjeneGrid)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl
@@ -62,13 +76,15 @@
             this.tabControl.SelectedIndex = 0;
             this.tabControl.Size = new System.Drawing.Size(549, 375);
             this.tabControl.TabIndex = 0;
+            this.tabControl.SelectedIndexChanged += new System.EventHandler(this.tabControl_SelectedIndexChanged);
+            this.tabControl.TabIndexChanged += new System.EventHandler(this.tabControl_TabIndexChanged);
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.textBox1);
+            this.tabPage1.Controls.Add(this.knjigaInput);
             this.tabPage1.Controls.Add(this.label2);
-            this.tabPage1.Controls.Add(this.button1);
-            this.tabPage1.Controls.Add(this.dataGridView1);
+            this.tabPage1.Controls.Add(this.knjigatraziButton);
+            this.tabPage1.Controls.Add(this.knjigeGrid);
             this.tabPage1.Location = new System.Drawing.Point(4, 34);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
@@ -77,12 +93,59 @@
             this.tabPage1.Text = "po knjigama";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // knjigaInput
+            // 
+            this.knjigaInput.Location = new System.Drawing.Point(118, 8);
+            this.knjigaInput.Name = "knjigaInput";
+            this.knjigaInput.Size = new System.Drawing.Size(336, 20);
+            this.knjigaInput.TabIndex = 3;
+            this.knjigaInput.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(44, 11);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(68, 13);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Naziv knijge:";
+            // 
+            // knjigatraziButton
+            // 
+            this.knjigatraziButton.Location = new System.Drawing.Point(460, 6);
+            this.knjigatraziButton.Name = "knjigatraziButton";
+            this.knjigatraziButton.Size = new System.Drawing.Size(75, 23);
+            this.knjigatraziButton.TabIndex = 1;
+            this.knjigatraziButton.Text = "Traži";
+            this.knjigatraziButton.UseVisualStyleBackColor = true;
+            this.knjigatraziButton.Click += new System.EventHandler(this.knjigatraziButton_Click);
+            // 
+            // knjigeGrid
+            // 
+            this.knjigeGrid.AllowUserToAddRows = false;
+            this.knjigeGrid.AllowUserToDeleteRows = false;
+            this.knjigeGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.knjigeGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.knjigaid,
+            this.naslov,
+            this.isbn,
+            this.autor});
+            this.knjigeGrid.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.knjigeGrid.Location = new System.Drawing.Point(3, 35);
+            this.knjigeGrid.MultiSelect = false;
+            this.knjigeGrid.Name = "knjigeGrid";
+            this.knjigeGrid.ReadOnly = true;
+            this.knjigeGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.knjigeGrid.Size = new System.Drawing.Size(535, 299);
+            this.knjigeGrid.TabIndex = 0;
+            this.knjigeGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.knjigeGrid_CellClick);
+            // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.button2);
-            this.tabPage2.Controls.Add(this.textBox2);
+            this.tabPage2.Controls.Add(this.korisniktraziButton);
+            this.tabPage2.Controls.Add(this.korisnikInput);
             this.tabPage2.Controls.Add(this.label3);
-            this.tabPage2.Controls.Add(this.dataGridView2);
+            this.tabPage2.Controls.Add(this.korisniciGrid);
             this.tabPage2.Location = new System.Drawing.Point(4, 34);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -91,64 +154,22 @@
             this.tabPage2.Text = "po korisnicima";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // label1
+            // korisniktraziButton
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(220, 13);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "*Note: odaberite po čemu želite tražiti ocjene.";
+            this.korisniktraziButton.Location = new System.Drawing.Point(460, 6);
+            this.korisniktraziButton.Name = "korisniktraziButton";
+            this.korisniktraziButton.Size = new System.Drawing.Size(75, 23);
+            this.korisniktraziButton.TabIndex = 3;
+            this.korisniktraziButton.Text = "Traži";
+            this.korisniktraziButton.UseVisualStyleBackColor = true;
+            this.korisniktraziButton.Click += new System.EventHandler(this.korisniktraziButton_Click);
             // 
-            // dataGridView1
+            // korisnikInput
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 37);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(535, 297);
-            this.dataGridView1.TabIndex = 0;
-            // 
-            // dataGridView2
-            // 
-            this.dataGridView2.AllowUserToAddRows = false;
-            this.dataGridView2.AllowUserToDeleteRows = false;
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dataGridView2.Location = new System.Drawing.Point(3, 35);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.ReadOnly = true;
-            this.dataGridView2.Size = new System.Drawing.Size(535, 299);
-            this.dataGridView2.TabIndex = 0;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(362, 8);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Traži";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(8, 13);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(68, 13);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Naziv knijge:";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(82, 10);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(274, 20);
-            this.textBox1.TabIndex = 3;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.korisnikInput.Location = new System.Drawing.Point(118, 8);
+            this.korisnikInput.Name = "korisnikInput";
+            this.korisnikInput.Size = new System.Drawing.Size(336, 20);
+            this.korisnikInput.TabIndex = 2;
             // 
             // label3
             // 
@@ -159,29 +180,54 @@
             this.label3.TabIndex = 1;
             this.label3.Text = "username korisnika:";
             // 
-            // textBox2
+            // korisniciGrid
             // 
-            this.textBox2.Location = new System.Drawing.Point(118, 8);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(260, 20);
-            this.textBox2.TabIndex = 2;
+            this.korisniciGrid.AllowUserToAddRows = false;
+            this.korisniciGrid.AllowUserToDeleteRows = false;
+            this.korisniciGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.korisniciGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.korisnikid,
+            this.ime,
+            this.prezime,
+            this.username,
+            this.email});
+            this.korisniciGrid.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.korisniciGrid.Location = new System.Drawing.Point(3, 35);
+            this.korisniciGrid.MultiSelect = false;
+            this.korisniciGrid.Name = "korisniciGrid";
+            this.korisniciGrid.ReadOnly = true;
+            this.korisniciGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.korisniciGrid.Size = new System.Drawing.Size(535, 299);
+            this.korisniciGrid.TabIndex = 0;
+            this.korisniciGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.korisniciGrid_CellClick);
             // 
-            // button2
+            // label1
             // 
-            this.button2.Location = new System.Drawing.Point(384, 6);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 3;
-            this.button2.Text = "Traži";
-            this.button2.UseVisualStyleBackColor = true;
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(12, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(220, 13);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "*Note: odaberite po čemu želite tražiti ocjene.";
             // 
-            // dataGridView3
+            // ocjeneGrid
             // 
-            this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView3.Location = new System.Drawing.Point(555, 104);
-            this.dataGridView3.Name = "dataGridView3";
-            this.dataGridView3.Size = new System.Drawing.Size(272, 299);
-            this.dataGridView3.TabIndex = 2;
+            this.ocjeneGrid.AllowUserToAddRows = false;
+            this.ocjeneGrid.AllowUserToDeleteRows = false;
+            this.ocjeneGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.ocjeneGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ocjenaid,
+            this.ocjenio,
+            this.ocjena,
+            this.opis});
+            this.ocjeneGrid.Location = new System.Drawing.Point(555, 104);
+            this.ocjeneGrid.Name = "ocjeneGrid";
+            this.ocjeneGrid.ReadOnly = true;
+            this.ocjeneGrid.RowHeadersVisible = false;
+            this.ocjeneGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.ocjeneGrid.Size = new System.Drawing.Size(272, 299);
+            this.ocjeneGrid.TabIndex = 2;
+            this.ocjeneGrid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ocjeneGrid_CellDoubleClick);
             // 
             // label4
             // 
@@ -193,25 +239,139 @@
             this.label4.TabIndex = 3;
             this.label4.Text = "Ocjene";
             // 
+            // knjigaid
+            // 
+            this.knjigaid.DataPropertyName = "Id";
+            this.knjigaid.HeaderText = "";
+            this.knjigaid.Name = "knjigaid";
+            this.knjigaid.ReadOnly = true;
+            this.knjigaid.Width = 50;
+            // 
+            // naslov
+            // 
+            this.naslov.DataPropertyName = "Naslov";
+            this.naslov.HeaderText = "Naslov";
+            this.naslov.Name = "naslov";
+            this.naslov.ReadOnly = true;
+            this.naslov.Width = 190;
+            // 
+            // isbn
+            // 
+            this.isbn.DataPropertyName = "ISBN";
+            this.isbn.HeaderText = "ISBN";
+            this.isbn.Name = "isbn";
+            this.isbn.ReadOnly = true;
+            // 
+            // autor
+            // 
+            this.autor.DataPropertyName = "NazivAutora";
+            this.autor.HeaderText = "Autor";
+            this.autor.Name = "autor";
+            this.autor.ReadOnly = true;
+            this.autor.Width = 150;
+            // 
+            // ocjenaid
+            // 
+            this.ocjenaid.DataPropertyName = "OcjenaID";
+            this.ocjenaid.HeaderText = "";
+            this.ocjenaid.Name = "ocjenaid";
+            this.ocjenaid.ReadOnly = true;
+            this.ocjenaid.Visible = false;
+            // 
+            // ocjenio
+            // 
+            this.ocjenio.DataPropertyName = "username";
+            this.ocjenio.HeaderText = "Ocjenio";
+            this.ocjenio.Name = "ocjenio";
+            this.ocjenio.ReadOnly = true;
+            this.ocjenio.Width = 80;
+            // 
+            // ocjena
+            // 
+            this.ocjena.DataPropertyName = "Ocjena";
+            this.ocjena.HeaderText = "Ocjena";
+            this.ocjena.Name = "ocjena";
+            this.ocjena.ReadOnly = true;
+            this.ocjena.Width = 60;
+            // 
+            // opis
+            // 
+            this.opis.DataPropertyName = "Opis";
+            this.opis.HeaderText = "Opis";
+            this.opis.Name = "opis";
+            this.opis.ReadOnly = true;
+            this.opis.Width = 127;
+            // 
+            // korisnikid
+            // 
+            this.korisnikid.DataPropertyName = "Id";
+            this.korisnikid.HeaderText = "";
+            this.korisnikid.Name = "korisnikid";
+            this.korisnikid.ReadOnly = true;
+            this.korisnikid.Width = 50;
+            // 
+            // ime
+            // 
+            this.ime.DataPropertyName = "Ime";
+            this.ime.HeaderText = "Ime";
+            this.ime.Name = "ime";
+            this.ime.ReadOnly = true;
+            // 
+            // prezime
+            // 
+            this.prezime.DataPropertyName = "Prezime";
+            this.prezime.HeaderText = "Prezime";
+            this.prezime.Name = "prezime";
+            this.prezime.ReadOnly = true;
+            // 
+            // username
+            // 
+            this.username.DataPropertyName = "username";
+            this.username.HeaderText = "username";
+            this.username.Name = "username";
+            this.username.ReadOnly = true;
+            this.username.Width = 110;
+            // 
+            // email
+            // 
+            this.email.DataPropertyName = "Email";
+            this.email.HeaderText = "E-mail";
+            this.email.Name = "email";
+            this.email.ReadOnly = true;
+            this.email.Width = 130;
+            // 
+            // button3
+            // 
+            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.button3.Location = new System.Drawing.Point(671, 35);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(151, 48);
+            this.button3.TabIndex = 4;
+            this.button3.Text = "Obriši odabrane ocjene";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
             // UpravljanjeOcjenama
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(834, 409);
+            this.Controls.Add(this.button3);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.dataGridView3);
+            this.Controls.Add(this.ocjeneGrid);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.tabControl);
             this.Name = "UpravljanjeOcjenama";
             this.Text = "UpravljanjeOcjenama";
+            this.Load += new System.EventHandler(this.UpravljanjeOcjenama_Load);
             this.tabControl.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.knjigeGrid)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.korisniciGrid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ocjeneGrid)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -221,17 +381,31 @@
 
         private System.Windows.Forms.TabControl tabControl;
         private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox knjigaInput;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button knjigatraziButton;
+        private System.Windows.Forms.DataGridView knjigeGrid;
         private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.DataGridView korisniciGrid;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Button korisniktraziButton;
+        private System.Windows.Forms.TextBox korisnikInput;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.DataGridView dataGridView3;
+        private System.Windows.Forms.DataGridView ocjeneGrid;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn knjigaid;
+        private System.Windows.Forms.DataGridViewTextBoxColumn naslov;
+        private System.Windows.Forms.DataGridViewTextBoxColumn isbn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn autor;
+        private System.Windows.Forms.DataGridViewTextBoxColumn korisnikid;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ime;
+        private System.Windows.Forms.DataGridViewTextBoxColumn prezime;
+        private System.Windows.Forms.DataGridViewTextBoxColumn username;
+        private System.Windows.Forms.DataGridViewTextBoxColumn email;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ocjenaid;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ocjenio;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ocjena;
+        private System.Windows.Forms.DataGridViewTextBoxColumn opis;
+        private System.Windows.Forms.Button button3;
     }
 }
