@@ -32,7 +32,6 @@
             this.knjigeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.novaKnjigaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.manageKnjigeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.manageKategorijeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.korisniciToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addKorisnikToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.manageKorisniciToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -44,6 +43,10 @@
             this.administracijaPolicaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.autoriToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.evidencijaAutoraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ocjeneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.upravljanjeOcjenamaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.kategorijeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.upravljanjeKategorijamaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -54,7 +57,9 @@
             this.korisniciToolStripMenuItem,
             this.reklameToolStripMenuItem,
             this.policeToolStripMenuItem,
-            this.autoriToolStripMenuItem});
+            this.autoriToolStripMenuItem,
+            this.ocjeneToolStripMenuItem,
+            this.kategorijeToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(916, 24);
@@ -65,8 +70,7 @@
             // 
             this.knjigeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.novaKnjigaToolStripMenuItem,
-            this.manageKnjigeToolStripMenuItem,
-            this.manageKategorijeToolStripMenuItem});
+            this.manageKnjigeToolStripMenuItem});
             this.knjigeToolStripMenuItem.Name = "knjigeToolStripMenuItem";
             this.knjigeToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
             this.knjigeToolStripMenuItem.Text = "Knjige";
@@ -84,13 +88,6 @@
             this.manageKnjigeToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.manageKnjigeToolStripMenuItem.Text = "Manage knjige";
             this.manageKnjigeToolStripMenuItem.Click += new System.EventHandler(this.manageKnjigeToolStripMenuItem_Click);
-            // 
-            // manageKategorijeToolStripMenuItem
-            // 
-            this.manageKategorijeToolStripMenuItem.Name = "manageKategorijeToolStripMenuItem";
-            this.manageKategorijeToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
-            this.manageKategorijeToolStripMenuItem.Text = "Manage kategorije";
-            this.manageKategorijeToolStripMenuItem.Click += new System.EventHandler(this.manageKategorijeToolStripMenuItem_Click);
             // 
             // korisniciToolStripMenuItem
             // 
@@ -176,6 +173,36 @@
             this.evidencijaAutoraToolStripMenuItem.Text = "Evidencija autora";
             this.evidencijaAutoraToolStripMenuItem.Click += new System.EventHandler(this.evidencijaAutoraToolStripMenuItem_Click);
             // 
+            // ocjeneToolStripMenuItem
+            // 
+            this.ocjeneToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.upravljanjeOcjenamaToolStripMenuItem});
+            this.ocjeneToolStripMenuItem.Name = "ocjeneToolStripMenuItem";
+            this.ocjeneToolStripMenuItem.Size = new System.Drawing.Size(56, 20);
+            this.ocjeneToolStripMenuItem.Text = "Ocjene";
+            // 
+            // upravljanjeOcjenamaToolStripMenuItem
+            // 
+            this.upravljanjeOcjenamaToolStripMenuItem.Name = "upravljanjeOcjenamaToolStripMenuItem";
+            this.upravljanjeOcjenamaToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
+            this.upravljanjeOcjenamaToolStripMenuItem.Text = "Upravljanje ocjenama";
+            this.upravljanjeOcjenamaToolStripMenuItem.Click += new System.EventHandler(this.upravljanjeOcjenamaToolStripMenuItem_Click);
+            // 
+            // kategorijeToolStripMenuItem
+            // 
+            this.kategorijeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.upravljanjeKategorijamaToolStripMenuItem});
+            this.kategorijeToolStripMenuItem.Name = "kategorijeToolStripMenuItem";
+            this.kategorijeToolStripMenuItem.Size = new System.Drawing.Size(72, 20);
+            this.kategorijeToolStripMenuItem.Text = "Kategorije";
+            // 
+            // upravljanjeKategorijamaToolStripMenuItem
+            // 
+            this.upravljanjeKategorijamaToolStripMenuItem.Name = "upravljanjeKategorijamaToolStripMenuItem";
+            this.upravljanjeKategorijamaToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
+            this.upravljanjeKategorijamaToolStripMenuItem.Text = "Upravljanje kategorijama";
+            this.upravljanjeKategorijamaToolStripMenuItem.Click += new System.EventHandler(this.upravljanjeKategorijamaToolStripMenuItem_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -208,8 +235,11 @@
         private System.Windows.Forms.ToolStripMenuItem addNarudzbaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem policeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem administracijaPolicaToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem manageKategorijeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem autoriToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem evidencijaAutoraToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ocjeneToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem upravljanjeOcjenamaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem kategorijeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem upravljanjeKategorijamaToolStripMenuItem;
     }
 }

@@ -1,5 +1,6 @@
 ﻿using eShelvesDesktop.Autori;
 using eShelvesDesktop.Kategorije;
+using eShelvesDesktop.Knjige;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -74,16 +75,25 @@ namespace eShelvesDesktop
             frm.Show();
         }
 
-        private void manageKategorijeToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            ManageKategorije frm = new ManageKategorije();
-            frm.MdiParent = this;
-            frm.Show();
-        }
+        private void manageKategorijeToolStripMenuItem_Click(object sender, EventArgs e){}
 
         private void evidencijaAutoraToolStripMenuItem_Click(object sender, EventArgs e)
         {
             EvidencijaAutora frm = new EvidencijaAutora();
+            frm.MdiParent = this;
+            frm.Show();
+        }
+
+        private void upravljanjeOcjenamaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            UpravljanjeOcjenama frm = new UpravljanjeOcjenama();
+            frm.MdiParent = this;
+            frm.Show();
+        }
+
+        private void upravljanjeKategorijamaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ManageKategorije frm = new ManageKategorije();
             frm.MdiParent = this;
             frm.Show();
         }
