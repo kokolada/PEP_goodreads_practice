@@ -84,10 +84,10 @@
     <Compile Include="Knjige\AddKnjiga.Designer.cs">
       <DependentUpon>AddKnjiga.cs</DependentUpon>
     </Compile>
-    <Compile Include="Knjige\UpravljanjeOcjenama.cs">
+    <Compile Include="Ocjene\UpravljanjeOcjenama.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Knjige\UpravljanjeOcjenama.Designer.cs">
+    <Compile Include="Ocjene\UpravljanjeOcjenama.Designer.cs">
       <DependentUpon>UpravljanjeOcjenama.cs</DependentUpon>
     </Compile>
     <Compile Include="Korisnici\AddKorisnik.cs">
@@ -183,6 +183,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Knjige\AddKnjiga.resx">
       <DependentUpon>AddKnjiga.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ocjene\UpravljanjeOcjenama.resx">
+      <DependentUpon>UpravljanjeOcjenama.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Korisnici\AddKorisnik.resx">
       <DependentUpon>AddKorisnik.cs</DependentUpon>
