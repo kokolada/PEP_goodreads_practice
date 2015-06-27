@@ -1,0 +1,25 @@
+﻿<Page
+    x:Class="eShelves.LoginPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:eShelves"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <StackPanel Margin="20 20 20 20">
+        
+        <TextBlock Text="eShelves" Margin="0 40 0 0" FontSize="60" HorizontalAlignment="Center"></TextBlock>
+        <TextBlock Text="Welcome!" FontSize="20" HorizontalAlignment="Center"></TextBlock>
+        
+        <TextBox Name="usernameInput" Margin="0 60 0 0" Header="username:" TextAlignment="Center"></TextBox>
+        <PasswordBox Name="passwordInput" Header="password:"></PasswordBox>
+        
+        <Button Name="loginButton" Content="Log in" HorizontalAlignment="Center" Click="loginButton_Click"></Button>
+        
+        <TextBlock Text="Don't have an account? Register below!" FontSize="15" Margin="0 80 0 0" HorizontalAlignment="Center"></TextBlock>
+        <Button Content="Register" HorizontalAlignment="Center" Click="Button_Click"></Button>
+        
+    </StackPanel>
+</Page>
