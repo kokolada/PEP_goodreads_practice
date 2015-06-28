@@ -1,15 +1,19 @@
 ﻿using eShelves.Common;
 using eShelves.Data;
+using eShelves.Util;
+using eShelves.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net.Http;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.ApplicationModel.Resources;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Graphics.Display;
 using Windows.UI.Core;
+using Windows.UI.Popups;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -30,8 +34,10 @@ namespace eShelves
     public sealed partial class HubPage : Page
     {
         private readonly NavigationHelper navigationHelper;
-        private readonly ObservableDictionary defaultViewModel = new ObservableDictionary();
+        private HubPageViewModel defaultViewModel = new HubPageViewModel();
         private readonly ResourceLoader resourceLoader = ResourceLoader.GetForCurrentView("Resources");
+
+        WebApiHelper hubService = new WebApiHelper(Config.urlApi, "Hub");
 
         public HubPage()
         {
@@ -59,7 +65,7 @@ namespace eShelves
         /// Gets the view model for this <see cref="Page"/>.
         /// This can be changed to a strongly typed view model.
         /// </summary>
-        public ObservableDictionary DefaultViewModel
+        public HubPageViewModel DefaultViewModel
         {
             get { return this.defaultViewModel; }
         }
@@ -78,8 +84,19 @@ namespace eShelves
         private async void NavigationHelper_LoadState(object sender, LoadStateEventArgs e)
         {
             // TODO: Create an appropriate data model for your problem domain to replace the sample data
-            var sampleDataGroups = await SampleDataSource.GetGroupsAsync();
-            this.DefaultViewModel["Groups"] = sampleDataGroups;
+            HttpResponseMessage response = hubService.GetResponse(Global.prijavljeniKorisnik.Id.ToString());
+
+            if (response.IsSuccessStatusCode)
+            {
+                this.defaultViewModel = new HubPageViewModel(response.Content.ReadAsAsync<HubPageViewModel>().Result);
+            }
+            else
+            {
+                MessageDialog msg = new MessageDialog("gresksa");
+                await msg.ShowAsync();
+            }
+
+            Hub.Header = defaultViewModel.BookShelves.Shelves[0].Naziv;
         }
 
         /// <summary>

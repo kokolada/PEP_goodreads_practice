@@ -8,6 +8,7 @@ using System.Net.Http;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Phone.UI.Input;
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -31,6 +32,15 @@ namespace eShelves
         public LoginPage()
         {
             this.InitializeComponent();
+            HardwareButtons.BackPressed += HardwareButtons_BackPressed;
+        }
+
+        void HardwareButtons_BackPressed(object sender, BackPressedEventArgs e)
+        {
+            if (Frame.CanGoBack)
+                Frame.GoBack();
+
+            e.Handled = true;
         }
 
         /// <summary>
