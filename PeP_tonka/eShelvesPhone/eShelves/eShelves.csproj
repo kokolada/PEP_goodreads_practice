@@ -107,6 +107,7 @@
     </Compile>
     <Compile Include="Util\Config.cs" />
     <Compile Include="Util\WebApiHelper.cs" />
+    <Compile Include="ViewModels\HubPageViewModel.cs" />
     <Compile Include="ViewModels\LogiraniKorisnik.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -175,7 +176,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '12.0' ">
