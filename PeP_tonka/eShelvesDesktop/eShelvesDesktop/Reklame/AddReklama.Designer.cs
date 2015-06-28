@@ -139,7 +139,7 @@
 			this.Controls.Add(this.pocetakDate);
 			this.Controls.Add(this.label1);
 			this.Name = "AddReklama";
-			this.Text = "AddReklama";
+			this.Text = "Dodavanje reklame";
 			((System.ComponentModel.ISupportInitialize)(this.trajanjeNumber)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
 			this.ResumeLayout(false);
