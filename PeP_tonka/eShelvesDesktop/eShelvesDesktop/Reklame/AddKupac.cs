@@ -20,22 +20,33 @@ namespace eShelvesDesktop
         public AddKupac()
         {
             InitializeComponent();
+			this.AutoValidate = AutoValidate.Disable;
         }
 
         private void dodajButton_Click(object sender, EventArgs e)
         {
-            Kupac k = new Kupac();
-            k.Naziv = nazivInput.Text;
+			if (this.ValidateChildren()) {
+				Kupac k = new Kupac();
+				k.Naziv = nazivInput.Text;
 
-            HttpResponseMessage response = kupacService.PostResponse(k);
+				HttpResponseMessage response = kupacService.PostResponse(k);
 
-            if (response.IsSuccessStatusCode)
-            {
-                MessageBox.Show(Global.GetMessage("korisnik_succ"), "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                nazivInput.Text = "";
-            }
-            else
-                MessageBox.Show(response.ReasonPhrase, Global.GetMessage("error"), MessageBoxButtons.OK, MessageBoxIcon.Error);
-        }
+				if (response.IsSuccessStatusCode) {
+					MessageBox.Show(Global.GetMessage("kupac_succ"), "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+					nazivInput.Text = "";
+				}
+				else
+					MessageBox.Show(response.ReasonPhrase, Global.GetMessage("error"), MessageBoxButtons.OK, MessageBoxIcon.Error);
+			}
+		}
+
+		private void nazivInput_Validating(object sender, CancelEventArgs e) {
+			if (String.IsNullOrEmpty(nazivInput.Text)) {
+				e.Cancel = true;
+				errorProvider.SetError(nazivInput, Global.GetMessage("nazivKupca_req"));
+			}
+			else
+				errorProvider.SetError(nazivInput, "");
+		}
     }
 }

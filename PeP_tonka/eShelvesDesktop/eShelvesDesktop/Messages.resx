@@ -117,16 +117,97 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="autor_req" xml:space="preserve">
+    <value>Odabir autora je obavezan</value>
+  </data>
+  <data name="cijena_err" xml:space="preserve">
+    <value>Cijena nije ispravna</value>
+  </data>
+  <data name="dana_err" xml:space="preserve">
+    <value>Broj dana nije ispravan</value>
+  </data>
+  <data name="email_err" xml:space="preserve">
+    <value>Format E-maila nije ispravan</value>
+  </data>
+  <data name="email_req" xml:space="preserve">
+    <value>E-mail je obavezan</value>
+  </data>
   <data name="error" xml:space="preserve">
     <value>Greška</value>
+  </data>
+  <data name="fname_req" xml:space="preserve">
+    <value>Unos imena je obavezan</value>
+  </data>
+  <data name="grad_req" xml:space="preserve">
+    <value>Unos grada je obavezan</value>
+  </data>
+  <data name="isbn_err" xml:space="preserve">
+    <value>ISBN broj mora imati tačno 13 cifara</value>
+  </data>
+  <data name="isbn_req" xml:space="preserve">
+    <value>ISBN broj je obavezan</value>
+  </data>
+  <data name="kategorije_req" xml:space="preserve">
+    <value>Minimalno jedna kategorija je obavezna</value>
   </data>
   <data name="korisnik_succ" xml:space="preserve">
     <value>Uspješno ste dodali korisnika.</value>
   </data>
+  <data name="kupac_err" xml:space="preserve">
+    <value>Odabir kupca obavezan</value>
+  </data>
+  <data name="kupac_succ" xml:space="preserve">
+    <value>Uspješno ste dodali kupca</value>
+  </data>
+  <data name="lname_req" xml:space="preserve">
+    <value>Unos prezimena je obavezan</value>
+  </data>
   <data name="login_pass_err" xml:space="preserve">
     <value>Unijeli ste pogrešnu lozinku.</value>
   </data>
+  <data name="narudzba_succ" xml:space="preserve">
+    <value>Uspješno ste dodali narudžbu</value>
+  </data>
+  <data name="naslov_req" xml:space="preserve">
+    <value>Naslov knjige je obavezan</value>
+  </data>
+  <data name="nazivKupca_req" xml:space="preserve">
+    <value>Naziv kupca je obavezan</value>
+  </data>
+  <data name="novaKategorijaNaziv_req" xml:space="preserve">
+    <value>Naziv kategorije je obavezan</value>
+  </data>
+  <data name="opis_req" xml:space="preserve">
+    <value>Opis je obavezan</value>
+  </data>
+  <data name="pass_err" xml:space="preserve">
+    <value>Lozinka mora imati minimalno 5 karaktera</value>
+  </data>
+  <data name="pass_req" xml:space="preserve">
+    <value>Lozinka je obavezna</value>
+  </data>
+  <data name="prikazi_err" xml:space="preserve">
+    <value>Broj prikaza nije ispravan</value>
+  </data>
   <data name="product_succ" xml:space="preserve">
     <value>Uspješno ste  sačuvali podate o proizvodu.</value>
+  </data>
+  <data name="reklama_err" xml:space="preserve">
+    <value>Odabir reklame obavezan</value>
+  </data>
+  <data name="reklama_succ" xml:space="preserve">
+    <value>Uspješno ste dodali reklamu</value>
+  </data>
+  <data name="spol_req" xml:space="preserve">
+    <value>Spol je obavezan</value>
+  </data>
+  <data name="url_req" xml:space="preserve">
+    <value>URL je obavezan</value>
+  </data>
+  <data name="usern_err" xml:space="preserve">
+    <value>Korisničko ime mora imati minimalno 5 karaktera</value>
+  </data>
+  <data name="usern_req" xml:space="preserve">
+    <value>Korisničko ime je obavezno</value>
   </data>
 </root>

@@ -20,6 +20,7 @@ namespace eShelvesDesktop
         public AddReklama()
         {
             InitializeComponent();
+			this.AutoValidate = AutoValidate.Disable;
         }
 
         private void ponistiButton_Click(object sender, EventArgs e)
@@ -36,20 +37,39 @@ namespace eShelvesDesktop
 
         private void dodajButton_Click(object sender, EventArgs e)
         {
-            Reklama r = new Reklama();
-            r.PocetakPrikazivanja = pocetakDate.Value;
-            r.TrajanjeDana = (int)trajanjeNumber.Value;
-            r.URL = urlInput.Text;
+			if (this.ValidateChildren()) {
+				Reklama r = new Reklama();
+				r.PocetakPrikazivanja = pocetakDate.Value;
+				r.TrajanjeDana = (int)trajanjeNumber.Value;
+				r.URL = urlInput.Text;
 
-            HttpResponseMessage response = reklamaService.PostResponse(r);
+				HttpResponseMessage response = reklamaService.PostResponse(r);
 
-            if (response.IsSuccessStatusCode)
-            {
-                MessageBox.Show(Global.GetMessage("korisnik_succ"), "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                Clear();
-            }
-            else
-                MessageBox.Show(response.ReasonPhrase, Global.GetMessage("error"), MessageBoxButtons.OK, MessageBoxIcon.Error);
-        }
+				if (response.IsSuccessStatusCode) {
+					MessageBox.Show(Global.GetMessage("reklama_succ"), "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+					Clear();
+				}
+				else
+					MessageBox.Show(response.ReasonPhrase, Global.GetMessage("error"), MessageBoxButtons.OK, MessageBoxIcon.Error);
+			}
+		}
+
+		private void trajanjeNumber_Validating(object sender, CancelEventArgs e) {
+			if (trajanjeNumber.Value < 0) {
+				e.Cancel = true;
+				errorProvider.SetError(trajanjeNumber, Global.GetMessage("cijena_err"));
+			}
+			else
+				errorProvider.SetError(trajanjeNumber, "");
+		}
+
+		private void urlInput_Validating(object sender, CancelEventArgs e) {
+			if (String.IsNullOrEmpty(urlInput.Text)) {
+				e.Cancel = true;
+				errorProvider.SetError(urlInput, Global.GetMessage("url_req"));
+			}
+			else
+				errorProvider.SetError(urlInput, "");
+		}
     }
 }
