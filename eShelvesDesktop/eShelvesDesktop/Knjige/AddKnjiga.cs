@@ -30,6 +30,7 @@ namespace eShelvesDesktop
         public AddKnjiga()
         {
             InitializeComponent();
+			this.AutoValidate = AutoValidate.Disable;
         }
 
         public AddKnjiga(Knjiga k)
@@ -104,38 +105,37 @@ namespace eShelvesDesktop
 
         private void sacuvajButton_Click(object sender, EventArgs e)
         {
-            if (knjiga == null)
-                knjiga = new Knjiga();
+			if (this.ValidateChildren()) {
+				if (knjiga == null)
+					knjiga = new Knjiga();
 
-            if (autorComboBox.SelectedIndex != 0)
-                knjiga.AutorId = Convert.ToInt32(autorComboBox.SelectedValue);
+				if (autorComboBox.SelectedIndex != 0)
+					knjiga.AutorId = Convert.ToInt32(autorComboBox.SelectedValue);
 
-            knjiga.Naslov = naslovInput.Text;
-            knjiga.ISBN = ISBNInput.Text;
-            knjiga.Opis = opisInput.Text;
-            knjiga.Objavljena = objavljenaDatePicker.Value;
+				knjiga.Naslov = naslovInput.Text;
+				knjiga.ISBN = ISBNInput.Text;
+				knjiga.Opis = opisInput.Text;
+				knjiga.Objavljena = objavljenaDatePicker.Value;
 
-            knjiga.Kategorijas = new List<Kategorija>();
-            foreach (int indeks in kategorijeListBox.CheckedIndices)
-            {
-                knjiga.Kategorijas.Add(kategorije[indeks]);
-            }
+				knjiga.Kategorijas = new List<Kategorija>();
+				foreach (int indeks in kategorijeListBox.CheckedIndices) {
+					knjiga.Kategorijas.Add(kategorije[indeks]);
+				}
 
-            if (Id >= 1)
-                knjiga.Id = Id;
+				if (Id >= 1)
+					knjiga.Id = Id;
 
-            HttpResponseMessage response = addKnjigaService.PostResponse(knjiga);
+				HttpResponseMessage response = addKnjigaService.PostResponse(knjiga);
 
-            if (response.IsSuccessStatusCode)
-            {
-                MessageBox.Show(Global.GetMessage("product_succ"), "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                Clear();
-            }
-            else
-            {
-                MessageBox.Show(response.ReasonPhrase, Global.GetMessage("error"), MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            Clear();
+				if (response.IsSuccessStatusCode) {
+					MessageBox.Show(Global.GetMessage("product_succ"), "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+					Clear();
+				}
+				else {
+					MessageBox.Show(response.ReasonPhrase, Global.GetMessage("error"), MessageBoxButtons.OK, MessageBoxIcon.Error);
+				}
+				Clear();
+			}
         }
 
         private void Clear()
@@ -174,5 +174,54 @@ namespace eShelvesDesktop
                 slikaInput.Text = "";
             }
         }
+		#region Validacija
+		private void naslovInput_Validating(object sender, CancelEventArgs e) {
+			if (String.IsNullOrEmpty(naslovInput.Text)) {
+				e.Cancel = true;
+				errorProvider.SetError(naslovInput, Global.GetMessage("naslov_req"));
+			}
+			else
+				errorProvider.SetError(naslovInput, "");
+		}
+
+		private void ISBNInput_Validating(object sender, CancelEventArgs e) {
+			if (String.IsNullOrEmpty(ISBNInput.Text)) {
+				e.Cancel = true;
+				errorProvider.SetError(ISBNInput, Global.GetMessage("isbn_req"));
+			}
+			else if (ISBNInput.TextLength < 13 || ISBNInput.TextLength > 13) {
+				e.Cancel = true;
+				errorProvider.SetError(ISBNInput, Global.GetMessage("isbn_err"));
+			}
+			else
+				errorProvider.SetError(naslovInput, "");
+		}
+
+		private void autorComboBox_Validating(object sender, CancelEventArgs e) {
+			if (autorComboBox.SelectedIndex == 0) 
+			{
+				e.Cancel = true;
+				errorProvider.SetError(autorComboBox, Global.GetMessage("autor_req"));
+			}
+			else
+				errorProvider.SetError(autorComboBox, "");
+		}
+
+		private void opisInput_Validating(object sender, CancelEventArgs e) {
+			if (String.IsNullOrEmpty(opisInput.Text)) {
+				e.Cancel = true;
+				errorProvider.SetError(opisInput, Global.GetMessage("opis_req"));
+			}
+		}
+
+		private void kategorijeListBox_Validating(object sender, CancelEventArgs e) {
+			if (kategorijeListBox.CheckedItems.Count == 0) {
+				e.Cancel = true;
+				errorProvider.SetError(kategorijeListBox, Global.GetMessage("kategorije_req"));
+			}
+			else
+				errorProvider.SetError(kategorijeListBox, "");
+		}
+		#endregion
     }
 }

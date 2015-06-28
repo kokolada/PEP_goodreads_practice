@@ -22,6 +22,8 @@ namespace eShelvesDesktop
         public AddNarudzba()
         {
             InitializeComponent();
+			this.AutoValidate = AutoValidate.Disable;
+
         }
 
         private void AddNarudzba_Load(object sender, EventArgs e)
@@ -64,27 +66,28 @@ namespace eShelvesDesktop
 
         private void dodajButton_Click(object sender, EventArgs e)
         {
-            NarudzbeReklama narudzba = new NarudzbeReklama();
+			if (this.ValidateChildren()) {
+				NarudzbeReklama narudzba = new NarudzbeReklama();
 
-            narudzba.BrojPrikaza = (int)prikaziNumber.Value;
-            narudzba.Cijena = (float)cijenaNumber.Value;
-            narudzba.DanaZakupljeno = (int)danaNumber.Value;
+				narudzba.BrojPrikaza = (int)prikaziNumber.Value;
+				narudzba.Cijena = (float)cijenaNumber.Value;
+				narudzba.DanaZakupljeno = (int)danaNumber.Value;
 
-            narudzba.KupacID = (int)kupacCombo.SelectedValue;
-            narudzba.ReklamaID = (int)reklamaCombo.SelectedValue;
+				narudzba.KupacID = (int)kupacCombo.SelectedValue;
+				narudzba.ReklamaID = (int)reklamaCombo.SelectedValue;
 
-            HttpResponseMessage response = narudzbaService.PostResponse(narudzba);
+				HttpResponseMessage response = narudzbaService.PostResponse(narudzba);
 
-            if (response.IsSuccessStatusCode)
-            {
-                MessageBox.Show(Global.GetMessage("korisnik_succ"), "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                BindReklame();
-                BindKupci();
-                Clear();
-            }
-            else
-                MessageBox.Show(response.ReasonPhrase, Global.GetMessage("error"), MessageBoxButtons.OK, MessageBoxIcon.Error);
-        }
+				if (response.IsSuccessStatusCode) {
+					MessageBox.Show(Global.GetMessage("narudzba_succ"), "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+					BindReklame();
+					BindKupci();
+					Clear();
+				}
+				else
+					MessageBox.Show(response.ReasonPhrase, Global.GetMessage("error"), MessageBoxButtons.OK, MessageBoxIcon.Error);
+			}
+		}
 
         private void addkupacButton_Click(object sender, EventArgs e)
         {
@@ -97,5 +100,50 @@ namespace eShelvesDesktop
             AddReklama frm = new AddReklama();
             frm.Show();
         }
+
+		private void danaNumber_Validating(object sender, CancelEventArgs e) {
+			if (danaNumber.Value < 1) {
+				e.Cancel = true;
+				errorProvider.SetError(danaNumber, Global.GetMessage("dana_err"));
+			}
+			else
+				errorProvider.SetError(danaNumber, "");
+		}
+
+		private void prikaziNumber_Validating(object sender, CancelEventArgs e) {
+			if (prikaziNumber.Value < 1) {
+				e.Cancel = true;
+				errorProvider.SetError(prikaziNumber, Global.GetMessage("prikazi_err"));
+			}
+			else
+				errorProvider.SetError(prikaziNumber, "");
+		}
+
+		private void cijenaNumber_Validating(object sender, CancelEventArgs e) {
+			if (cijenaNumber.Value < 0) {
+				e.Cancel = true;
+				errorProvider.SetError(cijenaNumber, Global.GetMessage("cijena_err"));
+			}
+			else
+				errorProvider.SetError(cijenaNumber, "");
+		}
+
+		private void kupacCombo_Validating(object sender, CancelEventArgs e) {
+			if (kupacCombo.SelectedIndex == -1) {
+				e.Cancel = true;
+				errorProvider.SetError(kupacCombo, Global.GetMessage("kupac_err"));
+			}
+			else
+				errorProvider.SetError(kupacCombo, "");
+		}
+
+		private void reklamaCombo_Validating(object sender, CancelEventArgs e) {
+			if (reklamaCombo.SelectedIndex == -1) {
+				e.Cancel = true;
+				errorProvider.SetError(reklamaCombo, Global.GetMessage("reklama_err"));
+			}
+			else
+				errorProvider.SetError(reklamaCombo, "");
+		}
     }
 }

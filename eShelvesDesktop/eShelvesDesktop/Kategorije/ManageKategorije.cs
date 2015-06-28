@@ -22,6 +22,7 @@ namespace eShelvesDesktop.Kategorije
         public ManageKategorije()
         {
             InitializeComponent();
+			this.AutoValidate = AutoValidate.Disable;
         }
 
         private void ManageKategorije_Load(object sender, EventArgs e)
@@ -36,39 +37,47 @@ namespace eShelvesDesktop.Kategorije
             kategorijeListBox.Items.AddRange(kategorije.Select(x => x.Naziv).ToArray());
         }
 
-        private void obrisiButton_Click(object sender, EventArgs e)
-        {
-            foreach(int indeks in kategorijeListBox.CheckedIndices)
-            {
-                HttpResponseMessage response = kategorijaService.GetResponse("Kategorijas/Remove/" + kategorije[indeks].Id);
-                if (!response.IsSuccessStatusCode)
-                {
-                    MessageBox.Show("Error Code" +
-                    response.StatusCode + " : Message - " + response.ReasonPhrase);
-                }
-            }
-            BindKategorijas();
-        }
+		private void obrisiButton_Click(object sender, EventArgs e) 
+		{
 
-        private void dodajButton_Click(object sender, EventArgs e)
-        {
-            if (novaInput.Text.Count() > 1)
-            {
-                Kategorija k = new Kategorija();
-                k.Naziv = novaInput.Text;
+			foreach (int indeks in kategorijeListBox.CheckedIndices) {
+				HttpResponseMessage response = kategorijaService.GetResponse("Kategorijas/Remove/" + kategorije[indeks].Id);
+				if (!response.IsSuccessStatusCode) {
+					MessageBox.Show("Error Code" +
+					response.StatusCode + " : Message - " + response.ReasonPhrase);
+				}
+			}
+			BindKategorijas();
 
-                HttpResponseMessage response = kategorijaService.PostResponse(k);
+		}
 
-                if (response.IsSuccessStatusCode)
-                {
-                    BindKategorijas();
-                }
-                else
-                {
-                    MessageBox.Show("Error Code" +
-                    response.StatusCode + " : Message - " + response.ReasonPhrase);
-                }
-            }
-        }
+		private void dodajButton_Click(object sender, EventArgs e) 
+		{
+			if (this.ValidateChildren()) {
+				if (novaInput.Text.Count() > 1) {
+					Kategorija k = new Kategorija();
+					k.Naziv = novaInput.Text;
+
+					HttpResponseMessage response = kategorijaService.PostResponse(k);
+
+					if (response.IsSuccessStatusCode) {
+						BindKategorijas();
+					}
+					else {
+						MessageBox.Show("Error Code" +
+						response.StatusCode + " : Message - " + response.ReasonPhrase);
+					}
+				}
+			}
+		}
+
+		private void novaInput_Validating(object sender, CancelEventArgs e) {
+			if (String.IsNullOrEmpty(novaInput.Text.Trim())) {
+				e.Cancel = true;
+				errorProvider.SetError(novaInput, Global.GetMessage("novaKategorijaNaziv_req"));
+			}
+			else
+				errorProvider.SetError(novaInput, "");
+		}
     }
 }
