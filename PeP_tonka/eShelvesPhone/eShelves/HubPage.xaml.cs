@@ -34,7 +34,7 @@ namespace eShelves
     public sealed partial class HubPage : Page
     {
         private readonly NavigationHelper navigationHelper;
-        private HubPageViewModel defaultViewModel = new HubPageViewModel();
+        private readonly ObservableDictionary defaultViewModel = new ObservableDictionary();
         private readonly ResourceLoader resourceLoader = ResourceLoader.GetForCurrentView("Resources");
 
         WebApiHelper hubService = new WebApiHelper(Config.urlApi, "Hub");
@@ -65,7 +65,7 @@ namespace eShelves
         /// Gets the view model for this <see cref="Page"/>.
         /// This can be changed to a strongly typed view model.
         /// </summary>
-        public HubPageViewModel DefaultViewModel
+        public ObservableDictionary DefaultViewModel
         {
             get { return this.defaultViewModel; }
         }
@@ -85,18 +85,21 @@ namespace eShelves
         {
             // TODO: Create an appropriate data model for your problem domain to replace the sample data
             HttpResponseMessage response = hubService.GetResponse(Global.prijavljeniKorisnik.Id.ToString());
+            HubPageViewModel model = new HubPageViewModel();
 
             if (response.IsSuccessStatusCode)
             {
-                this.defaultViewModel = new HubPageViewModel(response.Content.ReadAsAsync<HubPageViewModel>().Result);
+                model = new HubPageViewModel(response.Content.ReadAsAsync<HubPageViewModel>().Result);
             }
             else
             {
                 MessageDialog msg = new MessageDialog("gresksa");
                 await msg.ShowAsync();
             }
-
-            Hub.Header = defaultViewModel.BookShelves.Shelves[0].Naziv;
+            defaultViewModel["Feed"] = model.Feed;
+            defaultViewModel["BookShelves"] = model.BookShelves;
+            defaultViewModel["Profile"] = model.Profile;
+            defaultViewModel["Recommendations"] = model.Recommendations;
         }
 
         /// <summary>
