@@ -350,7 +350,7 @@
 			this.Controls.Add(this.imeInput);
 			this.Controls.Add(this.label1);
 			this.Name = "EvidencijaAutora";
-			this.Text = "EvidencijaAutora";
+			this.Text = "Evidencija autora";
 			this.Load += new System.EventHandler(this.EvidencijaAutora_Load);
 			((System.ComponentModel.ISupportInitialize)(this.autoriGrid)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();

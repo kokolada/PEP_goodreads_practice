@@ -92,7 +92,7 @@
 			this.Controls.Add(this.obrisiButton);
 			this.Controls.Add(this.kategorijeListBox);
 			this.Name = "ManageKategorije";
-			this.Text = "ManageKategorije";
+			this.Text = "Upravljanje kategorijama";
 			this.Load += new System.EventHandler(this.ManageKategorije_Load);
 			((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
 			this.ResumeLayout(false);

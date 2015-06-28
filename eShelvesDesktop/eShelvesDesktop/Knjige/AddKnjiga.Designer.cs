@@ -237,7 +237,7 @@
 			this.Controls.Add(this.objavljenaDatePicker);
 			this.Controls.Add(this.label1);
 			this.Name = "AddKnjiga";
-			this.Text = "AddKnjiga";
+			this.Text = "Dodavanje knjige";
 			this.Load += new System.EventHandler(this.AddKnjiga_Load);
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();

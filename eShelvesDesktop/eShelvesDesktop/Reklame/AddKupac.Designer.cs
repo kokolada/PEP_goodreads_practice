@@ -80,7 +80,7 @@
 			this.Controls.Add(this.nazivInput);
 			this.Controls.Add(this.label1);
 			this.Name = "AddKupac";
-			this.Text = "Dodaj kupca";
+			this.Text = "Dodavanje kupca";
 			((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();

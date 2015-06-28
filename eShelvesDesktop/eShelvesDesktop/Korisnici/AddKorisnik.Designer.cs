@@ -259,7 +259,7 @@
 			this.Controls.Add(this.imeInput);
 			this.Controls.Add(this.label1);
 			this.Name = "AddKorisnik";
-			this.Text = "AddKorisnik";
+			this.Text = "Dodavanje korisnika";
 			this.spolPanel.ResumeLayout(false);
 			this.spolPanel.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();

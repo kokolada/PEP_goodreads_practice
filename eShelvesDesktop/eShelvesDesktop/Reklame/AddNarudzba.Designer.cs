@@ -233,7 +233,7 @@
 			this.Controls.Add(this.danaNumber);
 			this.Controls.Add(this.label1);
 			this.Name = "AddNarudzba";
-			this.Text = "AddNarudzba";
+			this.Text = "Dodavanje narudžbe";
 			this.Load += new System.EventHandler(this.AddNarudzba_Load);
 			((System.ComponentModel.ISupportInitialize)(this.danaNumber)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.cijenaNumber)).EndInit();
