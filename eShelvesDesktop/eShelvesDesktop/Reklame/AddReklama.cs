@@ -55,9 +55,9 @@ namespace eShelvesDesktop
 		}
 
 		private void trajanjeNumber_Validating(object sender, CancelEventArgs e) {
-			if (trajanjeNumber.Value < 0) {
+			if (trajanjeNumber.Value <= 0) {
 				e.Cancel = true;
-				errorProvider.SetError(trajanjeNumber, Global.GetMessage("cijena_err"));
+				errorProvider.SetError(trajanjeNumber, Global.GetMessage("trajanje_err"));
 			}
 			else
 				errorProvider.SetError(trajanjeNumber, "");

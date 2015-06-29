@@ -144,11 +144,17 @@
   <data name="isbn_err" xml:space="preserve">
     <value>ISBN broj mora imati tačno 13 cifara</value>
   </data>
+  <data name="isbn_numb" xml:space="preserve">
+    <value>ISBN mora biti numerička vrijednost</value>
+  </data>
   <data name="isbn_req" xml:space="preserve">
     <value>ISBN broj je obavezan</value>
   </data>
   <data name="kategorije_req" xml:space="preserve">
     <value>Minimalno jedna kategorija je obavezna</value>
+  </data>
+  <data name="knjigaAdd_succ" xml:space="preserve">
+    <value>Uspješno ste dodali knjgu</value>
   </data>
   <data name="korisnik_succ" xml:space="preserve">
     <value>Uspješno ste dodali korisnika.</value>
@@ -181,7 +187,7 @@
     <value>Opis je obavezan</value>
   </data>
   <data name="pass_err" xml:space="preserve">
-    <value>Lozinka mora imati minimalno 5 karaktera</value>
+    <value>Lozinka mora imati minimalno 8 karaktera</value>
   </data>
   <data name="pass_req" xml:space="preserve">
     <value>Lozinka je obavezna</value>
@@ -200,6 +206,9 @@
   </data>
   <data name="spol_req" xml:space="preserve">
     <value>Spol je obavezan</value>
+  </data>
+  <data name="trajanje_err" xml:space="preserve">
+    <value>Broj dana trajanja nije ispravan</value>
   </data>
   <data name="url_req" xml:space="preserve">
     <value>URL je obavezan</value>

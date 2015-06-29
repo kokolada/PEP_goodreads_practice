@@ -10,6 +10,7 @@ using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -128,7 +129,7 @@ namespace eShelvesDesktop
 				HttpResponseMessage response = addKnjigaService.PostResponse(knjiga);
 
 				if (response.IsSuccessStatusCode) {
-					MessageBox.Show(Global.GetMessage("product_succ"), "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+					MessageBox.Show(Global.GetMessage("knjigaAdd_succ"), "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
 					Clear();
 				}
 				else {
@@ -189,12 +190,10 @@ namespace eShelvesDesktop
 				e.Cancel = true;
 				errorProvider.SetError(ISBNInput, Global.GetMessage("isbn_req"));
 			}
-			else if (ISBNInput.TextLength < 13 || ISBNInput.TextLength > 13) {
-				e.Cancel = true;
-				errorProvider.SetError(ISBNInput, Global.GetMessage("isbn_err"));
-			}
-			else
-				errorProvider.SetError(naslovInput, "");
+            else if (!Regex.IsMatch(ISBNInput.Text, "^[0-9]*$"))
+                errorProvider.SetError(ISBNInput, Global.GetMessage("isbn_numb"));
+            else
+                errorProvider.SetError(ISBNInput, "");
 		}
 
 		private void autorComboBox_Validating(object sender, CancelEventArgs e) {
@@ -212,6 +211,8 @@ namespace eShelvesDesktop
 				e.Cancel = true;
 				errorProvider.SetError(opisInput, Global.GetMessage("opis_req"));
 			}
+            else
+                errorProvider.SetError(opisInput, "");
 		}
 
 		private void kategorijeListBox_Validating(object sender, CancelEventArgs e) {

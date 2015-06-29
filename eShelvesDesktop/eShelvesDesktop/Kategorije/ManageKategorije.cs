@@ -62,6 +62,7 @@ namespace eShelvesDesktop.Kategorije
 
 					if (response.IsSuccessStatusCode) {
 						BindKategorijas();
+                        novaInput.Text = "";
 					}
 					else {
 						MessageBox.Show("Error Code" +

@@ -182,7 +182,7 @@ namespace eShelvesDesktop
 		}
 
 		private void zenskoRB_Validating(object sender, CancelEventArgs e) {
-			if (!muskoRB.Checked || !zenskoRB.Checked) {
+			if (!(muskoRB.Checked) && !(zenskoRB.Checked)) {
 				e.Cancel = true;
 				errorProvider.SetError(zenskoRB, Global.GetMessage("spol_req"));
 			}
