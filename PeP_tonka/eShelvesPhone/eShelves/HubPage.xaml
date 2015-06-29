@@ -40,6 +40,23 @@
             </Grid>
         </DataTemplate>
 
+        <DataTemplate x:Key="CurrentlyReadingTemplate">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Border Background="{ThemeResource ListViewItemPlaceholderBackgroundThemeBrush}" Margin="0,9.5,0,0" Grid.Column="0" HorizontalAlignment="Left">
+                    <Image Source="{Binding ImagePath}" Stretch="UniformToFill" AutomationProperties.Name="{Binding Naslov}" Height="79" Width="79"/>
+                </Border>
+                <StackPanel Grid.Column="1" Margin="14.5,0,0,0">
+                    <TextBlock Text="{Binding Naslov}" Style="{ThemeResource ListViewItemTextBlockStyle}"/>
+                    <TextBlock Text="{Binding Autor}" Style="{ThemeResource ListViewItemContentTextBlockStyle}" Foreground="{ThemeResource PhoneMidBrush}" />
+                </StackPanel>
+            </Grid>
+        </DataTemplate>
+
         <DataTemplate x:Key="StandardDoubleLineItemTemplate">
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -48,11 +65,11 @@
                 </Grid.ColumnDefinitions>
 
                 <Border Background="{ThemeResource ListViewItemPlaceholderBackgroundThemeBrush}" Margin="0,9.5,0,0" Grid.Column="0" HorizontalAlignment="Left">
-                    <Image Source="{Binding ImagePath}" Stretch="UniformToFill" AutomationProperties.Name="{Binding Title}" Height="79" Width="79"/>
+                    <Image Source="{Binding ImagePath}" Stretch="UniformToFill" AutomationProperties.Name="{Binding Naslov}" Height="79" Width="79"/>
                 </Border>
                 <StackPanel Grid.Column="1" Margin="14.5,0,0,0">
-                    <TextBlock Text="{Binding Title}" Style="{ThemeResource ListViewItemTextBlockStyle}"/>
-                    <TextBlock Text="{Binding Subtitle}" Style="{ThemeResource ListViewItemSubheaderTextBlockStyle}"/>
+                    <TextBlock Text="{Binding Naslov}" Style="{ThemeResource ListViewItemTextBlockStyle}"/>
+                    <TextBlock Text="{Binding Autor}" Style="{ThemeResource ListViewItemSubheaderTextBlockStyle}"/>
                 </StackPanel>
             </Grid>
         </DataTemplate>
@@ -98,44 +115,38 @@
             </HubSection>
        
 
-            <!--<HubSection x:Uid="HubSection3" Header="profile"
-                        DataContext="{Binding Groups[1]}" HeaderTemplate="{ThemeResource HubSectionHeaderTemplate}">
+            <HubSection x:Uid="HubSection3" Header="profile"
+                        DataContext="{Binding Profile}" HeaderTemplate="{ThemeResource HubSectionHeaderTemplate}">
+                <DataTemplate>
+                    <StackPanel>
+                        <TextBlock Text="{Binding username}" FontSize="40"></TextBlock>
+                        <TextBlock Text="{Binding Joined}" FontSize="20"></TextBlock>
+                        <TextBlock Text="{Binding Grad}" FontSize="25"></TextBlock>
+                        <Button>VIEW FRIENDS (4)</Button>
+                        <TextBlock Text="Currently reading:" FontSize="20"></TextBlock>
+                        <ListView ItemsSource="{Binding CurrentlyReadingBooks}"
+                                  ContinuumNavigationTransitionInfo.ExitElementContainer="True"
+                                  ItemTemplate="{StaticResource CurrentlyReadingTemplate}">
+                        </ListView>
+                    </StackPanel>
+                </DataTemplate>
+            </HubSection>
+
+            <HubSection x:Uid="HubSection4" Header="recommendations"
+                        DataContext="{Binding Recommendations}" HeaderTemplate="{ThemeResource HubSectionHeaderTemplate}">
                 <DataTemplate>
                     <ListView 
-                        AutomationProperties.AutomationId="ItemListViewSection3"
+                        AutomationProperties.AutomationId="ItemListViewSection5"
                         AutomationProperties.Name="Items In Group"
                         SelectionMode="None"
                         IsItemClickEnabled="True"
-                        ItemsSource="{Binding Items}"
-                        ItemTemplate="{StaticResource StandardTripleLineItemTemplate}"
+                        ItemsSource="{Binding RecommendedBooks}"
+                        ItemTemplate="{StaticResource StandardDoubleLineItemTemplate}"
                         ItemClick="ItemView_ItemClick"
                         ContinuumNavigationTransitionInfo.ExitElementContainer="True">
                     </ListView>
                 </DataTemplate>
             </HubSection>
-
-            <HubSection x:Uid="HubSection4" Header="recommendations"
-                        DataContext="{Binding Groups[2]}" HeaderTemplate="{ThemeResource HubSectionHeaderTemplate}">
-                <DataTemplate>
-                    <ListView 
-                        AutomationProperties.AutomationId="ItemListViewSection4"
-                        AutomationProperties.Name="Items In Group"
-                        SelectionMode="None"
-                        IsItemClickEnabled="True"
-                        ItemsSource="{Binding Items}"
-                        ItemClick="ItemView_ItemClick"
-                        ContinuumNavigationTransitionInfo.ExitElementContainer="True">
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <StackPanel Margin="0,0,0,19">
-                                    <TextBlock Text="{Binding Title}" Style="{ThemeResource ListViewItemTextBlockStyle}"/>
-                                    <TextBlock Text="{Binding Subtitle}" Style="{ThemeResource ListViewItemSubheaderTextBlockStyle}"/>
-                                </StackPanel>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
-                </DataTemplate>
-            </HubSection>-->
 
             <!--<HubSection x:Uid="HubSection6" Header="SECTION 1" DataContext="{Binding Groups}" HeaderTemplate="{ThemeResource HubSectionHeaderTemplate}">
                 <DataTemplate>
