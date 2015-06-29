@@ -142,6 +142,15 @@ namespace eShelvesDesktop {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ISBN mora biti numerička vrijednost.
+        /// </summary>
+        internal static string isbn_numb {
+            get {
+                return ResourceManager.GetString("isbn_numb", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ISBN broj je obavezan.
         /// </summary>
         internal static string isbn_req {
@@ -156,6 +165,15 @@ namespace eShelvesDesktop {
         internal static string kategorije_req {
             get {
                 return ResourceManager.GetString("kategorije_req", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Uspješno ste dodali knjgu.
+        /// </summary>
+        internal static string knjigaAdd_succ {
+            get {
+                return ResourceManager.GetString("knjigaAdd_succ", resourceCulture);
             }
         }
         
@@ -250,7 +268,7 @@ namespace eShelvesDesktop {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Lozinka mora imati minimalno 5 karaktera.
+        ///   Looks up a localized string similar to Lozinka mora imati minimalno 8 karaktera.
         /// </summary>
         internal static string pass_err {
             get {
@@ -309,6 +327,15 @@ namespace eShelvesDesktop {
         internal static string spol_req {
             get {
                 return ResourceManager.GetString("spol_req", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Broj dana trajanja nije ispravan.
+        /// </summary>
+        internal static string trajanje_err {
+            get {
+                return ResourceManager.GetString("trajanje_err", resourceCulture);
             }
         }
         
