@@ -78,14 +78,14 @@
             // novaKnjigaToolStripMenuItem
             // 
             this.novaKnjigaToolStripMenuItem.Name = "novaKnjigaToolStripMenuItem";
-            this.novaKnjigaToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.novaKnjigaToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.novaKnjigaToolStripMenuItem.Text = "Nova knjiga";
             this.novaKnjigaToolStripMenuItem.Click += new System.EventHandler(this.novaKnjigaToolStripMenuItem_Click);
             // 
             // manageKnjigeToolStripMenuItem
             // 
             this.manageKnjigeToolStripMenuItem.Name = "manageKnjigeToolStripMenuItem";
-            this.manageKnjigeToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.manageKnjigeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.manageKnjigeToolStripMenuItem.Text = "Manage knjige";
             this.manageKnjigeToolStripMenuItem.Click += new System.EventHandler(this.manageKnjigeToolStripMenuItem_Click);
             // 
@@ -212,7 +212,7 @@
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainForm";
-            this.Text = "MainForm";
+            this.Text = "eShelves Administracija";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
