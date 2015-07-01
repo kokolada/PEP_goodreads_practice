@@ -56,7 +56,9 @@ namespace eShelvesDesktop
             BindGrid();
         }
 
-        private void dataGridView1_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void dataGridView1_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e){}
+
+        private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             Korisnik k = korisniciService.GetResponse2("?id=" + dataGridView1.SelectedRows[0].Cells[0].Value).Content.ReadAsAsync<Korisnik>().Result;
             AddKorisnik frm = new AddKorisnik(k);

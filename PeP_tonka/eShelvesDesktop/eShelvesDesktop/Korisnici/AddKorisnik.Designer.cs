@@ -261,6 +261,7 @@
             this.Controls.Add(this.label1);
             this.Name = "AddKorisnik";
             this.Text = "Dodavanje korisnika";
+            this.Load += new System.EventHandler(this.AddKorisnik_Load);
             this.spolPanel.ResumeLayout(false);
             this.spolPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();

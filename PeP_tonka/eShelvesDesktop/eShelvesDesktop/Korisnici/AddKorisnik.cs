@@ -36,6 +36,7 @@ namespace eShelvesDesktop
                 prezimeInput.Text = k.Prezime;
                 emailInput.Text = k.Email;
                 usernameInput.Text = k.username;
+                passwordInput.Text = k.password;
                 if (k.Spol == "M")
                     muskoRB.Checked = true;
                 else
@@ -54,6 +55,7 @@ namespace eShelvesDesktop
 				k.username = usernameInput.Text;
 				k.password = passwordInput.Text;
 				k.Email = emailInput.Text;
+                k.created_at = DateTime.Now;
 				if (muskoRB.Checked)
 					k.Spol = "M";
 				else if (zenskoRB.Checked)
@@ -142,16 +144,21 @@ namespace eShelvesDesktop
 		}
 
 		private void passwordInput_Validating(object sender, CancelEventArgs e) {
-			if (String.IsNullOrEmpty(passwordInput.Text.Trim())) {
-				e.Cancel = true;
-				errorProvider.SetError(passwordInput, Global.GetMessage("pass_req"));
-			}
-			else if (passwordInput.TextLength < 8) {
-				e.Cancel = true;
-				errorProvider.SetError(passwordInput, Global.GetMessage("pass_err"));
-			}
-			else
-				errorProvider.SetError(passwordInput, "");
+            if (Id == 0)
+            {
+                if (String.IsNullOrEmpty(passwordInput.Text.Trim()))
+                {
+                    e.Cancel = true;
+                    errorProvider.SetError(passwordInput, Global.GetMessage("pass_req"));
+                }
+                else if (passwordInput.TextLength < 8)
+                {
+                    e.Cancel = true;
+                    errorProvider.SetError(passwordInput, Global.GetMessage("pass_err"));
+                }
+                else
+                    errorProvider.SetError(passwordInput, "");
+            }
 		}
 
 		private void emailInput_Validating(object sender, CancelEventArgs e) {
@@ -189,5 +196,14 @@ namespace eShelvesDesktop
 			else
 				errorProvider.SetError(zenskoRB, "");
 		}
+
+        private void AddKorisnik_Load(object sender, EventArgs e)
+        {
+            if (Id > 0)
+            {
+                usernameInput.ReadOnly = true;
+                passwordInput.ReadOnly = true;
+            }
+        }
     }
 }
