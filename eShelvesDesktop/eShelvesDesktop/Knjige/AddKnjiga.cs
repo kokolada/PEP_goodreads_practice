@@ -148,6 +148,7 @@ namespace eShelvesDesktop
             slikaInput.Text = "";
             pictureBox.Image = null;
             opisInput.Text = "";
+            kategorijeListBox.ClearSelected();
         }
 
         private void dodajButton_Click(object sender, EventArgs e)

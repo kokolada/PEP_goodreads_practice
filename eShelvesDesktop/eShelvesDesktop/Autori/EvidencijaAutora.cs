@@ -40,20 +40,6 @@ namespace eShelvesDesktop.Autori
 
             if (response.IsSuccessStatusCode)
             {
-                /*List<AutorVM> autori = response.Content.ReadAsAsync<List<AutorVM>>().Result;
-                autori.Insert(0, new AutorVM());
-                autorComboBox.DataSource = autori;
-                autorComboBox.DisplayMember = "Naziv";
-                autorComboBox.ValueMember = "Id";
-
-                if (Id >= 1)
-                {
-                    for (int i = 0; i < autori.Count; i++)
-                    {
-                        if (autori[i].Id == AutorID)
-                            autorComboBox.SelectedIndex = i;
-                    }
-                }*/
                 List<Autor> autori = response.Content.ReadAsAsync<List<Autor>>().Result;
                 autoriGrid.DataSource = autori;
             }
@@ -87,6 +73,7 @@ namespace eShelvesDesktop.Autori
             opisInput.Text = "";
             webInput.Text = "";
             searchInput.Text = "";
+            Id = 0;
         }
 
         private void dodajButton_Click(object sender, EventArgs e)
@@ -100,13 +87,14 @@ namespace eShelvesDesktop.Autori
 				a.Opis = opisInput.Text;
 				a.Rodjen = rodjenPicker.Value;
 				a.WebStranica = webInput.Text;
-
-				/*a.Kategorijas = new List<Kategorija>();
+                if (Id > 0)
+                    a.Id = Id;
+				a.Kategorijas = new List<Kategorija>();
 
 				foreach(int i in kategorijeListBox.CheckedIndices)
 				{
 					a.Kategorijas.Add(kategorije[i]);
-				}*/
+				}
 
 				HttpResponseMessage response = autorService.PostResponse(a);
 
