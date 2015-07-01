@@ -12,6 +12,8 @@ namespace eShelvesDesktop.Models
         public int DanaZakupljeno { get; set; }
         public float Cijena { get; set; }
         public int BrojPrikaza { get; set; }
+        public DateTime Od { get; set; }
+        public DateTime Do { get; set; }
 
         public int ReklamaID { get; set; }
         public int KupacID { get; set; }

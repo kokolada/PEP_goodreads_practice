@@ -30,6 +30,7 @@ namespace eShelvesDesktop
         {
             BindKupci();
             BindReklame();
+            danaZ.Text = "0";
         }
 
         private void BindKupci()
@@ -58,7 +59,8 @@ namespace eShelvesDesktop
         private void Clear()
         {
             cijenaNumber.Value = 0;
-            danaNumber.Value = 0;
+            od.Value = DateTime.Now;
+            do2.Value = DateTime.Now;
             prikaziNumber.Value = 0;
             kupacCombo.SelectedIndex = 0;
             reklamaCombo.SelectedIndex = 0;
@@ -66,27 +68,42 @@ namespace eShelvesDesktop
 
         private void dodajButton_Click(object sender, EventArgs e)
         {
-			if (this.ValidateChildren()) {
-				NarudzbeReklama narudzba = new NarudzbeReklama();
+            DateTime d1 = od.Value;
+            DateTime d2 = do2.Value;
+            if (d1 < d2)
+            {
+                if (this.ValidateChildren())
+                {
+                    NarudzbeReklama narudzba = new NarudzbeReklama();
 
-				narudzba.BrojPrikaza = (int)prikaziNumber.Value;
-				narudzba.Cijena = (float)cijenaNumber.Value;
-				narudzba.DanaZakupljeno = (int)danaNumber.Value;
+                    narudzba.BrojPrikaza = (int)prikaziNumber.Value;
+                    narudzba.Cijena = (float)cijenaNumber.Value;
+                    narudzba.Do = do2.Value;
+                    narudzba.Od = od.Value;
+                    TimeSpan span = narudzba.Do.Subtract(narudzba.Od);
+                    narudzba.DanaZakupljeno = (int)span.TotalDays;
 
-				narudzba.KupacID = (int)kupacCombo.SelectedValue;
-				narudzba.ReklamaID = (int)reklamaCombo.SelectedValue;
+                    narudzba.KupacID = (int)kupacCombo.SelectedValue;
+                    narudzba.ReklamaID = (int)reklamaCombo.SelectedValue;
 
-				HttpResponseMessage response = narudzbaService.PostResponse(narudzba);
+                    HttpResponseMessage response = narudzbaService.PostResponse(narudzba);
 
-				if (response.IsSuccessStatusCode) {
-					MessageBox.Show(Global.GetMessage("narudzba_succ"), "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
-					BindReklame();
-					BindKupci();
-					Clear();
-				}
-				else
-					MessageBox.Show(response.ReasonPhrase, Global.GetMessage("error"), MessageBoxButtons.OK, MessageBoxIcon.Error);
-			}
+                    if (response.IsSuccessStatusCode)
+                    {
+                        MessageBox.Show(Global.GetMessage("narudzba_succ"), "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        BindReklame();
+                        BindKupci();
+                        Clear();
+                    }
+                    else
+                        MessageBox.Show(response.ReasonPhrase, Global.GetMessage("error"), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Prvi datum mora biti manji od drugog!!!!!");
+            }
+
 		}
 
         private void addkupacButton_Click(object sender, EventArgs e)
@@ -100,15 +117,6 @@ namespace eShelvesDesktop
             AddReklama frm = new AddReklama();
             frm.Show();
         }
-
-		private void danaNumber_Validating(object sender, CancelEventArgs e) {
-			if (danaNumber.Value < 1) {
-				e.Cancel = true;
-				errorProvider.SetError(danaNumber, Global.GetMessage("dana_err"));
-			}
-			else
-				errorProvider.SetError(danaNumber, "");
-		}
 
 		private void prikaziNumber_Validating(object sender, CancelEventArgs e) {
 			if (prikaziNumber.Value < 1) {
@@ -145,5 +153,21 @@ namespace eShelvesDesktop
 			else
 				errorProvider.SetError(reklamaCombo, "");
 		}
+
+        private void od_ValueChanged(object sender, EventArgs e)
+        {
+            DateTime d = do2.Value;
+            DateTime o = od.Value;
+            TimeSpan ts = d.Subtract(o);
+            danaZ.Text = "" + (int)ts.TotalDays;
+        }
+
+        private void do2_ValueChanged(object sender, EventArgs e)
+        {
+            DateTime d = do2.Value;
+            DateTime o = od.Value;
+            TimeSpan ts = d.Subtract(o);
+            danaZ.Text = "" + (int)ts.TotalDays;
+        }
     }
 }
