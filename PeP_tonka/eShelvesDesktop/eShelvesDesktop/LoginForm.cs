@@ -1,4 +1,5 @@
-﻿using eShelvesDesktop.Util;
+﻿using eShelvesDesktop.Models;
+using eShelvesDesktop.Util;
 using eShelvesDesktop.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -15,7 +16,7 @@ namespace eShelvesDesktop
 {
     public partial class LoginForm : Form
     {
-        WebApiHelper serviceCaller = new WebApiHelper(Config.urlApi, "test");
+        WebApiHelper serviceCaller = new WebApiHelper(Config.urlApi, "Administrators");
         public LoginForm()
         {
             InitializeComponent();
@@ -28,14 +29,18 @@ namespace eShelvesDesktop
 
         private void potvrdiButton_Click(object sender, EventArgs e)
         {
-            HttpResponseMessage response = serviceCaller.GetResponse("?username=" + usernameInput.Text + "&password=" + passwordInput.Text);
+            HttpResponseMessage response = serviceCaller.GetResponse("Login/"+usernameInput.Text);
 
             if (response.IsSuccessStatusCode)
             {
-                LogiraniKorisnik korisnik = response.Content.ReadAsAsync<LogiraniKorisnik>().Result;
-                if (korisnik != null)
+                Administrator korisnik = response.Content.ReadAsAsync<Administrator>().Result;
+                if (korisnik != null && korisnik.PasswordHash == KorisniciHelper.GenerateHash(passwordInput.Text, korisnik.PasswordSalt))
                 {
-                    Global.prijavljeniKorisnik = korisnik;
+                    LogiraniKorisnik k = new LogiraniKorisnik();
+                    k.Id = korisnik.Id;
+                    k.password = korisnik.PasswordHash;
+                    k.username = korisnik.username;
+                    Global.prijavljeniKorisnik = k;
                     this.DialogResult = DialogResult.OK;
                 }
                 else
