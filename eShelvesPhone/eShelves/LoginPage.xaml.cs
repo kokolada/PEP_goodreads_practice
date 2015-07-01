@@ -52,6 +52,8 @@ namespace eShelves
         {
             usernameInput.Text = "dzemo";
             passwordInput.Password = "gigant";
+            if (Global.prijavljeniKorisnik != null)
+                Frame.Navigate(typeof(HubPage));
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -69,8 +71,6 @@ namespace eShelves
                 if (korisnik != null)
                 {
                     Global.prijavljeniKorisnik = korisnik;
-                    MessageDialog msg = new MessageDialog("Sta ima tebra");
-                    await msg.ShowAsync();
                     Frame.Navigate(typeof(HubPage));
                 }
                 else
