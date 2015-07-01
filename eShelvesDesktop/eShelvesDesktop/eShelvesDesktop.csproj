@@ -85,6 +85,7 @@
     <Compile Include="Knjige\AddKnjiga.Designer.cs">
       <DependentUpon>AddKnjiga.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\Administrator.cs" />
     <Compile Include="Ocjene\OcjenaDetalji.cs">
       <SubType>Form</SubType>
     </Compile>
