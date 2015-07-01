@@ -87,17 +87,43 @@
     <Compile Include="Common\RelayCommand.cs" />
     <Compile Include="Common\SuspensionManager.cs" />
     <Compile Include="DataModel\SampleDataSource.cs" />
+    <Compile Include="FeedItemDetails.xaml.cs">
+      <DependentUpon>FeedItemDetails.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Global.cs" />
     <Compile Include="HubPage.xaml.cs">
       <DependentUpon>HubPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ImageConverter.cs" />
     <Compile Include="ItemPage.xaml.cs">
       <DependentUpon>ItemPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="KnjigaDetalji.xaml.cs">
+      <DependentUpon>KnjigaDetalji.xaml</DependentUpon>
     </Compile>
     <Compile Include="LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Models\Autor.cs" />
+    <Compile Include="Models\Kategorija.cs" />
+    <Compile Include="Models\Knjiga.cs" />
     <Compile Include="Models\Korisnik.cs" />
+    <Compile Include="Models\Ocjena.cs" />
+    <Compile Include="Models\Polica.cs" />
+    <Compile Include="Models\Prijateljstvo.cs" />
+    <Compile Include="Models\TimelineItem.cs" />
+    <Compile Include="OcjenaDetalji.xaml.cs">
+      <DependentUpon>OcjenaDetalji.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PolicaDetalji.xaml.cs">
+      <DependentUpon>PolicaDetalji.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PrijateljiPage.xaml.cs">
+      <DependentUpon>PrijateljiPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ProfilPage.xaml.cs">
+      <DependentUpon>ProfilPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RegisterPage.xaml.cs">
       <DependentUpon>RegisterPage.xaml</DependentUpon>
@@ -108,7 +134,10 @@
     <Compile Include="Util\Config.cs" />
     <Compile Include="Util\WebApiHelper.cs" />
     <Compile Include="ViewModels\HubPageViewModel.cs" />
+    <Compile Include="ViewModels\KnjigaDetaljiViewModel.cs" />
     <Compile Include="ViewModels\LogiraniKorisnik.cs" />
+    <Compile Include="ViewModels\OcjenaDetaljiViewModel.cs" />
+    <Compile Include="ViewModels\PrijateljVM.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -140,6 +169,10 @@
     <PRIResource Include="Strings\en-US\Resources.resw" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="FeedItemDetails.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="HubPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -148,7 +181,27 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="KnjigaDetalji.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="LoginPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="OcjenaDetalji.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PolicaDetalji.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PrijateljiPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ProfilPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

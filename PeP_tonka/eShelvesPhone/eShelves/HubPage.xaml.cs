@@ -132,13 +132,19 @@ namespace eShelves
         /// </summary>
         private void ItemView_ItemClick(object sender, ItemClickEventArgs e)
         {
-            // Navigate to the appropriate destination page, configuring the new page
+            /*// Navigate to the appropriate destination page, configuring the new page
             // by passing required information as a navigation parameter
-            var itemId = ((SampleDataItem)e.ClickedItem).UniqueId;
+            var itemId = ((HubPageViewModel.FeedInfo.FeedItemInfo)e.ClickedItem).FeedItemID;
             if (!Frame.Navigate(typeof(ItemPage), itemId))
             {
                 throw new Exception(this.resourceLoader.GetString("NavigationFailedExceptionMessage"));
-            }
+            }*/
+            //Frame.Navigate(typeof(PolicaDetalji));
+            HubPageViewModel.FeedInfo.FeedItemInfo item = (HubPageViewModel.FeedInfo.FeedItemInfo)e.ClickedItem;
+            if (item.IsOcjena)
+                Frame.Navigate(typeof(OcjenaDetalji), item.OcjenaID);
+            else
+                Frame.Navigate(typeof(KnjigaDetalji), item.KnjigaID);
         }
 
         #region NavigationHelper registration
@@ -166,5 +172,16 @@ namespace eShelves
         }
 
         #endregion
+
+        private void ListView_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            HubPageViewModel.ProfileInfo.BookInfo item = (HubPageViewModel.ProfileInfo.BookInfo)e.ClickedItem;
+            Frame.Navigate(typeof(KnjigaDetalji), item.KnjigaID);
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(PrijateljiPage), Global.prijavljeniKorisnik.Id);
+        }
     }
 }
