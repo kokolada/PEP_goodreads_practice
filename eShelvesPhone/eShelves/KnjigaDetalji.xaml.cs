@@ -1,4 +1,5 @@
 ﻿using eShelves.Common;
+using eShelves.Models;
 using eShelves.Util;
 using eShelves.ViewModels;
 using System;
@@ -17,6 +18,7 @@ using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Navigation;
 
 // The Basic Page item template is documented at http://go.microsoft.com/fwlink/?LinkID=390556
@@ -31,6 +33,7 @@ namespace eShelves
         private NavigationHelper navigationHelper;
         private ObservableDictionary defaultViewModel = new ObservableDictionary();
         WebApiHelper knjigaDetaljiService = new WebApiHelper(Config.urlApi, "PhoneKnjigaDetalji");
+        WebApiHelper reklamaService = new WebApiHelper(Config.urlApi, "Reklama/RandomAktivna");
 
         public KnjigaDetalji()
         {
@@ -77,6 +80,14 @@ namespace eShelves
             if (response.IsSuccessStatusCode)
             {
                 defaultViewModel["detalji"] = response.Content.ReadAsAsync<KnjigaDetaljiViewModel>().Result;
+
+                HttpResponseMessage r = reklamaService.GetResponse();
+
+                if (r.IsSuccessStatusCode)
+                {
+                    Reklama reklama = r.Content.ReadAsAsync<Reklama>().Result;
+                    reklamaS.Source = new BitmapImage(new Uri(reklama.URL, UriKind.Absolute));
+                }
             }
         }
 
