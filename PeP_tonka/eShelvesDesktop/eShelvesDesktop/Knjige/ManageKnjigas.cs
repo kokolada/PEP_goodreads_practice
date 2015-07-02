@@ -93,12 +93,15 @@ namespace eShelvesDesktop
                 m.MenuItems.Add(new MenuItem("Remove"));
 
                 var r = dataGridView1.HitTest(e.X, e.Y);
-                dataGridView1.ClearSelection();
-                dataGridView1.Rows[r.RowIndex].Selected = true;
+                if (r.RowIndex >= 0)
+                {
+                    dataGridView1.ClearSelection();
+                    dataGridView1.Rows[r.RowIndex].Selected = true;
 
-                m.Show(dataGridView1, new Point(e.X, e.Y));
+                    m.Show(dataGridView1, new Point(e.X, e.Y));
 
-                m.MenuItems[0].Click += new EventHandler(ObrisiKnjigu);
+                    m.MenuItems[0].Click += new EventHandler(ObrisiKnjigu);
+                }
             }
         }
 

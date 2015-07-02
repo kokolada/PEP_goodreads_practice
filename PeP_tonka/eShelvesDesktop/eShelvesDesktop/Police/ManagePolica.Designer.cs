@@ -196,20 +196,20 @@
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(13, 394);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(43, 13);
+            this.label6.Size = new System.Drawing.Size(79, 13);
             this.label6.TabIndex = 10;
-            this.label6.Text = "Naslov:";
+            this.label6.Text = "Naslov ili autor:";
             // 
             // naslovInput
             // 
-            this.naslovInput.Location = new System.Drawing.Point(62, 391);
+            this.naslovInput.Location = new System.Drawing.Point(98, 391);
             this.naslovInput.Name = "naslovInput";
             this.naslovInput.Size = new System.Drawing.Size(334, 20);
             this.naslovInput.TabIndex = 11;
             // 
             // traziButton
             // 
-            this.traziButton.Location = new System.Drawing.Point(402, 389);
+            this.traziButton.Location = new System.Drawing.Point(438, 389);
             this.traziButton.Name = "traziButton";
             this.traziButton.Size = new System.Drawing.Size(75, 23);
             this.traziButton.TabIndex = 12;
