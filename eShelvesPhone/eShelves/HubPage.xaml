@@ -99,7 +99,13 @@
             <HubSection x:Uid="HubSection2" Header="bookshelves" Width="Auto"
                          DataContext="{Binding BookShelves}" HeaderTemplate="{ThemeResource HubSectionHeaderTemplate}">
                 <DataTemplate>
-                    <GridView
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Button>Dodaj novu policu</Button>
+                        <GridView Grid.Row="1"
                         Margin="0,9.5,0,0"
                         ItemsSource="{Binding Shelves}"
                         AutomationProperties.AutomationId="ItemGridView"
@@ -107,17 +113,18 @@
                         ItemTemplate="{StaticResource Standard200x180TileItemTemplate}"
                         SelectionMode="None"
                         IsItemClickEnabled="True"
-                        ItemClick="ItemView_ItemClick"
+                        ItemClick="GridView_ItemClick"
                         ContinuumNavigationTransitionInfo.ExitElementContainer="True">
-                        <GridView.ItemsPanel>
-                            <ItemsPanelTemplate>
-                                <ItemsWrapGrid />
-                            </ItemsPanelTemplate>
-                        </GridView.ItemsPanel>
-                    </GridView>
+                            <GridView.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <ItemsWrapGrid />
+                                </ItemsPanelTemplate>
+                            </GridView.ItemsPanel>
+                        </GridView>
+                    </Grid>
                 </DataTemplate>
             </HubSection>
-       
+
 
             <HubSection x:Uid="HubSection3" Header="profile"
                         DataContext="{Binding Profile}" HeaderTemplate="{ThemeResource HubSectionHeaderTemplate}">
@@ -126,7 +133,14 @@
                         <TextBlock Text="{Binding username}" FontSize="40"></TextBlock>
                         <TextBlock Text="{Binding Joined}" FontSize="20"></TextBlock>
                         <TextBlock Text="{Binding Grad}" FontSize="25"></TextBlock>
-                        <Button Click="Button_Click">VIEW FRIENDS (4)</Button>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Button Click="Button_Click">VIEW FRIENDS</Button>
+                            <Button Margin="5 0 0 0" Grid.Column="1" Click="Button_Click">Dodaj u prijatelje</Button>
+                        </Grid>
                         <TextBlock Text="Currently reading:" FontSize="20"></TextBlock>
                         <ListView ItemsSource="{Binding CurrentlyReadingBooks}"
                                   ContinuumNavigationTransitionInfo.ExitElementContainer="True"
@@ -151,6 +165,26 @@
                         ItemClick="ItemView_ItemClick"
                         ContinuumNavigationTransitionInfo.ExitElementContainer="True">
                     </ListView>
+                </DataTemplate>
+            </HubSection>
+
+            <HubSection x:Uid="HubSection5" Header="pretraga" HeaderTemplate="{ThemeResource HubSectionHeaderTemplate}">
+                <DataTemplate>
+                    <Grid HorizontalAlignment="Left">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="250"></ColumnDefinition>
+                            <ColumnDefinition Width="1*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="60"></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <TextBox Grid.Column="0" PlaceholderText="naslov knjige"></TextBox>
+                        <Button Margin="5 0 0 0" Grid.Column="1">Traži</Button>
+                        <ScrollViewer Grid.Row="1" Grid.ColumnSpan="2">
+
+                        </ScrollViewer>
+                    </Grid>
                 </DataTemplate>
             </HubSection>
 

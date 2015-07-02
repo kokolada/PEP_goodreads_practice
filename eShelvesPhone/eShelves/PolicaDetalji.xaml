@@ -28,26 +28,58 @@
         </DataTemplate>
         <DataTemplate x:Key="StandardTripleLineItemTemplate">
             <Grid>
+                <Grid.Resources>
+                    <local:ImageConverter x:Key="ImageConverter"></local:ImageConverter>
+                </Grid.Resources>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
                 <Border Background="{ThemeResource ListViewItemPlaceholderBackgroundThemeBrush}" Margin="0,9.5,0,0" Grid.Column="0" HorizontalAlignment="Left">
-                    <Image Source="{Binding ImagePath}" Stretch="UniformToFill" AutomationProperties.Name="{Binding Title}" Height="79" Width="79"/>
+                    <Image Source="{Binding Converter={StaticResource ImageConverter}}" Stretch="UniformToFill" AutomationProperties.Name="{Binding Title}" Height="79" Width="79"/>
                 </Border>
                 <StackPanel Grid.Column="1" Margin="14.5,0,0,0">
-                    <TextBlock Text="{Binding EventDescription}" Style="{ThemeResource ListViewItemTextBlockStyle}"/>
-                    <TextBlock Text="{Binding EventDescription}" Style="{ThemeResource ListViewItemContentTextBlockStyle}" Foreground="{ThemeResource PhoneMidBrush}" />
-                    <TextBlock Text="{Binding EventInformation}" Style="{ThemeResource ListViewItemSubheaderTextBlockStyle}" />
+                    <TextBlock Text="{Binding Naslov}" Style="{ThemeResource ListViewItemTextBlockStyle}"/>
+                    <TextBlock Text="{Binding Autor}" Style="{ThemeResource ListViewItemContentTextBlockStyle}" Foreground="{ThemeResource PhoneMidBrush}" />
+                    <TextBlock Text="{Binding ProsjecnaOcjena}" Style="{ThemeResource ListViewItemSubheaderTextBlockStyle}" />
                 </StackPanel>
             </Grid>
         </DataTemplate>
     </Page.Resources>
-    
-    <Grid x:Name="LayoutRoot">
-        <Hub x:Name="Hub" x:Uid="Hub" Header="eShelves" Background="{ThemeResource HubBackgroundImageBrush}">
-            <!--<HubSection x:Uid="HubSection1" Header="feed" DataContext="{Binding Feed}">-->
-        </Hub>
+
+    <Grid x:Name="LayoutRoot" DataContext="{Binding polica}">
+
+        <Grid.ChildrenTransitions>
+            <TransitionCollection>
+                <EntranceThemeTransition/>
+            </TransitionCollection>
+        </Grid.ChildrenTransitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Title Panel -->
+        <StackPanel Grid.Row="0" Margin="19,0,0,0">
+            <TextBlock Text="eShelves" Style="{ThemeResource TitleTextBlockStyle}" Margin="0,12,0,0"/>
+            <TextBlock Text="{Binding Naziv}" Margin="0,-6.5,0,26.5" Style="{ThemeResource HeaderTextBlockStyle}" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}"/>
+        </StackPanel>
+
+        <!--TODO: Content should be placed within the following grid-->
+        <Grid Grid.Row="1" x:Name="ContentRoot" Margin="19,9.5,19,0">
+            <Grid.Resources>
+                <local:ImageConverter x:Key="ImageConverter"></local:ImageConverter>
+            </Grid.Resources>
+            <ScrollViewer>
+                <ListView IsItemClickEnabled="True"
+                          ItemClick="ListView_ItemClick"
+                          SelectionMode="None"
+                          ItemsSource="{Binding Knjige}"
+                          ItemTemplate="{StaticResource StandardTripleLineItemTemplate}">
+                </ListView>
+            </ScrollViewer>
+        </Grid>
     </Grid>
 </Page>

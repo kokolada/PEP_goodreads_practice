@@ -75,6 +75,9 @@
                     </ListView.ItemTemplate>
                 </ListView>
             </ScrollViewer>
+            <ComboBox Grid.Row="2">
+            </ComboBox>
+            <Button Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center">Dodaj u policu</Button>
         </Grid>
     </Grid>
 </Page>

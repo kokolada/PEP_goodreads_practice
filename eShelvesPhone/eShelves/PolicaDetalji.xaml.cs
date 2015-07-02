@@ -1,8 +1,11 @@
 ﻿using eShelves.Common;
+using eShelves.Util;
+using eShelves.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net.Http;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
@@ -25,6 +28,8 @@ namespace eShelves
     /// </summary>
     public sealed partial class PolicaDetalji : Page
     {
+        WebApiHelper policaService = new WebApiHelper(Config.urlApi, "Police");
+
         private NavigationHelper navigationHelper;
         private ObservableDictionary defaultViewModel = new ObservableDictionary();
 
@@ -67,14 +72,12 @@ namespace eShelves
         /// session.  The state will be null the first time a page is visited.</param>
         private void NavigationHelper_LoadState(object sender, LoadStateEventArgs e)
         {
-            HubSection tempHubSection;
-            for (int i = 0; i < 3; i++)
+            HttpResponseMessage response = policaService.GetResponse(e.NavigationParameter.ToString());
+
+            if (response.IsSuccessStatusCode)
             {
-                tempHubSection = new HubSection();
-                tempHubSection.Header = "naziv"+i;
-                Hub.Sections.Add(tempHubSection);
+                defaultViewModel["polica"] = response.Content.ReadAsAsync<PolicaDetaljiViewModel>().Result;
             }
-            Hub.Template = (ControlTemplate)App.Current.Resources["policaDetaljiHubSection"];
         }
 
         /// <summary>
@@ -115,5 +118,11 @@ namespace eShelves
         }
 
         #endregion
+
+        private void ListView_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            PolicaDetaljiViewModel.KnjigaInfo k = (PolicaDetaljiViewModel.KnjigaInfo)e.ClickedItem;
+            Frame.Navigate(typeof(KnjigaDetalji), k.KnjigaID);
+        }
     }
 }
