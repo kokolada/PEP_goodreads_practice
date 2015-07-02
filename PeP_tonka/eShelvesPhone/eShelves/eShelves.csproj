@@ -111,6 +111,7 @@
     <Compile Include="Models\Ocjena.cs" />
     <Compile Include="Models\Polica.cs" />
     <Compile Include="Models\Prijateljstvo.cs" />
+    <Compile Include="Models\Reklama.cs" />
     <Compile Include="Models\TimelineItem.cs" />
     <Compile Include="OcjenaDetalji.xaml.cs">
       <DependentUpon>OcjenaDetalji.xaml</DependentUpon>

@@ -37,12 +37,14 @@
                 <RowDefinition Height="40"></RowDefinition>
                 <RowDefinition Height="150"></RowDefinition>
                 <RowDefinition Height="60"></RowDefinition>
+                <RowDefinition Height="Auto" MaxHeight="100"></RowDefinition>
                 <RowDefinition></RowDefinition>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="150"></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
+            <Image Grid.Row="3" Grid.ColumnSpan="2" Name="reklamaS" Margin="0 0 0 10"></Image>
             <Image Source="{Binding Converter={StaticResource ImageConverter}}" Height="150" Width="150" Stretch="UniformToFill" Grid.Row="1" Grid.Column="0"></Image>
             <TextBlock Name="naslovKnjige" Grid.ColumnSpan="2" Text="{Binding Naslov}" FontSize="30"></TextBlock>
             <StackPanel Grid.Column="1" Margin="5 0 0 0" Grid.Row="1">
@@ -51,7 +53,7 @@
                 <TextBlock Name="objavljena" Text="{Binding Objavljena}" FontSize="20"></TextBlock>
                 <TextBlock Name="prosjecnaocjena" Text="{Binding ProsjecnaOcjena}" FontSize="20"></TextBlock>
             </StackPanel>
-            <ScrollViewer  Grid.ColumnSpan="2" Grid.Row="3">
+            <ScrollViewer  Grid.ColumnSpan="2" Grid.Row="4">
                 <ListView Name="ocjeneLista"
                       SelectionMode="None"
                       IsItemClickEnabled="True"
