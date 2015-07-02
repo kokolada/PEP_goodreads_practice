@@ -35,9 +35,19 @@ namespace eShelves
 
                 return image;
             }
-            else
+            else if (value is OcjenaDetaljiViewModel.KnjigaInfo)
             {
                 MemoryStream ms = new MemoryStream(((OcjenaDetaljiViewModel.KnjigaInfo)value).Slika);
+
+                BitmapImage image = new BitmapImage();
+
+                image.SetSourceAsync(ms.AsRandomAccessStream());
+
+                return image;
+            }
+            else
+            {
+                MemoryStream ms = new MemoryStream(((PolicaDetaljiViewModel.KnjigaInfo)value).Slika);
 
                 BitmapImage image = new BitmapImage();
 

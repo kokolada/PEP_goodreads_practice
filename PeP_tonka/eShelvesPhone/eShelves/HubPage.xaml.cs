@@ -183,5 +183,11 @@ namespace eShelves
         {
             Frame.Navigate(typeof(PrijateljiPage), Global.prijavljeniKorisnik.Id);
         }
+
+        private void GridView_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            HubPageViewModel.ShelvesInfo.ShelfInfo p = (HubPageViewModel.ShelvesInfo.ShelfInfo)e.ClickedItem;
+            Frame.Navigate(typeof(PolicaDetalji), p.ShelfID);
+        }
     }
 }

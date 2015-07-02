@@ -137,6 +137,7 @@
     <Compile Include="ViewModels\KnjigaDetaljiViewModel.cs" />
     <Compile Include="ViewModels\LogiraniKorisnik.cs" />
     <Compile Include="ViewModels\OcjenaDetaljiViewModel.cs" />
+    <Compile Include="ViewModels\PolicaDetaljiViewModel.cs" />
     <Compile Include="ViewModels\PrijateljVM.cs" />
   </ItemGroup>
   <ItemGroup>
