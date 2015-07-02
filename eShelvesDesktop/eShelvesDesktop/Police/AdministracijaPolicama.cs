@@ -85,5 +85,16 @@ namespace eShelvesDesktop
         {
             BindPolicaGrid((int)korisniciGrid.SelectedRows[0].Cells[0].Value);
         }
+
+        private void traziButton_Click(object sender, EventArgs e)
+        {
+            HttpResponseMessage response = korisniciService.GetActionResponse("SearchKorisnici", usernameInput.Text.Trim());
+
+            if (response.IsSuccessStatusCode)
+            {
+                List<Korisnik> korisnici = response.Content.ReadAsAsync<List<Korisnik>>().Result;
+                korisniciGrid.DataSource = korisnici;
+            }
+        }
     }
 }

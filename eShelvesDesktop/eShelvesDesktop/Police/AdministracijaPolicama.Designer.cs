@@ -75,6 +75,7 @@
             this.traziButton.TabIndex = 2;
             this.traziButton.Text = "Traži";
             this.traziButton.UseVisualStyleBackColor = true;
+            this.traziButton.Click += new System.EventHandler(this.traziButton_Click);
             // 
             // korisniciGrid
             // 
