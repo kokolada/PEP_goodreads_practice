@@ -104,7 +104,7 @@
                             <RowDefinition Height="Auto"></RowDefinition>
                             <RowDefinition></RowDefinition>
                         </Grid.RowDefinitions>
-                        <Button>Dodaj novu policu</Button>
+                        <Button Click="Button_Click_1">Dodaj novu policu</Button>
                         <GridView Grid.Row="1"
                         Margin="0,9.5,0,0"
                         ItemsSource="{Binding Shelves}"
@@ -139,7 +139,6 @@
                                 <ColumnDefinition Width="Auto"></ColumnDefinition>
                             </Grid.ColumnDefinitions>
                             <Button Click="Button_Click">VIEW FRIENDS</Button>
-                            <Button Margin="5 0 0 0" Grid.Column="1" Click="Button_Click">Dodaj u prijatelje</Button>
                         </Grid>
                         <TextBlock Text="Currently reading:" FontSize="20"></TextBlock>
                         <ListView ItemsSource="{Binding CurrentlyReadingBooks}"
@@ -162,7 +161,7 @@
                         IsItemClickEnabled="True"
                         ItemsSource="{Binding RecommendedBooks}"
                         ItemTemplate="{StaticResource StandardDoubleLineItemTemplate}"
-                        ItemClick="ItemView_ItemClick"
+                        ItemClick="ListView_ItemClick_1"
                         ContinuumNavigationTransitionInfo.ExitElementContainer="True">
                     </ListView>
                 </DataTemplate>
@@ -179,10 +178,16 @@
                             <RowDefinition Height="60"></RowDefinition>
                             <RowDefinition></RowDefinition>
                         </Grid.RowDefinitions>
-                        <TextBox Grid.Column="0" PlaceholderText="naslov knjige"></TextBox>
-                        <Button Margin="5 0 0 0" Grid.Column="1">Traži</Button>
+                        <TextBox Name="searchInput" Loaded="searchInput_Loaded" Grid.Column="0" PlaceholderText="naziv knjige ili autora"></TextBox>
+                        <Button Click="Button_Click_2" Margin="5 0 0 0" Grid.Column="1">Traži</Button>
                         <ScrollViewer Grid.Row="1" Grid.ColumnSpan="2">
-
+                            <ListView Name="searchLista"
+                                      Loaded="searchLista_Loaded"
+                                  ContinuumNavigationTransitionInfo.ExitElementContainer="True"
+                                  ItemTemplate="{StaticResource CurrentlyReadingTemplate}"
+                                  ItemClick="searchLista_ItemClick"
+                                  IsItemClickEnabled="True">
+                            </ListView>
                         </ScrollViewer>
                     </Grid>
                 </DataTemplate>

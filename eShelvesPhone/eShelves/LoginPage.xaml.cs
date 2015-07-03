@@ -32,7 +32,7 @@ namespace eShelves
         public LoginPage()
         {
             this.InitializeComponent();
-            HardwareButtons.BackPressed += HardwareButtons_BackPressed;
+            //HardwareButtons.BackPressed += HardwareButtons_BackPressed;
         }
 
         void HardwareButtons_BackPressed(object sender, BackPressedEventArgs e)

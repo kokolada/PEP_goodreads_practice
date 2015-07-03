@@ -1,5 +1,4 @@
 ﻿using eShelves.Common;
-using eShelves.Dialogs;
 using eShelves.Models;
 using eShelves.Util;
 using eShelves.ViewModels;
@@ -20,7 +19,6 @@ using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Navigation;
 
 // The Basic Page item template is documented at http://go.microsoft.com/fwlink/?LinkID=390556
@@ -30,15 +28,14 @@ namespace eShelves
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class KnjigaDetalji : Page
+    public sealed partial class OcjeniKnjiguPage : Page
     {
         private NavigationHelper navigationHelper;
         private ObservableDictionary defaultViewModel = new ObservableDictionary();
-        WebApiHelper knjigaDetaljiService = new WebApiHelper(Config.urlApi, "PhoneKnjigaDetalji");
-        WebApiHelper reklamaService = new WebApiHelper(Config.urlApi, "Reklama/RandomAktivna");
-        WebApiHelper btnService = new WebApiHelper(Config.urlApi, "Desktop");
 
-        public KnjigaDetalji()
+        WebApiHelper ocjenaService = new WebApiHelper(Config.urlApi, "Ocjenass");
+
+        public OcjeniKnjiguPage()
         {
             this.InitializeComponent();
 
@@ -77,35 +74,11 @@ namespace eShelves
         /// session.  The state will be null the first time a page is visited.</param>
         private void NavigationHelper_LoadState(object sender, LoadStateEventArgs e)
         {
-            int knjigaid = (int)e.NavigationParameter;
-            HttpResponseMessage response = knjigaDetaljiService.GetResponse(knjigaid + "/" + Global.prijavljeniKorisnik.Id);
+            HttpResponseMessage response = ocjenaService.GetResponse(e.NavigationParameter.ToString() + "/" + Global.prijavljeniKorisnik.Id);
 
             if (response.IsSuccessStatusCode)
             {
-                KnjigaDetaljiViewModel model = response.Content.ReadAsAsync<KnjigaDetaljiViewModel>().Result;
-                defaultViewModel["detalji"] = model;
-
-                if (model.OcjenaLogiranogKorisnika != null)
-                    ocjenaInput.Text = model.OcjenaLogiranogKorisnika + "";
-
-                if (model.IsInPolica)
-                {
-                    dodajBtn.Visibility = Visibility.Collapsed;
-                    ukloniBtn.Visibility = Visibility.Visible;
-                }
-                else
-                {
-                    dodajBtn.Visibility = Visibility.Visible;
-                    ukloniBtn.Visibility = Visibility.Collapsed;
-                }
-
-                HttpResponseMessage r = reklamaService.GetResponse();
-
-                if (r.IsSuccessStatusCode)
-                {
-                    Reklama reklama = r.Content.ReadAsAsync<Reklama>().Result;
-                    reklamaS.Source = new BitmapImage(new Uri(reklama.URL, UriKind.Absolute));
-                }
+                defaultViewModel["ocjena"] = response.Content.ReadAsAsync<OcjeniKnjiguPageViewModel>().Result;
             }
         }
 
@@ -148,72 +121,33 @@ namespace eShelves
 
         #endregion
 
-        private void ocjeneLista_ItemClick(object sender, ItemClickEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
-            KnjigaDetaljiViewModel.OcjenaInfo item = (KnjigaDetaljiViewModel.OcjenaInfo)(e.ClickedItem);
-            Frame.Navigate(typeof(OcjenaDetalji), item.OcjenaID);
-        }
+            int ocjena = ocjenacbx.SelectedIndex + 1;
+            OcjeniKnjiguPageViewModel model = (OcjeniKnjiguPageViewModel)defaultViewModel["ocjena"];
+            Ocjena o = new Ocjena();
+            o.DatumOcjene = DateTime.Now;
+            if (model.OcjenaID > 0)
+                o.Id = model.OcjenaID;
+            o.KnjigaID = model.KnjigaID;
+            o.KorisnikID = model.KorisnikID;
+            o.OcjenaIznos = model.OcjenaIznos;
+            o.Opis = model.Opis;
 
-        private void dodajBtn_Click(object sender, RoutedEventArgs e)
-        {
-            KnjigaDetaljiViewModel model = (KnjigaDetaljiViewModel)defaultViewModel["detalji"];
-            AddKnjigaToPolica dialog = new AddKnjigaToPolica(model.KnjigaID);
-            dialog.ShowAsync();
-            dialog.Closed += dialog_Closed;
-        }
+            if (opistxt.Text.Length > 0)
+                o.Opis = opistxt.Text;
+            if (ocjena > 0 && ocjena <= 5)
+                o.OcjenaIznos = ocjena;
 
-        void dialog_Closed(ContentDialog sender, ContentDialogClosedEventArgs args)
-        {
-            KnjigaDetaljiViewModel model2 = (KnjigaDetaljiViewModel)defaultViewModel["detalji"];
-
-            HttpResponseMessage response = knjigaDetaljiService.GetResponse(model2.KnjigaID + "/" + Global.prijavljeniKorisnik.Id);
+            HttpResponseMessage response = ocjenaService.PostResponse(o);
 
             if (response.IsSuccessStatusCode)
             {
-                KnjigaDetaljiViewModel model = response.Content.ReadAsAsync<KnjigaDetaljiViewModel>().Result;
-                defaultViewModel["detalji"] = model;
-
-                if (model.IsInPolica)
-                {
-                    dodajBtn.Visibility = Visibility.Collapsed;
-                    ukloniBtn.Visibility = Visibility.Visible;
-                }
-                else
-                {
-                    dodajBtn.Visibility = Visibility.Visible;
-                    ukloniBtn.Visibility = Visibility.Collapsed;
-                }
-
-                HttpResponseMessage r = reklamaService.GetResponse();
-
-                if (r.IsSuccessStatusCode)
-                {
-                    Reklama reklama = r.Content.ReadAsAsync<Reklama>().Result;
-                    reklamaS.Source = new BitmapImage(new Uri(reklama.URL, UriKind.Absolute));
-                }
-            }
-        }
-
-        private void ukloniBtn_Click(object sender, RoutedEventArgs e)
-        {
-            KnjigaDetaljiViewModel model = (KnjigaDetaljiViewModel)defaultViewModel["detalji"];
-
-            HttpResponseMessage response = btnService.GetResponse("RemoveKnjiga/" + model.PolicaID + "/" + model.KnjigaID);
-
-            if (response.IsSuccessStatusCode)
-            {
-                MessageDialog msg = new MessageDialog("Knjiga uspješno uklonjena!");
+                MessageDialog msg = new MessageDialog("Knjiga uspješno ocjenjena!");
                 msg.ShowAsync();
-                ukloniBtn.Visibility = Visibility.Collapsed;
-                dodajBtn.Visibility = Visibility.Visible;
+
+                Frame.GoBack();
             }
-        }
-
-        private void ocjenaBtn_Click(object sender, RoutedEventArgs e)
-        {
-            KnjigaDetaljiViewModel model = (KnjigaDetaljiViewModel)defaultViewModel["detalji"];
-
-            Frame.Navigate(typeof(OcjeniKnjiguPage), model.KnjigaID);
         }
     }
 }

@@ -56,7 +56,14 @@
                 <TextBlock Text="{Binding username}" FontSize="40"></TextBlock>
                 <TextBlock Text="{Binding Joined}" FontSize="20"></TextBlock>
                 <TextBlock Text="{Binding Grad}" FontSize="25"></TextBlock>
-                <Button Click="Button_Click">VIEW FRIENDS (4)</Button>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Button Click="Button_Click">VIEW FRIENDS</Button>
+                    <Button Name="addfriendbtn" Margin="5 0 0 0" Grid.Column="1" Click="Button_Click">Dodaj u prijatelje</Button>
+                </Grid>
                 <TextBlock Text="Currently reading:" FontSize="20"></TextBlock>
                 <ListView ItemsSource="{Binding CurrentlyReadingBooks}"
                                   ContinuumNavigationTransitionInfo.ExitElementContainer="True"

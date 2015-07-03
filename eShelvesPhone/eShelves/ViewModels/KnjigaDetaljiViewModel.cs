@@ -19,6 +19,7 @@ namespace eShelves.ViewModels
         public byte[] Slika { get; set; }
 
         public bool IsInPolica { get; set; }
+        public int? PolicaID { get; set; }
 
         public List<OcjenaInfo> Ocjene { get; set; }
         //naknadno skontat kako rijesit one akcije, u kojoj je polici i to

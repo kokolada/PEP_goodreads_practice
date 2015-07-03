@@ -77,9 +77,11 @@
                     </ListView.ItemTemplate>
                 </ListView>
             </ScrollViewer>
-            <ComboBox Grid.Row="2">
-            </ComboBox>
-            <Button Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center">Dodaj u policu</Button>
+            <TextBlock Text="Vaša ocjena" FontSize="18" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="2" Width="60" TextWrapping="WrapWholeWords"></TextBlock>
+            <TextBlock Name="ocjenaInput" Text="0" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="2" Width="40"></TextBlock>
+            <Button Name="ocjenaBtn" Click="ocjenaBtn_Click" Margin="0 0 10 0" HorizontalAlignment="Right" Content="Rate" Grid.Row="2" MinWidth="1" Width="auto"></Button>
+            <Button Name="dodajBtn" Click="dodajBtn_Click" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center">Dodaj u policu</Button>
+            <Button Name="ukloniBtn" Click="ukloniBtn_Click" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" Visibility="Collapsed">Ukloni iz police</Button>
         </Grid>
     </Grid>
 </Page>
