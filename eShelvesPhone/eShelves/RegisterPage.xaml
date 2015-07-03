@@ -32,7 +32,7 @@
             <TextBox Name="usernameInput" Header="username"></TextBox>
             <PasswordBox Name="passwordInput" Header="password"></PasswordBox>
 
-            <Button Name="submitButton" Content="Submit" HorizontalAlignment="Center"></Button>
+            <Button Click="Button_Click" Name="submitButton" Content="Submit" HorizontalAlignment="Center"></Button>
 
         </StackPanel>
     </ScrollViewer>
