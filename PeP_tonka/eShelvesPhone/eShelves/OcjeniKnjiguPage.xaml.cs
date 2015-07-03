@@ -139,14 +139,17 @@ namespace eShelves
             if (ocjena > 0 && ocjena <= 5)
                 o.OcjenaIznos = ocjena;
 
-            HttpResponseMessage response = ocjenaService.PostResponse(o);
-
-            if (response.IsSuccessStatusCode)
+            if (o.Opis.Length > 0 && o.OcjenaIznos > 0)
             {
-                MessageDialog msg = new MessageDialog("Knjiga uspješno ocjenjena!");
-                msg.ShowAsync();
+                HttpResponseMessage response = ocjenaService.PostResponse(o);
 
-                Frame.GoBack();
+                if (response.IsSuccessStatusCode)
+                {
+                    MessageDialog msg = new MessageDialog("Knjiga uspješno ocjenjena!");
+                    msg.ShowAsync();
+
+                    Frame.GoBack();
+                }
             }
         }
     }

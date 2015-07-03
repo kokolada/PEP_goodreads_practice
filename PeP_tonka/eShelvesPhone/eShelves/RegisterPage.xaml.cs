@@ -1,5 +1,6 @@
 ﻿using eShelves.Models;
 using eShelves.Util;
+using eShelves.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -27,6 +28,7 @@ namespace eShelves
     public sealed partial class RegisterPage : Page
     {
         WebApiHelper korisnikService = new WebApiHelper(Config.urlApi, "Korisniks");
+        WebApiHelper policaService = new WebApiHelper(Config.urlApi, "Policas");
 
         public RegisterPage()
         {
@@ -63,6 +65,19 @@ namespace eShelves
 
             if (response.IsSuccessStatusCode)
             {
+                PolicaWM p = new PolicaWM();
+                p.KorisnikID = response.Content.ReadAsAsync<Korisnik>().Result.Id;
+                p.BookCount = 0;
+
+                p.Naziv = "To Read";
+                policaService.PostResponse(p);
+
+                p.Naziv = "Currently Reading";
+                policaService.PostResponse(p);
+
+                p.Naziv = "Read";
+                policaService.PostResponse(p);
+
                 MessageDialog msg = new MessageDialog("Registracija uspješna!");
                 await msg.ShowAsync();
                 Frame.Navigate(typeof(LoginPage));
