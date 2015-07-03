@@ -45,15 +45,35 @@ namespace eShelves
 
                 return image;
             }
+            else if (value is PolicaDetaljiViewModel.KnjigaInfo)
+            {
+                if (((PolicaDetaljiViewModel.KnjigaInfo)value).Slika != null)
+                {
+                    MemoryStream ms = new MemoryStream(((PolicaDetaljiViewModel.KnjigaInfo)value).Slika);
+
+                    BitmapImage image = new BitmapImage();
+
+                    image.SetSourceAsync(ms.AsRandomAccessStream());
+
+                    return image;
+                }
+
+                return null;
+            }
             else
             {
-                MemoryStream ms = new MemoryStream(((PolicaDetaljiViewModel.KnjigaInfo)value).Slika);
+                if (((KnjigaVM)value).Slika != null)
+                {
+                    MemoryStream ms = new MemoryStream(((KnjigaVM)value).Slika);
 
-                BitmapImage image = new BitmapImage();
+                    BitmapImage image = new BitmapImage();
 
-                image.SetSourceAsync(ms.AsRandomAccessStream());
+                    image.SetSourceAsync(ms.AsRandomAccessStream());
 
-                return image;
+                    return image;
+                }
+
+                return null;
             }
         }
 

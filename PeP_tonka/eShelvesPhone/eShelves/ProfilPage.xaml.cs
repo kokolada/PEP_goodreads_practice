@@ -72,12 +72,17 @@ namespace eShelves
         /// session.  The state will be null the first time a page is visited.</param>
         private void NavigationHelper_LoadState(object sender, LoadStateEventArgs e)
         {
-            HttpResponseMessage response = profilService.GetResponse(e.NavigationParameter.ToString());
+            HttpResponseMessage response = profilService.GetResponse(e.NavigationParameter.ToString()+"/"+Global.prijavljeniKorisnik.Id);
 
             if (response.IsSuccessStatusCode)
             {
                 HubPageViewModel.ProfileInfo profil = response.Content.ReadAsAsync<HubPageViewModel.ProfileInfo>().Result;
                 defaultViewModel["profil"] = profil;
+
+                if (profil.IsFriend)
+                {
+                    addfriendbtn.Visibility = Visibility.Collapsed;
+                }
             }
         }
 

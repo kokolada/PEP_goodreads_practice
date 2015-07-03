@@ -1,5 +1,6 @@
 ﻿using eShelves.Common;
 using eShelves.Data;
+using eShelves.Dialogs;
 using eShelves.Util;
 using eShelves.ViewModels;
 using System;
@@ -38,6 +39,7 @@ namespace eShelves
         private readonly ResourceLoader resourceLoader = ResourceLoader.GetForCurrentView("Resources");
 
         WebApiHelper hubService = new WebApiHelper(Config.urlApi, "Hub");
+        WebApiHelper searchService = new WebApiHelper(Config.urlApi, "Search");
 
         public HubPage()
         {
@@ -187,7 +189,75 @@ namespace eShelves
         private void GridView_ItemClick(object sender, ItemClickEventArgs e)
         {
             HubPageViewModel.ShelvesInfo.ShelfInfo p = (HubPageViewModel.ShelvesInfo.ShelfInfo)e.ClickedItem;
-            Frame.Navigate(typeof(PolicaDetalji), p.ShelfID);
+            if(p.BookCount > 0)
+                Frame.Navigate(typeof(PolicaDetalji), p.ShelfID);
+            else
+            {
+                MessageDialog msg = new MessageDialog("Prazna polica!");
+                msg.ShowAsync();
+            }
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            NovaPolicaDialog dialog = new NovaPolicaDialog();
+            dialog.ShowAsync();
+            dialog.Closed += dialog_Closed;
+
+        }
+
+        void dialog_Closed(ContentDialog sender, ContentDialogClosedEventArgs args)
+        {
+            #region lame
+
+            HttpResponseMessage response = hubService.GetResponse(Global.prijavljeniKorisnik.Id.ToString());
+            HubPageViewModel model = new HubPageViewModel();
+
+            if (response.IsSuccessStatusCode)
+            {
+                model = new HubPageViewModel(response.Content.ReadAsAsync<HubPageViewModel>().Result);
+                defaultViewModel["BookShelves"] = model.BookShelves;
+            }
+
+            #endregion
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            if (searchInput.Text.Count() > 0)
+            {
+                HttpResponseMessage response = searchService.GetResponse(searchInput.Text.Trim());
+
+                if (response.IsSuccessStatusCode)
+                {
+                    searchLista.ItemsSource = response.Content.ReadAsAsync<List<KnjigaVM>>().Result;
+                }
+            }
+        }
+
+        private TextBox searchInput;
+        private ListView searchLista;
+
+        private void searchInput_Loaded(object sender, RoutedEventArgs e)
+        {
+            searchInput = (TextBox)sender;
+        }
+
+        private void searchLista_Loaded(object sender, RoutedEventArgs e)
+        {
+            searchLista = (ListView)sender;
+        }
+
+        private void searchLista_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            KnjigaVM item = (KnjigaVM)e.ClickedItem;
+            Frame.Navigate(typeof(KnjigaDetalji), item.Id);
+        }
+
+        private void ListView_ItemClick_1(object sender, ItemClickEventArgs e)
+        {
+            HubPageViewModel.RecommendationsInfo.BookInfo item = (HubPageViewModel.RecommendationsInfo.BookInfo)e.ClickedItem;
+            Frame.Navigate(typeof(KnjigaDetalji), item.KnjigaID);
         }
     }
 }

@@ -87,6 +87,12 @@
     <Compile Include="Common\RelayCommand.cs" />
     <Compile Include="Common\SuspensionManager.cs" />
     <Compile Include="DataModel\SampleDataSource.cs" />
+    <Compile Include="Dialogs\AddKnjigaToPolica.xaml.cs">
+      <DependentUpon>AddKnjigaToPolica.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\NovaPolicaDialog.xaml.cs">
+      <DependentUpon>NovaPolicaDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="FeedItemDetails.xaml.cs">
       <DependentUpon>FeedItemDetails.xaml</DependentUpon>
     </Compile>
@@ -116,6 +122,9 @@
     <Compile Include="OcjenaDetalji.xaml.cs">
       <DependentUpon>OcjenaDetalji.xaml</DependentUpon>
     </Compile>
+    <Compile Include="OcjeniKnjiguPage.xaml.cs">
+      <DependentUpon>OcjeniKnjiguPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="PolicaDetalji.xaml.cs">
       <DependentUpon>PolicaDetalji.xaml</DependentUpon>
     </Compile>
@@ -136,9 +145,13 @@
     <Compile Include="Util\WebApiHelper.cs" />
     <Compile Include="ViewModels\HubPageViewModel.cs" />
     <Compile Include="ViewModels\KnjigaDetaljiViewModel.cs" />
+    <Compile Include="ViewModels\KnjigaVM.cs" />
     <Compile Include="ViewModels\LogiraniKorisnik.cs" />
     <Compile Include="ViewModels\OcjenaDetaljiViewModel.cs" />
+    <Compile Include="ViewModels\OcjenaVM.cs" />
+    <Compile Include="ViewModels\OcjeniKnjiguPageViewModel.cs" />
     <Compile Include="ViewModels\PolicaDetaljiViewModel.cs" />
+    <Compile Include="ViewModels\PolicaWM.cs" />
     <Compile Include="ViewModels\PrijateljVM.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -171,6 +184,14 @@
     <PRIResource Include="Strings\en-US\Resources.resw" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Dialogs\AddKnjigaToPolica.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialogs\NovaPolicaDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="FeedItemDetails.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -192,6 +213,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="OcjenaDetalji.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="OcjeniKnjiguPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
