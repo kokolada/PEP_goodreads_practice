@@ -10,6 +10,7 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Graphics.Display;
+using Windows.UI.Popups;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -29,6 +30,7 @@ namespace eShelves
     public sealed partial class ProfilPage : Page
     {
         WebApiHelper profilService = new WebApiHelper(Config.urlApi, "PhoneProfil");
+        WebApiHelper prijateljService = new WebApiHelper(Config.urlApi, "Prijatelj");
 
         private NavigationHelper navigationHelper;
         private ObservableDictionary defaultViewModel = new ObservableDictionary();
@@ -79,7 +81,7 @@ namespace eShelves
                 HubPageViewModel.ProfileInfo profil = response.Content.ReadAsAsync<HubPageViewModel.ProfileInfo>().Result;
                 defaultViewModel["profil"] = profil;
 
-                if (profil.IsFriend)
+                if (profil.IsFriend || profil.KorisnikID == Global.prijavljeniKorisnik.Id)
                 {
                     addfriendbtn.Visibility = Visibility.Collapsed;
                 }
@@ -135,6 +137,21 @@ namespace eShelves
         {
             HubPageViewModel.ProfileInfo.BookInfo item = (HubPageViewModel.ProfileInfo.BookInfo)e.ClickedItem;
             Frame.Navigate(typeof(KnjigaDetalji), item.KnjigaID);
+        }
+
+        private void addfriendbtn_Click(object sender, RoutedEventArgs e)
+        {
+            HubPageViewModel.ProfileInfo profil = (HubPageViewModel.ProfileInfo)defaultViewModel["profil"];
+
+            HttpResponseMessage response = prijateljService.GetResponse(profil.KorisnikID + "/" + Global.prijavljeniKorisnik.Id);
+
+            if (response.IsSuccessStatusCode)
+            {
+                MessageDialog msg = new MessageDialog("Prijatelj uspješno dodan!");
+                msg.ShowAsync();
+
+                Frame.Navigate(typeof(ProfilPage), profil.KorisnikID);
+            }
         }
     }
 }

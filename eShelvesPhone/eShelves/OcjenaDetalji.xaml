@@ -25,7 +25,7 @@
         <!-- Title Panel -->
         <StackPanel Grid.Row="0" Margin="19,0,0,0">
             <TextBlock Text="eShelves" Style="{ThemeResource TitleTextBlockStyle}" Margin="0,12,0,0"/>
-            <TextBlock Text="Detalji" Margin="0,-6.5,0,26.5" Style="{ThemeResource HeaderTextBlockStyle}" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}"/>
+            <TextBlock Text="Ocjena" Margin="0,-6.5,0,26.5" Style="{ThemeResource HeaderTextBlockStyle}" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}"/>
         </StackPanel>
 
         <!--TODO: Content should be placed within the following grid-->
@@ -36,7 +36,7 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="40"></RowDefinition>
                 <RowDefinition Height="150"></RowDefinition>
-                <RowDefinition Height="60"></RowDefinition>
+                <RowDefinition Height="10"></RowDefinition>
                 <RowDefinition></RowDefinition>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
@@ -44,18 +44,46 @@
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <Image DataContext="{Binding Knjiga}" Source="{Binding Converter={StaticResource ImageConverter}}" Height="150" Width="150" Stretch="UniformToFill" Grid.Row="1" Grid.Column="0"></Image>
-            <TextBlock Name="naslovKnjige" Grid.ColumnSpan="2" Text="{Binding Knjiga.Naslov}" FontSize="30"></TextBlock>
+            <TextBlock Name="naslovKnjige" Grid.ColumnSpan="2" Tapped="naslovKnjige_Tapped" Text="{Binding Knjiga.Naslov}" FontSize="30"></TextBlock>
             <StackPanel Grid.Column="1" Margin="5 0 0 0" Grid.Row="1">
                 <TextBlock Name="autor" Text="{Binding Knjiga.Autor}" FontSize="20"></TextBlock>
-                <TextBlock Name="isbn" Text="{Binding Knjiga.ISBN}" FontSize="20"></TextBlock>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="ISBN:" FontSize="20"></TextBlock>
+                    <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="5 0 0 0" Name="isbn" Text="{Binding Knjiga.ISBN}" FontSize="20"></TextBlock>
+                </Grid>
                 <TextBlock Name="objavljena" Text="{Binding Knjiga.Objavljena}" FontSize="20"></TextBlock>
-                <TextBlock Name="prosjecnaocjena" Text="{Binding Knjiga.ProsjecnaOcjena}" FontSize="20"></TextBlock>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="Prosječna ocjena:" FontSize="20"></TextBlock>
+                    <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="5 0 0 0" Name="prosjecnaocjena" Text="{Binding Knjiga.ProsjecnaOcjena}" FontSize="20"></TextBlock>
+                </Grid>
             </StackPanel>
-            <StackPanel Grid.ColumnSpan="2" Grid.Row="3">
-                <TextBlock Name="username" Text="{Binding username}"></TextBlock>
-                <TextBlock Name="ocjena" Text="{Binding Ocjena}"></TextBlock>
+            <StackPanel Grid.ColumnSpan="2" Grid.Row="3" Background="DarkSlateGray">
+                <Grid Margin="5 0 0 0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="Ocjenio:" Style="{StaticResource MessageDialogTitleStyle}"></TextBlock>
+                    <TextBlock Grid.Column="1" Tapped="username_Tapped" HorizontalAlignment="Left" Margin="5 0 0 0" Style="{StaticResource MessageDialogTitleStyle}" Name="username" Text="{Binding username}"></TextBlock>
+                </Grid>
+                <Grid Margin="5 0 0 0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="Ocjena:" FontSize="20"></TextBlock>
+                    <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="5 0 0 0" Name="ocjena" Text="{Binding Ocjena}" FontSize="20"></TextBlock>
+                </Grid>
                 <ScrollViewer>
-                    <TextBlock Text="{Binding Opis}" Name="Opis"></TextBlock>
+                    <TextBlock Margin="5 10 0 0" Style="{StaticResource BaseTextBlockStyle}" Text="{Binding Opis}" Name="Opis"></TextBlock>
                 </ScrollViewer>
             </StackPanel>
         </Grid>

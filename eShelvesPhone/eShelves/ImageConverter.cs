@@ -60,11 +60,41 @@ namespace eShelves
 
                 return null;
             }
-            else
+            else if(value is KnjigaVM)
             {
                 if (((KnjigaVM)value).Slika != null)
                 {
                     MemoryStream ms = new MemoryStream(((KnjigaVM)value).Slika);
+
+                    BitmapImage image = new BitmapImage();
+
+                    image.SetSourceAsync(ms.AsRandomAccessStream());
+
+                    return image;
+                }
+
+                return null;
+            }
+            else if (value is HubPageViewModel.RecommendationsInfo.BookInfo)
+            {
+                if (((HubPageViewModel.RecommendationsInfo.BookInfo)value).Slika != null)
+                {
+                    MemoryStream ms = new MemoryStream(((HubPageViewModel.RecommendationsInfo.BookInfo)value).Slika);
+
+                    BitmapImage image = new BitmapImage();
+
+                    image.SetSourceAsync(ms.AsRandomAccessStream());
+
+                    return image;
+                }
+
+                return null;
+            }
+            else
+            {
+                if (((HubPageViewModel.FeedInfo.FeedItemInfo)value).Slika != null)
+                {
+                    MemoryStream ms = new MemoryStream(((HubPageViewModel.FeedInfo.FeedItemInfo)value).Slika);
 
                     BitmapImage image = new BitmapImage();
 

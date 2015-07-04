@@ -42,6 +42,7 @@ namespace eShelves.ViewModels
                 public int FeedItemID { get; set; }
                 public string EventDescription { get; set; }
                 public string EventInformation { get; set; }
+                public string Autor { get; set; }
                 public byte[] Slika { get; set; }
                 public bool IsOcjena { get; set; }
                 public int KnjigaID { get; set; }
@@ -68,6 +69,8 @@ namespace eShelves.ViewModels
             public string username { get; set; }
             public string Grad { get; set; }
             public DateTime Joined { get; set; }
+            public string ImePrezime { get; set; }
+            public string Email { get; set; }
 
             public bool IsFriend { get; set; }
 

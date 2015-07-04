@@ -49,9 +49,24 @@
             <TextBlock Name="naslovKnjige" Grid.ColumnSpan="2" Text="{Binding Naslov}" FontSize="30"></TextBlock>
             <StackPanel Grid.Column="1" Margin="5 0 0 0" Grid.Row="1">
                 <TextBlock Name="autor" Text="{Binding Autor}" FontSize="20"></TextBlock>
-                <TextBlock Name="isbn" Text="{Binding ISBN}" FontSize="20"></TextBlock>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="ISBN:" FontSize="20"></TextBlock>
+                    <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="5 0 0 0" Name="isbn" Text="{Binding ISBN}" FontSize="20"></TextBlock>
+                </Grid>
+                
                 <TextBlock Name="objavljena" Text="{Binding Objavljena}" FontSize="20"></TextBlock>
-                <TextBlock Name="prosjecnaocjena" Text="{Binding ProsjecnaOcjena}" FontSize="20"></TextBlock>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="Prosječna ocjena:" FontSize="20"></TextBlock>
+                    <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="5 0 0 0" Name="prosjecnaocjena" Text="{Binding ProsjecnaOcjena}" FontSize="20"></TextBlock>
+                </Grid>
             </StackPanel>
             <ScrollViewer  Grid.ColumnSpan="2" Grid.Row="4">
                 <ListView Name="ocjeneLista"
@@ -62,16 +77,24 @@
                       ContinuumNavigationTransitionInfo.ExitElementContainer="True">
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <StackPanel Margin="0 0 0 10" Background="MidnightBlue">
-                                <Grid>
-                                    <TextBlock Text="Ocjenio: "></TextBlock>
-                                    <TextBlock Margin="50 0 0 0" Text="{Binding username}"></TextBlock>
+                            <StackPanel Width="350" Margin="0 0 0 5" Background="DimGray">
+                                <Grid Margin="5 0 0 0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                        <ColumnDefinition></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Text="Ocjenio: " Style="{StaticResource ListViewItemContentTextBlockStyle}"></TextBlock>
+                                    <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="5 0 0 0" Text="{Binding username}" Style="{StaticResource ListViewItemContentTextBlockStyle}"></TextBlock>
                                 </Grid>
-                                <Grid>
-                                    <TextBlock Text="Ocjena: "></TextBlock>
-                                    <TextBlock Margin="50 0 0 0" Text="{Binding Ocjena}"></TextBlock>
+                                <Grid  Margin="5 0 0 0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                        <ColumnDefinition></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Style="{StaticResource ListViewItemContentTextBlockStyle}" Text="Ocjena: "></TextBlock>
+                                    <TextBlock Style="{StaticResource ListViewItemContentTextBlockStyle}" Grid.Column="1" HorizontalAlignment="Left" Margin="5 0 0 0" Text="{Binding Ocjena}"></TextBlock>
                                 </Grid>
-                                <TextBlock Text="{Binding Opis}"></TextBlock>
+                                <TextBlock Margin="5 0 0 0" Style="{StaticResource ListViewItemSubheaderTextBlockStyle}" Text="{Binding Opis}"></TextBlock>
                             </StackPanel>
                         </DataTemplate>
                     </ListView.ItemTemplate>
