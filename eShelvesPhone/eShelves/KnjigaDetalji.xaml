@@ -48,7 +48,7 @@
             <Image Source="{Binding Converter={StaticResource ImageConverter}}" Height="150" Width="150" Stretch="UniformToFill" Grid.Row="1" Grid.Column="0"></Image>
             <TextBlock Name="naslovKnjige" Grid.ColumnSpan="2" Text="{Binding Naslov}" FontSize="30"></TextBlock>
             <StackPanel Grid.Column="1" Margin="5 0 0 0" Grid.Row="1">
-                <TextBlock Name="autor" Text="{Binding Autor}" FontSize="20"></TextBlock>
+                <TextBlock Name="autor" Foreground="DeepSkyBlue" Tapped="autor_Tapped" Text="{Binding Autor}" FontSize="20"></TextBlock>
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"></ColumnDefinition>
@@ -83,7 +83,7 @@
                                         <ColumnDefinition Width="Auto"></ColumnDefinition>
                                         <ColumnDefinition></ColumnDefinition>
                                     </Grid.ColumnDefinitions>
-                                    <TextBlock Text="Ocjenio: " Style="{StaticResource ListViewItemContentTextBlockStyle}"></TextBlock>
+                                    <TextBlock FontWeight="Bold" Text="Ocjenio: " Style="{StaticResource ListViewItemContentTextBlockStyle}"></TextBlock>
                                     <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="5 0 0 0" Text="{Binding username}" Style="{StaticResource ListViewItemContentTextBlockStyle}"></TextBlock>
                                 </Grid>
                                 <Grid  Margin="5 0 0 0">
@@ -91,7 +91,7 @@
                                         <ColumnDefinition Width="Auto"></ColumnDefinition>
                                         <ColumnDefinition></ColumnDefinition>
                                     </Grid.ColumnDefinitions>
-                                    <TextBlock Style="{StaticResource ListViewItemContentTextBlockStyle}" Text="Ocjena: "></TextBlock>
+                                    <TextBlock Style="{StaticResource ListViewItemContentTextBlockStyle}" FontWeight="Bold" Text="Ocjena: "></TextBlock>
                                     <TextBlock Style="{StaticResource ListViewItemContentTextBlockStyle}" Grid.Column="1" HorizontalAlignment="Left" Margin="5 0 0 0" Text="{Binding Ocjena}"></TextBlock>
                                 </Grid>
                                 <TextBlock Margin="5 0 0 0" Style="{StaticResource ListViewItemSubheaderTextBlockStyle}" Text="{Binding Opis}"></TextBlock>

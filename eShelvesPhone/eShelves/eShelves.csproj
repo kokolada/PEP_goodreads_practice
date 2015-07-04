@@ -82,6 +82,9 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AutorPage.xaml.cs">
+      <DependentUpon>AutorPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Common\NavigationHelper.cs" />
     <Compile Include="Common\ObservableDictionary.cs" />
     <Compile Include="Common\RelayCommand.cs" />
@@ -143,6 +146,7 @@
     </Compile>
     <Compile Include="Util\Config.cs" />
     <Compile Include="Util\WebApiHelper.cs" />
+    <Compile Include="ViewModels\AutorPageViewModel.cs" />
     <Compile Include="ViewModels\HubPageViewModel.cs" />
     <Compile Include="ViewModels\KnjigaDetaljiViewModel.cs" />
     <Compile Include="ViewModels\KnjigaVM.cs" />
@@ -184,6 +188,10 @@
     <PRIResource Include="Strings\en-US\Resources.resw" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="AutorPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Dialogs\AddKnjigaToPolica.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
