@@ -39,7 +39,7 @@
                     <TextBlock VerticalAlignment="Center" Text="Trenutna ocjena: " FontSize="20"></TextBlock>
                     <TextBlock Grid.Column="1" FontSize="30" HorizontalAlignment="Left" Text="{Binding OcjenaIznos}"></TextBlock>
                 </Grid>
-                <ComboBox Name="ocjenacbx" Header="Ocjena">
+                <ComboBox PlaceholderText="odaberi ocjenu" Name="ocjenacbx" Header="Ocjena">
                     <ComboBoxItem Content="ocjena 1"></ComboBoxItem>
                     <ComboBoxItem Content="ocjena 2"></ComboBoxItem>
                     <ComboBoxItem Content="ocjena 3"></ComboBoxItem>
