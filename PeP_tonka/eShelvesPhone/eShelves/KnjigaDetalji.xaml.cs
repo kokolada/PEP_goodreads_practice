@@ -215,5 +215,12 @@ namespace eShelves
 
             Frame.Navigate(typeof(OcjeniKnjiguPage), model.KnjigaID);
         }
+
+        private void autor_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            KnjigaDetaljiViewModel model = (KnjigaDetaljiViewModel)defaultViewModel["detalji"];
+
+            Frame.Navigate(typeof(AutorPage), model.AutorID);
+        }
     }
 }

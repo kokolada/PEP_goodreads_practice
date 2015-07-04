@@ -46,7 +46,7 @@
             <Image DataContext="{Binding Knjiga}" Source="{Binding Converter={StaticResource ImageConverter}}" Height="150" Width="150" Stretch="UniformToFill" Grid.Row="1" Grid.Column="0"></Image>
             <TextBlock Name="naslovKnjige" Grid.ColumnSpan="2" Tapped="naslovKnjige_Tapped" Text="{Binding Knjiga.Naslov}" FontSize="30"></TextBlock>
             <StackPanel Grid.Column="1" Margin="5 0 0 0" Grid.Row="1">
-                <TextBlock Name="autor" Text="{Binding Knjiga.Autor}" FontSize="20"></TextBlock>
+                <TextBlock Name="autor" Foreground="DeepSkyBlue" Tapped="autor_Tapped" Text="{Binding Knjiga.Autor}" FontSize="20"></TextBlock>
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"></ColumnDefinition>
@@ -72,7 +72,7 @@
                         <ColumnDefinition></ColumnDefinition>
                     </Grid.ColumnDefinitions>
                     <TextBlock Text="Ocjenio:" Style="{StaticResource MessageDialogTitleStyle}"></TextBlock>
-                    <TextBlock Grid.Column="1" Tapped="username_Tapped" HorizontalAlignment="Left" Margin="5 0 0 0" Style="{StaticResource MessageDialogTitleStyle}" Name="username" Text="{Binding username}"></TextBlock>
+                    <TextBlock Grid.Column="1" Foreground="DeepSkyBlue" Tapped="username_Tapped" HorizontalAlignment="Left" Margin="5 0 0 0" Style="{StaticResource MessageDialogTitleStyle}" Name="username" Text="{Binding username}"></TextBlock>
                 </Grid>
                 <Grid Margin="5 0 0 0">
                     <Grid.ColumnDefinitions>

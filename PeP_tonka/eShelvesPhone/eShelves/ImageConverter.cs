@@ -90,11 +90,26 @@ namespace eShelves
 
                 return null;
             }
-            else
+            else if (value is HubPageViewModel.FeedInfo.FeedItemInfo)
             {
                 if (((HubPageViewModel.FeedInfo.FeedItemInfo)value).Slika != null)
                 {
                     MemoryStream ms = new MemoryStream(((HubPageViewModel.FeedInfo.FeedItemInfo)value).Slika);
+
+                    BitmapImage image = new BitmapImage();
+
+                    image.SetSourceAsync(ms.AsRandomAccessStream());
+
+                    return image;
+                }
+
+                return null;
+            }
+            else
+            {
+                if (((AutorPageViewModel.KnjigaInfo)value).Slika != null)
+                {
+                    MemoryStream ms = new MemoryStream(((AutorPageViewModel.KnjigaInfo)value).Slika);
 
                     BitmapImage image = new BitmapImage();
 

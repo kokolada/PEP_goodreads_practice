@@ -1,5 +1,4 @@
 ﻿using eShelves.Common;
-using eShelves.Models;
 using eShelves.Util;
 using eShelves.ViewModels;
 using System;
@@ -27,14 +26,14 @@ namespace eShelves
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class OcjenaDetalji : Page
+    public sealed partial class AutorPage : Page
     {
-        WebApiHelper ocjenaService = new WebApiHelper(Config.urlApi, "Ocjenas");
-
         private NavigationHelper navigationHelper;
         private ObservableDictionary defaultViewModel = new ObservableDictionary();
 
-        public OcjenaDetalji()
+        WebApiHelper autorService = new WebApiHelper(Config.urlApi, "AutorPhone");
+
+        public AutorPage()
         {
             this.InitializeComponent();
 
@@ -73,11 +72,11 @@ namespace eShelves
         /// session.  The state will be null the first time a page is visited.</param>
         private void NavigationHelper_LoadState(object sender, LoadStateEventArgs e)
         {
-            HttpResponseMessage response = ocjenaService.GetResponse("Ocjena/"+e.NavigationParameter.ToString());
+            HttpResponseMessage response = autorService.GetResponse(e.NavigationParameter.ToString());
 
             if (response.IsSuccessStatusCode)
             {
-                defaultViewModel["ocjena"] = response.Content.ReadAsAsync<OcjenaDetaljiViewModel>().Result;
+                defaultViewModel["autor"] = response.Content.ReadAsAsync<AutorPageViewModel>().Result;
             }
         }
 
@@ -120,22 +119,15 @@ namespace eShelves
 
         #endregion
 
-        private void username_Tapped(object sender, TappedRoutedEventArgs e)
+        private void ListView_ItemClick(object sender, ItemClickEventArgs e)
         {
-            OcjenaDetaljiViewModel model = (OcjenaDetaljiViewModel)defaultViewModel["ocjena"];
-            Frame.Navigate(typeof(ProfilPage), model.KorisnikID);
+            AutorPageViewModel.KnjigaInfo item = (AutorPageViewModel.KnjigaInfo)e.ClickedItem;
+            Frame.Navigate(typeof(KnjigaDetalji), item.KnjigaID);
         }
 
-        private void naslovKnjige_Tapped(object sender, TappedRoutedEventArgs e)
+        private void TextBlock_Tapped(object sender, TappedRoutedEventArgs e)
         {
-            OcjenaDetaljiViewModel model = (OcjenaDetaljiViewModel)defaultViewModel["ocjena"];
-            Frame.Navigate(typeof(KnjigaDetalji), model.Knjiga.KnjigaID);
-        }
-
-        private void autor_Tapped(object sender, TappedRoutedEventArgs e)
-        {
-            OcjenaDetaljiViewModel model = (OcjenaDetaljiViewModel)defaultViewModel["ocjena"];
-            Frame.Navigate(typeof(AutorPage), model.Knjiga.AutorID);
+            Windows.System.Launcher.LaunchUriAsync(new Uri("uc-url:"+wsite.Text));
         }
     }
 }
