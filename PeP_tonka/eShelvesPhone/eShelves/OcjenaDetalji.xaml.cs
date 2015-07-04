@@ -119,5 +119,17 @@ namespace eShelves
         }
 
         #endregion
+
+        private void username_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            OcjenaDetaljiViewModel model = (OcjenaDetaljiViewModel)defaultViewModel["ocjena"];
+            Frame.Navigate(typeof(ProfilPage), model.KorisnikID);
+        }
+
+        private void naslovKnjige_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            OcjenaDetaljiViewModel model = (OcjenaDetaljiViewModel)defaultViewModel["ocjena"];
+            Frame.Navigate(typeof(KnjigaDetalji), model.Knjiga.KnjigaID);
+        }
     }
 }

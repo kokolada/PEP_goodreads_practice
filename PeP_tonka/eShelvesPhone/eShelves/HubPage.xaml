@@ -25,18 +25,21 @@
 
         <DataTemplate x:Key="StandardTripleLineItemTemplate">
             <Grid>
+                <Grid.Resources>
+                    <local:ImageConverter x:Key="ImageConverter"></local:ImageConverter>
+                </Grid.Resources>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
                 <Border Background="{ThemeResource ListViewItemPlaceholderBackgroundThemeBrush}" Margin="0,9.5,0,0" Grid.Column="0" HorizontalAlignment="Left">
-                    <Image Source="{Binding ImagePath}" Stretch="UniformToFill" AutomationProperties.Name="{Binding Title}" Height="79" Width="79"/>
+                    <Image Source="{Binding Converter={StaticResource ImageConverter}}" Stretch="UniformToFill" AutomationProperties.Name="{Binding Title}" Height="79" Width="79"/>
                 </Border>
                 <StackPanel Grid.Column="1" Margin="14.5,0,0,0">
                     <TextBlock Text="{Binding EventDescription}" Style="{ThemeResource ListViewItemTextBlockStyle}"/>
-                    <TextBlock Text="{Binding EventDescription}" Style="{ThemeResource ListViewItemContentTextBlockStyle}" Foreground="{ThemeResource PhoneMidBrush}" />
-                    <TextBlock Text="{Binding EventInformation}" Style="{ThemeResource ListViewItemSubheaderTextBlockStyle}" />
+                    <TextBlock Text="{Binding EventInformation}" Style="{ThemeResource ListViewItemContentTextBlockStyle}" Foreground="{ThemeResource PhoneMidBrush}" />
+                    <TextBlock Text="{Binding Autor}" Style="{ThemeResource ListViewItemSubheaderTextBlockStyle}" />
                 </StackPanel>
             </Grid>
         </DataTemplate>
@@ -61,15 +64,38 @@
             </Grid>
         </DataTemplate>
 
-        <DataTemplate x:Key="StandardDoubleLineItemTemplate">
+        <DataTemplate x:Key="SearchTemplate">
             <Grid>
+                <Grid.Resources>
+                    <local:ImageConverter x:Key="ImageConverter"></local:ImageConverter>
+                </Grid.Resources>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
                 <Border Background="{ThemeResource ListViewItemPlaceholderBackgroundThemeBrush}" Margin="0,9.5,0,0" Grid.Column="0" HorizontalAlignment="Left">
-                    <Image Source="{Binding ImagePath}" Stretch="UniformToFill" AutomationProperties.Name="{Binding Naslov}" Height="79" Width="79"/>
+                    <Image Source="{Binding Converter={StaticResource ImageConverter}}" Stretch="UniformToFill" Height="79" Width="79"/>
+                </Border>
+                <StackPanel Grid.Column="1" Margin="14.5,0,0,0">
+                    <TextBlock Text="{Binding Naslov}" Style="{ThemeResource ListViewItemTextBlockStyle}"/>
+                    <TextBlock Text="{Binding NazivAutora}" Style="{ThemeResource ListViewItemContentTextBlockStyle}" Foreground="{ThemeResource PhoneMidBrush}" />
+                </StackPanel>
+            </Grid>
+        </DataTemplate>
+
+        <DataTemplate x:Key="StandardDoubleLineItemTemplate">
+            <Grid>
+                <Grid.Resources>
+                    <local:ImageConverter x:Key="ImageConverter"></local:ImageConverter>
+                </Grid.Resources>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Border Background="{ThemeResource ListViewItemPlaceholderBackgroundThemeBrush}" Margin="0,9.5,0,0" Grid.Column="0" HorizontalAlignment="Left">
+                    <Image Source="{Binding Converter={StaticResource ImageConverter}}" Stretch="UniformToFill" AutomationProperties.Name="{Binding Naslov}" Height="79" Width="79"/>
                 </Border>
                 <StackPanel Grid.Column="1" Margin="14.5,0,0,0">
                     <TextBlock Text="{Binding Naslov}" Style="{ThemeResource ListViewItemTextBlockStyle}"/>
@@ -131,8 +157,17 @@
                 <DataTemplate>
                     <StackPanel>
                         <TextBlock Text="{Binding username}" FontSize="40"></TextBlock>
+                        <TextBlock Text="{Binding ImePrezime}" FontSize="30"></TextBlock>
+                        <TextBlock Text="{Binding Email}" FontSize="20"></TextBlock>
                         <TextBlock Text="{Binding Joined}" FontSize="20"></TextBlock>
-                        <TextBlock Text="{Binding Grad}" FontSize="25"></TextBlock>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="From: " FontSize="25"></TextBlock>
+                            <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="5 0 0 0" Text="{Binding Grad}" FontSize="25"></TextBlock>
+                        </Grid>
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="Auto"></ColumnDefinition>
@@ -184,7 +219,7 @@
                             <ListView Name="searchLista"
                                       Loaded="searchLista_Loaded"
                                   ContinuumNavigationTransitionInfo.ExitElementContainer="True"
-                                  ItemTemplate="{StaticResource CurrentlyReadingTemplate}"
+                                  ItemTemplate="{StaticResource SearchTemplate}"
                                   ItemClick="searchLista_ItemClick"
                                   IsItemClickEnabled="True">
                             </ListView>

@@ -42,7 +42,15 @@
                 <StackPanel Grid.Column="1" Margin="14.5,0,0,0">
                     <TextBlock Text="{Binding Naslov}" Style="{ThemeResource ListViewItemTextBlockStyle}"/>
                     <TextBlock Text="{Binding Autor}" Style="{ThemeResource ListViewItemContentTextBlockStyle}" Foreground="{ThemeResource PhoneMidBrush}" />
-                    <TextBlock Text="{Binding ProsjecnaOcjena}" Style="{ThemeResource ListViewItemSubheaderTextBlockStyle}" />
+                    
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="Prosječna ocjena: " Style="{ThemeResource ListViewItemSubheaderTextBlockStyle}"></TextBlock>
+                        <TextBlock HorizontalAlignment="Left" Margin="5 0 0 0" Grid.Column="1" Text="{Binding ProsjecnaOcjena}" Style="{ThemeResource ListViewItemSubheaderTextBlockStyle}" />
+                    </Grid>
                 </StackPanel>
             </Grid>
         </DataTemplate>
