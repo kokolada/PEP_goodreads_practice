@@ -67,6 +67,7 @@
                     <TextBlock Text="Prosječna ocjena:" FontSize="20"></TextBlock>
                     <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="5 0 0 0" Name="prosjecnaocjena" Text="{Binding ProsjecnaOcjena}" FontSize="20"></TextBlock>
                 </Grid>
+                <TextBlock TextWrapping="Wrap" Text="{Binding Kategorije}" FontSize="20"></TextBlock>
             </StackPanel>
             <ScrollViewer  Grid.ColumnSpan="2" Grid.Row="4">
                 <ListView Name="ocjeneLista"

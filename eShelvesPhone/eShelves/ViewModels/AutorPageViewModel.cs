@@ -14,6 +14,7 @@ namespace eShelves.ViewModels
         public string Grad { get; set; }
         public string WebStranica { get; set; }
         public string Opis { get; set; }
+        public string Kategorije { get; set; }
 
         public List<KnjigaInfo> Knjige { get; set; }
 
