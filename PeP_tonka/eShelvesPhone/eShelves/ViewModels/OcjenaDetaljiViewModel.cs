@@ -27,6 +27,7 @@ namespace eShelves.ViewModels
             public DateTime Objavljena { get; set; }
             public float ProsjecnaOcjena { get; set; }
             public byte[] Slika { get; set; }
+            public string Kategorije { get; set; }
         }
     }
 }

@@ -71,6 +71,7 @@
                         <TextBlock Style="{StaticResource ListViewItemContentTextBlockStyle}" FontWeight="Bold" Text="Grad: "></TextBlock>
                         <TextBlock Style="{StaticResource ListViewItemContentTextBlockStyle}" Text="{Binding Grad}" HorizontalAlignment="Left" Grid.Column="1"></TextBlock>
                     </Grid>
+                    <TextBlock TextWrapping="Wrap" Text="{Binding Kategorije}" FontSize="20"></TextBlock>
                     <TextBlock Style="{StaticResource ListViewItemContentTextBlockStyle}" Name="wsite" Text="{Binding WebStranica}" Tapped="TextBlock_Tapped"></TextBlock>
                     <TextBlock Style="{StaticResource ListViewItemContentTextBlockStyle}" Text="{Binding Opis}" Height="Auto" TextWrapping="Wrap"></TextBlock>
                     <TextBlock Margin="0 10 0 0" Text="Books:" FontSize="20"></TextBlock>
