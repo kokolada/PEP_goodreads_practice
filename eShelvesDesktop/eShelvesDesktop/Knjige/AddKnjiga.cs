@@ -149,6 +149,10 @@ namespace eShelvesDesktop
             pictureBox.Image = null;
             opisInput.Text = "";
             kategorijeListBox.SelectedItems.Clear();
+            for (int j = 0; j < kategorijeListBox.Items.Count; j++)
+            {
+                kategorijeListBox.SetItemCheckState(j, CheckState.Unchecked);
+            }
         }
 
         private void dodajButton_Click(object sender, EventArgs e)
