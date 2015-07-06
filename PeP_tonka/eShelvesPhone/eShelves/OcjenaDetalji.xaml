@@ -44,7 +44,7 @@
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <Image DataContext="{Binding Knjiga}" Source="{Binding Converter={StaticResource ImageConverter}}" Height="150" Width="150" Stretch="UniformToFill" Grid.Row="1" Grid.Column="0"></Image>
-            <TextBlock Name="naslovKnjige" Grid.ColumnSpan="2" Tapped="naslovKnjige_Tapped" Text="{Binding Knjiga.Naslov}" FontSize="30"></TextBlock>
+            <TextBlock Foreground="DeepSkyBlue" Name="naslovKnjige" Grid.ColumnSpan="2" Tapped="naslovKnjige_Tapped" Text="{Binding Knjiga.Naslov}" FontSize="30"></TextBlock>
             <StackPanel Grid.Column="1" Margin="5 0 0 0" Grid.Row="1">
                 <TextBlock Name="autor" Foreground="DeepSkyBlue" Tapped="autor_Tapped" Text="{Binding Knjiga.Autor}" FontSize="20"></TextBlock>
                 <Grid>
