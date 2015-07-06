@@ -83,11 +83,11 @@
             this.Email,
             this.created_at});
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 63);
+            this.dataGridView1.Location = new System.Drawing.Point(0, 59);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(908, 474);
+            this.dataGridView1.Size = new System.Drawing.Size(768, 410);
             this.dataGridView1.TabIndex = 3;
             this.dataGridView1.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentDoubleClick);
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
@@ -137,7 +137,7 @@
             // newButton
             // 
             this.newButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.newButton.Location = new System.Drawing.Point(783, 13);
+            this.newButton.Location = new System.Drawing.Point(641, 13);
             this.newButton.Name = "newButton";
             this.newButton.Size = new System.Drawing.Size(113, 38);
             this.newButton.TabIndex = 4;
@@ -149,7 +149,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(908, 537);
+            this.ClientSize = new System.Drawing.Size(768, 469);
             this.Controls.Add(this.newButton);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.traziButton);
