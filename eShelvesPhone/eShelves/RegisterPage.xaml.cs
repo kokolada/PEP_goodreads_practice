@@ -47,56 +47,79 @@ namespace eShelves
 
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
-            HttpResponseMessage uq = usernameService.GetResponse(usernameInput.Text.Trim());
-            if (uq.Content.ReadAsAsync<bool>().Result == true)
+            if (usernameInput.Text.Length == 0)
             {
-                Korisnik k = new Korisnik();
-                k.created_at = DateTime.Now;
-                k.Email = emailInput.Text;
-                k.Grad = gradInput.Text;
-                k.Ime = imeInput.Text;
-                k.password = passwordInput.Password;
-                k.Prezime = prezimeInput.Text;
-                if (muskoRB.IsChecked == true)
-                    k.Spol = "M";
-                else if (zenskoRB.IsChecked == true)
-                    k.Spol = "Z";
-                else
-                    k.Spol = "M";
-                k.username = usernameInput.Text;
-
-                HttpResponseMessage response = korisnikService.PostResponse(k);
-
-                if (response.IsSuccessStatusCode)
-                {
-                    PolicaWM p = new PolicaWM();
-                    p.KorisnikID = response.Content.ReadAsAsync<Korisnik>().Result.Id;
-                    p.BookCount = 0;
-
-                    p.Naziv = "To Read";
-                    policaService.PostResponse(p);
-
-                    p.Naziv = "Currently Reading";
-                    policaService.PostResponse(p);
-
-                    p.Naziv = "Read";
-                    policaService.PostResponse(p);
-
-                    MessageDialog msg = new MessageDialog("Registracija uspješna!");
-                    await msg.ShowAsync();
-                    Frame.Navigate(typeof(LoginPage));
-                }
-                else
-                {
-                    MessageDialog msg = new MessageDialog("Registracija nije uspješna!");
-                    await msg.ShowAsync();
-                    Frame.Navigate(typeof(LoginPage));
-                }
+                MessageDialog msg = new MessageDialog("Username je obavezno!");
+                await msg.ShowAsync();
             }
             else
             {
-                MessageDialog msg = new MessageDialog("Username već postoji!");
-                await msg.ShowAsync();
+                HttpResponseMessage uq = usernameService.GetResponse(usernameInput.Text.Trim());
+                if (uq.Content.ReadAsAsync<bool>().Result == true)
+                {
+                    bool IsValid = true;
+
+                    if (emailInput.Text.Length == 0 || gradInput.Text.Length == 0 || passwordInput.Password.Length == 0 || prezimeInput.Text.Length == 0 || imeInput.Text.Length == 0)
+                        IsValid = false;
+                    if (emailInput.Text.Contains('@') == false)
+                        IsValid = false;
+
+                    if (IsValid)
+                    {
+                        Korisnik k = new Korisnik();
+                        k.created_at = DateTime.Now;
+                        k.Email = emailInput.Text;
+                        k.Grad = gradInput.Text;
+                        k.Ime = imeInput.Text;
+                        k.password = passwordInput.Password;
+                        k.Prezime = prezimeInput.Text;
+                        if (muskoRB.IsChecked == true)
+                            k.Spol = "M";
+                        else if (zenskoRB.IsChecked == true)
+                            k.Spol = "Z";
+                        else
+                            k.Spol = "M";
+                        k.username = usernameInput.Text;
+
+                        HttpResponseMessage response = korisnikService.PostResponse(k);
+
+                        if (response.IsSuccessStatusCode)
+                        {
+                            PolicaWM p = new PolicaWM();
+                            p.KorisnikID = response.Content.ReadAsAsync<Korisnik>().Result.Id;
+                            p.BookCount = 0;
+
+                            p.Naziv = "To Read";
+                            policaService.PostResponse(p);
+
+                            p.Naziv = "Currently Reading";
+                            policaService.PostResponse(p);
+
+                            p.Naziv = "Read";
+                            policaService.PostResponse(p);
+
+                            MessageDialog msg = new MessageDialog("Registracija uspješna!");
+                            await msg.ShowAsync();
+                            Frame.Navigate(typeof(LoginPage));
+                        }
+                        else
+                        {
+                            MessageDialog msg = new MessageDialog("Registracija nije uspješna!");
+                            await msg.ShowAsync();
+                            Frame.Navigate(typeof(LoginPage));
+                        }
+                    }
+                    else
+                    {
+                        MessageDialog msg = new MessageDialog("Sva polja su obavezna, ili niste dobro unijeli email!");
+                        await msg.ShowAsync();
+                    }
+                }
+                else
+                {
+                    MessageDialog msg = new MessageDialog("Username već postoji!");
+                    await msg.ShowAsync();
+                }
             }
         }
     }

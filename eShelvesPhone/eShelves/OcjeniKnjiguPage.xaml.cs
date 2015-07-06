@@ -126,30 +126,38 @@ namespace eShelves
             int ocjena = ocjenacbx.SelectedIndex + 1;
             OcjeniKnjiguPageViewModel model = (OcjeniKnjiguPageViewModel)defaultViewModel["ocjena"];
             Ocjena o = new Ocjena();
-            o.DatumOcjene = DateTime.Now;
-            if (model.OcjenaID > 0)
-                o.Id = model.OcjenaID;
-            o.KnjigaID = model.KnjigaID;
-            o.KorisnikID = model.KorisnikID;
-            o.OcjenaIznos = model.OcjenaIznos;
-            o.Opis = model.Opis;
-
-            if (opistxt.Text.Length > 0)
-                o.Opis = opistxt.Text;
-            if (ocjena > 0 && ocjena <= 5)
-                o.OcjenaIznos = ocjena;
-
-            if (o.Opis.Length > 0 && o.OcjenaIznos > 0)
+            if ((model.OcjenaID == 0 && opistxt.Text.Length > 0))
             {
-                HttpResponseMessage response = ocjenaService.PostResponse(o);
+                o.DatumOcjene = DateTime.Now;
+                if (model.OcjenaID > 0)
+                    o.Id = model.OcjenaID;
+                o.KnjigaID = model.KnjigaID;
+                o.KorisnikID = model.KorisnikID;
+                o.OcjenaIznos = model.OcjenaIznos;
+                o.Opis = model.Opis;
 
-                if (response.IsSuccessStatusCode)
+                if (opistxt.Text.Length > 0)
+                    o.Opis = opistxt.Text;
+                if (ocjena > 0 && ocjena <= 5)
+                    o.OcjenaIznos = ocjena;
+
+                if (o.Opis.Length > 0 && o.OcjenaIznos > 0)
                 {
-                    MessageDialog msg = new MessageDialog("Knjiga uspješno ocjenjena!");
-                    msg.ShowAsync();
+                    HttpResponseMessage response = ocjenaService.PostResponse(o);
 
-                    Frame.GoBack();
+                    if (response.IsSuccessStatusCode)
+                    {
+                        MessageDialog msg = new MessageDialog("Knjiga uspješno ocjenjena!");
+                        msg.ShowAsync();
+
+                        Frame.GoBack();
+                    }
                 }
+            }
+            else
+            {
+                MessageDialog msg = new MessageDialog("Opis mora biti popunjen!");
+                msg.ShowAsync();
             }
         }
     }
