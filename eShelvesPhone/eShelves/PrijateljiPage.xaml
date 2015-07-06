@@ -36,7 +36,11 @@
                           ItemClick="ListView_ItemClick">
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <TextBlock Text="{Binding username}" Style="{StaticResource HeaderTextBlockStyle}"></TextBlock>
+                            <StackPanel>
+                                <TextBlock Text="{Binding username}" Style="{StaticResource ListViewItemContentTextBlockStyle}"></TextBlock>
+                                <TextBlock Text="{Binding imeprezime}" Style="{StaticResource ListViewItemSubheaderTextBlockStyle}"></TextBlock>
+                                <TextBlock Text="{Binding joined}" Style="{StaticResource ListViewItemSubheaderTextBlockStyle}"></TextBlock>
+                            </StackPanel>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
