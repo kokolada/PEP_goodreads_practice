@@ -298,6 +298,7 @@
             this.traziButton.TabIndex = 20;
             this.traziButton.Text = "Traži";
             this.traziButton.UseVisualStyleBackColor = true;
+            this.traziButton.Click += new System.EventHandler(this.traziButton_Click);
             // 
             // label9
             // 
