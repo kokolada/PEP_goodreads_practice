@@ -25,7 +25,7 @@ namespace eShelvesDesktop.Autori
         {
             InitializeComponent();
             autoriGrid.AutoGenerateColumns = false;
-			this.AutoValidate = AutoValidate.Disable;
+            this.AutoValidate = AutoValidate.Disable;
         }
 
         private void EvidencijaAutora_Load(object sender, EventArgs e)
@@ -36,7 +36,7 @@ namespace eShelvesDesktop.Autori
 
         private void BindAutors()
         {
-            HttpResponseMessage response = autorService.GetResponse("Search/"+searchInput.Text.Trim());
+            HttpResponseMessage response = autorService.GetResponse("Search/" + searchInput.Text.Trim());
 
             if (response.IsSuccessStatusCode)
             {
@@ -78,35 +78,37 @@ namespace eShelvesDesktop.Autori
 
         private void dodajButton_Click(object sender, EventArgs e)
         {
-			if (this.ValidateChildren()) 
-			{
-				Autor a = new Autor();
-				a.Ime = imeInput.Text;
-				a.Prezime = prezimeInput.Text;
-				a.MjestoRodjenja = gradInput.Text;
-				a.Opis = opisInput.Text;
-				a.Rodjen = rodjenPicker.Value;
-				a.WebStranica = webInput.Text;
+            if (this.ValidateChildren())
+            {
+                Autor a = new Autor();
+                a.Ime = imeInput.Text;
+                a.Prezime = prezimeInput.Text;
+                a.MjestoRodjenja = gradInput.Text;
+                a.Opis = opisInput.Text;
+                a.Rodjen = rodjenPicker.Value;
+                a.WebStranica = webInput.Text;
                 if (Id > 0)
                     a.Id = Id;
-				a.Kategorijas = new List<Kategorija>();
+                a.Kategorijas = new List<Kategorija>();
 
-				foreach(int i in kategorijeListBox.CheckedIndices)
-				{
-					a.Kategorijas.Add(kategorije[i]);
-				}
+                foreach (int i in kategorijeListBox.CheckedIndices)
+                {
+                    a.Kategorijas.Add(kategorije[i]);
+                }
 
-				HttpResponseMessage response = autorService.PostResponse(a);
+                HttpResponseMessage response = autorService.PostResponse(a);
 
-				if (response.IsSuccessStatusCode) {
-					MessageBox.Show("Autor uspjesno dodan!");
-					Clear();
-				}
-				else {
-					MessageBox.Show("Error Code" +
-					response.StatusCode + " : Message - " + response.ReasonPhrase);
-				}
-			}
+                if (response.IsSuccessStatusCode)
+                {
+                    MessageBox.Show("Autor uspjesno dodan!");
+                    Clear();
+                }
+                else
+                {
+                    MessageBox.Show("Error Code" +
+                    response.StatusCode + " : Message - " + response.ReasonPhrase);
+                }
+            }
         }
 
         private void autoriGrid_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -126,13 +128,18 @@ namespace eShelvesDesktop.Autori
                 opisInput.Text = a.Opis;
                 Id = a.Id;
 
-                if(a.Kategorijas != null)
+                if (a.Kategorijas != null)
                     CheckTheBoxes(a.Kategorijas);
             }
         }
 
         private void CheckTheBoxes(List<Kategorija> kategorijj)
         {
+            for (int j = 0; j < kategorijeListBox.Items.Count; j++)
+            {
+                kategorijeListBox.SetItemCheckState(j, CheckState.Unchecked);
+            }
+
             for (int j = 0; j < kategorijeListBox.Items.Count; j++)
             {
                 for (int i = 0; i < kategorijj.Count; i++)
@@ -177,56 +184,73 @@ namespace eShelvesDesktop.Autori
                 response.StatusCode + " : Message - " + response.ReasonPhrase);
             }
         }
-		#region Validacija
-		private void imeInput_Validating(object sender, CancelEventArgs e) {
-			if (String.IsNullOrEmpty(imeInput.Text)) 
-			{
-				e.Cancel = true;
-				errorProvider.SetError(imeInput, Global.GetMessage("fname_req"));
-			}
-			else
-				errorProvider.SetError(imeInput, "");
-				
-		}
-		private void prezimeInput_Validating(object sender, CancelEventArgs e) {
-			if (String.IsNullOrEmpty(prezimeInput.Text))
-			{
-				e.Cancel = true;
-				errorProvider.SetError(prezimeInput, Global.GetMessage("lname_req"));
-			}
-			else
-				errorProvider.SetError(prezimeInput, "");
-		}
+        #region Validacija
+        private void imeInput_Validating(object sender, CancelEventArgs e)
+        {
+            if (String.IsNullOrEmpty(imeInput.Text))
+            {
+                e.Cancel = true;
+                errorProvider.SetError(imeInput, Global.GetMessage("fname_req"));
+            }
+            else
+                errorProvider.SetError(imeInput, "");
 
-		private void gradInput_Validating(object sender, CancelEventArgs e) {
-			if (String.IsNullOrEmpty(gradInput.Text)) 
-			{
-				e.Cancel = true;
-				errorProvider.SetError(gradInput, Global.GetMessage("grad_req"));
-			}
-			else
-				errorProvider.SetError(gradInput, "");
-		}
-	
+        }
+        private void prezimeInput_Validating(object sender, CancelEventArgs e)
+        {
+            if (String.IsNullOrEmpty(prezimeInput.Text))
+            {
+                e.Cancel = true;
+                errorProvider.SetError(prezimeInput, Global.GetMessage("lname_req"));
+            }
+            else
+                errorProvider.SetError(prezimeInput, "");
+        }
 
-		private void opisInput_Validating(object sender, CancelEventArgs e) {
-			if (String.IsNullOrEmpty(opisInput.Text)) {
-				e.Cancel = true;
-				errorProvider.SetError(opisInput, Global.GetMessage("opis_req"));
-			}
-			else
-				errorProvider.SetError(opisInput, "");
-		}
+        private void gradInput_Validating(object sender, CancelEventArgs e)
+        {
+            if (String.IsNullOrEmpty(gradInput.Text))
+            {
+                e.Cancel = true;
+                errorProvider.SetError(gradInput, Global.GetMessage("grad_req"));
+            }
+            else
+                errorProvider.SetError(gradInput, "");
+        }
 
-		private void kategorijeListBox_Validating(object sender, CancelEventArgs e) {
-			if (kategorijeListBox.CheckedItems.Count == 0) {
-				e.Cancel = true;
-				errorProvider.SetError(kategorijeListBox, Global.GetMessage("kategorije_req"));
-			}
-			else
-				errorProvider.SetError(kategorijeListBox, "");
-		}
-		#endregion
-	}
-	
+
+        private void opisInput_Validating(object sender, CancelEventArgs e)
+        {
+            if (String.IsNullOrEmpty(opisInput.Text))
+            {
+                e.Cancel = true;
+                errorProvider.SetError(opisInput, Global.GetMessage("opis_req"));
+            }
+            else
+                errorProvider.SetError(opisInput, "");
+        }
+
+        private void kategorijeListBox_Validating(object sender, CancelEventArgs e)
+        {
+            if (kategorijeListBox.CheckedItems.Count == 0)
+            {
+                e.Cancel = true;
+                errorProvider.SetError(kategorijeListBox, Global.GetMessage("kategorije_req"));
+            }
+            else
+                errorProvider.SetError(kategorijeListBox, "");
+        }
+        #endregion
+
+        private void traziButton_Click(object sender, EventArgs e)
+        {
+            HttpResponseMessage response = autorService.GetResponse("Search/" + searchInput.Text.Trim());
+
+            if (response.IsSuccessStatusCode)
+            {
+                autoriGrid.DataSource = response.Content.ReadAsAsync<List<Autor>>().Result;
+            }
+        }
+    }
+
 }
